@@ -5,11 +5,11 @@
 
 #默认情况下，用root(空)登录mysql数据库，备份至/root/dbxxxxx.tgz
 
-DBName=dev_zyxy
+DBName=
 
-DBUser=root
+DBUser=
 
-DBPasswd=zyxy@88.com
+DBPasswd=
 
 BackupPath=/root/
 
