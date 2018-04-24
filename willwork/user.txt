@@ -1,8 +1,0 @@
-庄河农产品
-AppID
-wx04a2d6854276f85f
-AppSecret
-e37cb9376de5c89595b6321e6388853d
-微擎
-laoqiao
-Password10
