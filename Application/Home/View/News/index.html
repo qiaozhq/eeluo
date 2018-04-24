@@ -1,0 +1,18 @@
+<include file="Index/header" />
+<link rel="stylesheet" href="/Public/css/normalize.css" />
+<link rel="stylesheet" href="/Public/css/default.css">
+<link rel="stylesheet" href="/Public/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/Public/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="/Public/css/site.css"/>
+<div class="container">
+	<volist name="result['componyNews']" id="vo">
+	   <div class="jumbotron">
+	        <h1>{$vo.title}</h1>
+	        <p>{$vo.description}</p>
+	        <img src="{$vo.thumb}" />
+	   </div>
+   </volist>
+</div>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+<script src="/Public/js/home/news.js"></script>
+<include file="Index/footer" />

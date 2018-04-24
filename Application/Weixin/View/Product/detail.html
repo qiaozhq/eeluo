@@ -1,0 +1,48 @@
+<include file="Index/header" />
+<!--合作商详细-->
+<style type="text/css">
+.product{
+    font-size: 0.8em;	
+}
+.product h3{
+    font-size: 1em;
+    margin-top: 0;
+}
+.product span.glyphicon{
+	width: 30px;
+}
+.small-thumb{
+	width: 100%;
+	overflow: hidden;
+}
+.small-thumb .img-responsive{
+	float: left;
+}
+</style>
+<div class="container product">
+	<div class="col-md-6">
+		<img class="img-responsive" src="{$product.thumb}">
+		<hr style="height:10px;padding:0;margin:0">
+		<div class="small-thumb">
+		<if condition="count($thumbsubs) eq 1">
+	        <volist name="thumbsubs" id="thumbsub">
+		       <if condition="$thumbsub neq null">
+		        <img  class="img-responsive" src="{$thumbsub}">
+		      </if>
+		    </volist>			 
+		<else/>
+	        <volist name="thumbsubs" id="thumbsub">
+		       <if condition="$thumbsub neq null">
+		        <img  style="width:33.33%" src="{$thumbsub}">
+		      </if>
+		    </volist>
+	    </if>
+	    </div>	    
+	</div>
+	<div class="col-md-6">
+		<p>【产品名称】<span>{$product.product_name}</span></p>
+		<p>【零售价格】<span>￥{$product.product_price}</span></p>
+		<p>【产品说明】<span>{$product.description}</span></p>
+	</div>			 
+</div>
+<include file="Index/footer" />

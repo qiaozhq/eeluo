@@ -1,0 +1,79 @@
+<include file="Index/header" />
+<style type="text/css">
+.modal-body {
+    text-align: center;
+}
+#myModal4 .modal-dialog{
+    text-align: center;
+    margin-top: 5em;
+}
+#myModal4 .modal-content{
+    display: inline-block;
+    width: auto;
+    height: auto;
+}
+#myModal4 .modal-body {
+    display: inline-block;
+}
+#myModal4 form{
+  display: inline-block;
+}
+#loginbutton{
+  background-color: #e60000;
+  margin-top: 10px;
+}
+.validate{
+    width: 50%;
+    float: left;
+}
+.validateimg{
+  height: 34px;
+}
+.validateimg:hover{
+  cursor: pointer;
+}
+</style>
+
+<div class="container-fluid contact-block">
+  <p>这里可以把官网用户和微信进行绑定，绑定后在官网购买的订单和微信端购买的订单合并到一起。</p>
+  <div class="contact-bottom">
+    <ul class="list-inline text-center">
+     <li><span id="modControl" class="btn" data-toggle="modal" data-target="#myModal4" ></span></li>          
+    </ul>   
+  </div>  
+</div>
+
+<!-- 模态框（Modal） 用户登录-->
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel4">用户登录</h4>
+            </div>
+            <div class="modal-body">
+          <form action="/weixin.php?c=user&a=getBaseInfo" class="form-signin" method="post">
+            <input type="hidden" name="openid" value="{$openid}">
+            <label class="sr-only">用户名</label>
+            <input type="text"  class="form-control" name="username" placeholder="请填写用户名" required autofocus>
+            <br />
+            <label  class="sr-only">密码</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
+            <br />
+              <label class="sr-only">验证码</label>
+              <input type="text" class="form-control validate" name="validate" placeholder="验证码"  required autofocus>
+              <img class="validateimg" title="点击刷新" src='/index.php?c=validate&a=doimg'
+              onclick="this.src='/index.php?c=validate&a=doimg&'+Math.random();"></img>
+            <button id="loginbutton" class="btn btn-lg btn-primary btn-block" type="button" onclick="login.check()">登录</button>
+          </form>     
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script src="/Public/js/weixin/login.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#modControl").trigger("click");
+});
+</script>
+<include file="Index/footer" />

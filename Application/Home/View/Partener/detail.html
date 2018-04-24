@@ -1,0 +1,51 @@
+<include file="Index/header" />
+<!--合作商详细-->
+<style type="text/css">
+.partener{
+    font-size: 0.8rem;	
+}
+.partener h3{
+    font-size: 1rem;
+    margin-top: 0;
+}
+.partener span.glyphicon{
+	width: 30px;
+}
+.lasted-box-02 {
+    color: white;
+    padding-left: 1em;
+    position: absolute;
+    height: 60px;
+    width: 100%;
+    left: 0;
+    bottom: -1px;
+    background: url(/Public/images/icons41.png) repeat;
+}
+.company{
+	position: relative;
+	padding-left: 0;
+	padding-right: 0;
+	margin-right: 10px;
+}
+.company img{
+	width: 100%;
+}
+.col-md-5{
+	padding: 0;
+}
+</style>
+<div class="container partener">
+	<div class="col-md-6 company">
+		<img class="img-responsive" src="{$partener.thumb}">
+        <div class="lasted-box-02">
+            <h3>{$partener.partener_name}</h3>
+        </div> 
+	</div>
+	<div class="col-md-5">
+		<p><span class="glyphicon glyphicon-earphone"></span><span>{$partener.tel}</span></p>
+		<p><span class="glyphicon glyphicon-envelope"></span><span>{$partener.mail}</span></p>
+		<p><span class="glyphicon glyphicon-globe"></span><span>{$partener.address}</span></p>
+		<p><span class="glyphicon glyphicon-th-large"></span><span>{$partener.description}</span></p>
+	</div>			 
+</div>
+<include file="Index/footer" />

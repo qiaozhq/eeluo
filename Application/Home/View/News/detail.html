@@ -1,0 +1,22 @@
+<include file="Index/header" />
+<!--合作商详细-->
+<style type="text/css">
+.new p{
+    font-size: 0.8rem;	
+}
+.new h3{
+    font-size: 1rem;
+    margin-top: 0;
+    text-align: center;
+}
+.new span.glyphicon{
+	width: 30px;
+}
+</style>
+<div class="container new">
+	<div class="col-md-12">
+		<h3>{$new.title}</h3>
+		<p>{$new.content|str_replace='\\\"','',###}</p>			
+	</div>		 
+</div>
+<include file="Index/footer" />

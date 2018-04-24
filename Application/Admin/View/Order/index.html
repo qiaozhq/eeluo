@@ -1,0 +1,112 @@
+<include file="Index/header" />
+<body>
+<div id="wrapper">
+
+  <include file="Index/nav"/>
+  <div id="page-wrapper">
+
+    <div class="container-fluid" >
+
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+
+          <ol class="breadcrumb">
+            <li>
+              <i class="fa fa-dashboard"></i>订单管理
+            </li>
+            <li class="active">
+              <i class="fa fa-table"></i>订单列表
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div >
+        <form action="/admin.php?c=order&a=down" method="post">
+        <input type="hidden" value="" type="text" name="postData">
+        <button  id="button-download" type="button" class="btn btn-primary " ></span>数据导出 </button>
+        </form>
+      </div>      
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-lg-6">
+          <h3></h3>
+          <div class="table-responsive">
+            <form id="singcms-listorder">
+              <table class="table table-bordered table-hover singcms-table">
+                <thead>
+                <tr>
+                  <th>订单号</th>
+                  <th>用户名</th>
+                  <th>微信id</th>
+                  <th>订单时间</th>                 
+                  <th>订单金额</th>
+                  <th>订单状态</th>
+                  <th>订单明细</th>
+                  <th>备注</th>                
+                  <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="orderlist">
+                <volist name="orders" id="order">
+                  <tr>                   
+                    <td>{$order.order_number}</td>
+                    <td>{$order.username}</td>
+                    <td>{$order.openid}</td>
+                    <td>{$order.create_time|create_time}</td>
+                    <td>{$order.kingaku}</td>
+                    <td>{$order.paystatus|paystatus}</td>
+                    <td><a href="/admin.php?c=order&a=detail&id={$order.order_number}">查看</a></td>
+                    <td>{$order.instruc}</td>
+                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="{$order.order_number}" ></span>
+                    </td>
+                  </tr>
+                </volist>
+
+                </tbody>
+              </table>
+            </form>  
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+  </div>
+  <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<script>
+  var SCOPE = {
+    'edit_url' : '/admin.php?c=order&a=edit',
+    'down_url' : '/admin.php?c=order&a=down',
+    'add_url' : '/admin.php?c=order&a=add',
+    'set_status_url' : '/admin.php?c=order&a=setStatus',
+    'listorder_url' : '/admin.php?c=order&a=listorder',
+    'push_url' : '/admin.php?c=order&a=push',
+  }
+
+  $('#button-download').click(function(){
+  var trList = $("#orderlist").children("tr");
+  var postData = [];
+    for (var i=0;i<trList.length;i++) {
+        var tdArr = trList.eq(i).find("td");
+        var order = tdArr.eq(0).html();//订单号
+        var user = tdArr.eq(1).html();//用户名
+        var openid = tdArr.eq(2).html();//微信id
+        var ordertime = tdArr.eq(3).html();//订单时间  
+        var kingaku = tdArr.eq(4).html();//订单金额
+        var status = tdArr.eq(5).html();//订单状态  
+        var des = tdArr.eq(7).html();//备注   
+        var data = [order,user,openid,ordertime,kingaku,status,des];
+        postData[i] =  data;            
+    }
+    console.log(postData);
+    $("input[name='postData']").val(postData);
+    $("form")[0].submit();
+});
+</script>
+<include file="Index/footer" />

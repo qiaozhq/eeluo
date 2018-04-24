@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{$basic.keywords}" />
+<meta name="description" content="{$basic.description}" />
+<link rel="Shortcut Icon" href="/Public/images/favicon.ico">
+<link rel="Bookmark" href="/Public/images/favicon.ico">
+<title>{$basic.title}</title>
+<link href="/Public/css/bootstrap.css" rel='stylesheet'/>
+<link href="/Public/css/header.css" rel='stylesheet'/>
+<script src="/Public/js/jquery.min.js"></script>
+<script src="/Public/js/bootstrap.min.js"></script>
+<script src="/Public/js/dialog/layer.js"></script>
+<script src="/Public/js/dialog.js"></script>
+<script src="/Public/js/home/header.js"></script>
+<!--[if lte IE 8]>
+<script language="javascript" type="text/javascript"> 
+window.location.href="http://www.blcyw.com/browser"; 
+</script> 
+<![endif]-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8f52653d7b1e35be45146bf0f19ea3dd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+<div class="container-fluid header-top">
+    <div class="container">
+        <img id="loginImg" style="background:#87DB47;height:21px;width:21px;overflow:hidden;display:none" class="btn img-responsive" data-toggle="modal" data-target="#myModal4" src="/Public/images/login.jpg">
+        <div id="userinImg" style="display:none" class="dropdown">
+        <img class="btn dropdown-toggle" src="/Public/images/userin.jpg" data-toggle="dropdown" style="background:#87DB47;height:21px;width:21px;overflow:hidden">
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/user/index.html"><i class="fa fa-fw fa-user"></i> 个人信息</a>
+            </li>
+            <li>
+              <a href="/user/updpas.html"><i class="fa fa-fw fa-user"></i> 修改密码</a>
+            </li>            
+            <li>
+              <a href="/product/cartDetail.html"><i class="fa fa-fw fa-user"></i> 购物车</a>
+            </li>
+            <li>
+              <a href="/product/orderDetail.html"><i class="fa fa-fw fa-user"></i> 我的订单</a>
+            </li>               
+            <li class="divider"></li>
+            <li>
+              <a href="/user/loginout.html"><i class="fa fa-fw fa-power-off"></i> 退出</a>
+            </li>
+          </ul>
+        </div>       
+        <img class="btn" data-toggle="modal" data-target="#myModal2" style="background:#87DB47;height:21px;width:21px" src="/Public/images/wx.png">
+        <img class="btn" data-toggle="modal" data-target="#myModal3" style="background:#87DB47;height:21px;width:21px" src="/Public/images/wx.jpg">
+    </div>
+</div>
+<nav class="navbar navbar-default top-header" role="navigation">
+    <div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+            <a id ="logo" class="navbar-brand" href="#"><img src="/Public/images/logo.png"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+        <ul class="nav navbar-nav">
+        	<li class="logo"><img src="/Public/images/logo.png"></li>
+			<li><a href="/index.html">首页</a></li>
+			<li><a href="/news/index.html">e络软件</a></li>
+			<li><a href="/news/index.html">技术博客</a></li>	
+			<li><a href="/product/index.html">e络杂谈</a></li>
+			<li><a href="/franchisee/index.html">环境大全</a></li>
+			<li><a href="/partener/index.html">框架大全</a></li>
+			<li><a href="/contact/index.html">模块大全</a></li> 
+      <li><a href="/contact/index.html">e络教学</a></li> 
+        </ul>
+    </div>
+    </div>
+</nav>

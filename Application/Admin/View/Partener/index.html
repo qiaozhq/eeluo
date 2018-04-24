@@ -1,0 +1,123 @@
+<include file="Index/header" />
+<body>
+<div id="wrapper">
+
+  <include file="Index/nav"/>
+  <div id="page-wrapper">
+
+    <div class="container-fluid" >
+
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+
+          <ol class="breadcrumb">
+            <li>
+              <i class="fa fa-dashboard"></i>合作商管理
+            </li>
+            <li class="active">
+              <i class="fa fa-table"></i>合作商列表
+            </li>
+          </ol>
+        </div>
+      </div>
+      <!-- /.row -->
+      <div >
+        <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加 </button>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <h3></h3>
+          <div class="table-responsive">
+            <form id="singcms-listorder">
+              <table class="table table-bordered table-hover singcms-table">
+                <thead>
+                <tr>
+                  <th id="singcms-checkbox-all" width="10"><input type="checkbox"/></th>
+                  <th>推荐</th>
+                  <th width="14">排序</th><!--6.7-->
+                  <th>id</th>
+                  <th>分类</th>
+                  <th>名字</th>
+                  <th>封面图</th>
+                  <th>电话</th>
+                  <th>邮箱</th> 
+                  <th>地址</th>                                          
+                  <th>描述</th>
+                  <th>合作时间</th>
+                  <th>状态</th>
+                  <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="parteners" id="new">
+                  <tr>
+                    <td><input type="checkbox" name="pushcheck" value="{$new.partener_id}"></td>
+                    <td style="color:red" id="{$new.partener_id}" data-value="{$new.pstatus}">
+                    <if condition="$new['pstatus'] eq 1">推荐<else/></if>
+                    </td>                    
+                    <td><input size=4 type='text'  name='listorder[{$new.partener_id}]' value="{$new.listorder}"/></td><!--6.7-->
+                    <td>{$new.partener_id}</td>
+                    <foreach name="partenerCats" item="pc">
+                    <eq name="pc.partener_cat_id" value="$new.catid">
+                    <td>{$pc.name}</td>
+                    </eq>
+                    </foreach>
+                    <td>{$new.partener_name}</td>
+                    <td><img width="150px" src="{$new.thumb}"></td>
+                    <td>{$new.tel}</td>
+                    <td>{$new.mail}</td>
+                    <td>{$new.address}</td>
+                    <td>{$new.description}</td>
+                    <td>{$new.partener_time}</td>
+                    <td><span  attr-status="<if condition="$new['status'] eq 1">0<else/>1</if>"  attr-id="{$new.partener_id}" class="sing_cursor singcms-on-off" id="singcms-on-off" >{$new.status|status}</span></td>
+                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="{$new.partener_id}" ></span>
+                      <a href="javascript:void(0)" id="singcms-delete"  attr-id="{$new.partener_id}"  attr-message="删除">
+                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                      </a>
+                    </td>
+                  </tr>
+                </volist>
+
+                </tbody>
+              </table>
+              <nav>
+
+              <ul >
+                {$pageres}
+              </ul>
+
+            </nav>
+              <div>
+                <button  id="button-listorder" type="button" class="btn btn-primary dropdown-toggle" ><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>更新排序</button>
+                <button id="singcms-push" type="button" class="btn btn-primary">推送至首页</button>
+              </div>
+            </form>
+ <input type="hidden" id="select-push" value="3">    
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+  </div>
+  <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<script>
+  var SCOPE = {
+    'edit_url' : '/admin.php?c=partener&a=edit',
+    'add_url' : '/admin.php?c=partener&a=add',
+    'set_status_url' : '/admin.php?c=partener&a=setStatus',
+    'sing_news_view_url' : '/index.php?c=view',
+    'listorder_url' : '/admin.php?c=partener&a=listorder',
+    'push_url' : '/admin.php?c=partener&a=push',
+  }
+</script>
+<include file="Index/footer" />

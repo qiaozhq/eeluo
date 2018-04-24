@@ -1,0 +1,51 @@
+<include file="Index/header" />
+<style type="text/css">
+.partener{
+    margin-top: 1em;
+    margin-bottom: 1em;  
+}
+.partener .col-md-3{
+    margin-bottom: 1em;
+}
+.partener p.text-danger{
+    opacity: 0.5;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 1px solid #a4a5aa;
+}
+.text-danger {
+    color: #a94442;
+}
+.padd15{
+    padding-right: 15px;
+    padding-left: 15px;
+    max-width: 1035px;
+}
+.text-danger1 {
+    width: 50%;
+    border-bottom: 1px solid #a4a5aa;
+}
+</style>
+<div class="container partener">
+<p class="text-danger">合作品牌</p>
+<div class="col-md-12">
+    <img class="img-responsive" src="/Public/images/partener.jpg"/>
+</div> 
+<p class="text-danger">死店盘活，活店转旺</p> 
+<p class='padd15'> N+N超值购异业联盟，资源整合。</p>
+<p class='padd15'> 你有店吗？有店就可以嫁接赚钱！我公司推广的资源整合项目，洗车行，汽车美容店，汽车维修店，干洗店，礼品店，烟酒店，超市，发廊，理疗，按摩，足疗，洗浴，瑜伽，汗蒸，健身房，服装店，药房，饭店，烧烤店，火锅店，酒吧，房屋中介机构，KTV，学前教育机构，等店，加盟合作，死店盘活，零风险，保利润，只要能够在店里腾出一个小地方与我公司合作，免费培训，免费加盟，免费传授独家公司盈利模式，在现有店面利润基础上每年增加收入20-50万</p>    
+</div>
+<volist name="result['partenerCats']" id="vo">
+    <div class="container partener">
+        <p class="text-danger">{$vo.name}</p>
+        <volist name="result['parteners']" id="po">
+            <eq name="vo.partener_cat_id" value="$po.catid">
+                <div class="col-md-3">
+                    <a href="/partener/detail/id/{$po.partener_id}.html"><img class="img-responsive" src="{$po.thumb}"/></a>
+                    <h4><a href="/partener/detail/id/{$po.partener_id}.html">{$po.partener_name}</a></h4>
+                </div>
+            </eq>
+        </volist>
+    </div>
+</volist>
+<include file="Index/footer" />

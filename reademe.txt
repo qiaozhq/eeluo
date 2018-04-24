@@ -1,0 +1,83 @@
+众赢新业
+域名：zyxy88.com 2018年5月18左右到期
+-----------------------------------
+百度统计账号
+用户名：众赢新业
+邮箱：zyxy88com@qq.com
+密码：Password10
+-----------------------------------
+腾讯企业邮箱
+企业邮箱管理员：zyxydl
+密码：Password10
+管理帐号： zyxydl
+登录地址：https://exmail.qq. com/login
+邮箱：zhangq
+密码：Password11
+-----------------------------------
+微信公众号
+订阅号
+您获得邮箱帐号：zyxy88com@qq.com
+邮箱密码：Win2003@
+对应QQ号码：3439484394
+公众平台密码：Win2003@
+AppID:wxe613fbe180506b41
+AppSecret:26615c6b2a935f44f52eb36c4a49b6e2
+-----
+//服务号(预备邮箱，暂未使用)
+//您获得邮箱帐号：zyxy88adv@qq.com
+//邮箱密码：Password10
+//对应QQ号码：3541808447
+//公众平台密码：Password10
+-------------------------------
+阿里云
+//(已经注册，未使用)-----
+//阿里云新账号：众赢新业
+//密码：Win2003@
+//(已经注册，未使用)----
+-----
+账号：t-2804043382-1
+密码：Win2003@
+控制台远程连接密码： 628947
+实例用户：root
+实例密码 Win2003@
+-------------------------------
+应用相关
+---------
+产品组成：
+CentOS 7.3
+http-2.4.25
+mysql-5.6.35  
+php-5.6.30
+phpmyadmin-4.7.0
+---------
+apache：
+dev:/data/www http://59.110.233.65:30001/
+//(预备环境，暂未使用)qa:/data/qa   http://59.110.233.65:30002/
+prod:/data/prod www.zyxy88.com
+apachectl -k start | stop | restart （开启|关闭|重启）
+---------
+phpmyadmin
+访问地址：http://59.110.233.65:30001/phpmyadmin
+---------
+ftp（ftp客户端连接）
+地址：59.110.233.65
+账号：ftpuser
+密码：zyxy@88.com
+ftp用户根目录：/data/www
+---------
+mysql
+账号：root
+密码：zyxy@88.com
+service mysqld start | stop | restart （开启|关闭|重启）
+进入mysql控制台：mysql -uroot -p 然后输入密码
+退出：exit
+重置密码：mysqladmin -uroot -p password "输入新密码"
+---------
+//svn（暂未搭建）
+//查看端口：netstat -tunlp
+//user:zyxy
+//password:Password10
+//svnserve -d -r /www/zyxy_dev/svnrepos --listen-port 20
+//svn://59.110.233.65:20
+//killall svnserve
+//ps -ef|grep svn

@@ -1,0 +1,96 @@
+<include file="Index/header" />
+<body>
+<div id="wrapper">
+
+  <include file="Index/nav"/>
+  <div id="page-wrapper">
+
+    <div class="container-fluid" >
+
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+
+          <ol class="breadcrumb">
+            <li>
+              <i class="fa fa-dashboard"></i>订单详细
+            </li>
+            <li class="active">
+              <i class="fa fa-table"></i>订单号:{$order_number}
+            </li>
+            <form action="/admin.php?c=order&a=downdetail" method="post">
+            <input type="hidden" value="" type="text" name="postData">
+            <button  id="button-download" type="button" class="btn btn-primary " ></span>数据导出 </button>
+            </form>
+          </ol>
+        </div>
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-lg-6">
+          <h3></h3>
+          <div class="table-responsive">
+            <form id="singcms-listorder">
+              <table class="table table-bordered table-hover singcms-table">
+                <thead>
+                <tr>
+                  <th>产品名</th>
+                  <th>产品图</th>                  
+                  <th>购买单价</th>
+                  <th>购买数量</th>
+                  <th>金额</th>                 
+                </tr>
+                </thead>
+                <tbody id="orderlist">
+                  <volist name="orderDetails" id="or">
+                  <tr>                   
+                    <td>{$or.product_name}</td>
+                    <td><img width="150px" src="{$or.thumb}"></td>                    
+                    <td>{$or.buy_price}</td>
+                    <td>{$or.buy_amount}</td>
+                    <td>{$or.kingaku}</td>
+                  </tr>
+                  </volist>
+                </tbody>
+              </table>
+            </form>  
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+  </div>
+  <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<script>
+  var SCOPE = {
+    'edit_url' : '/admin.php?c=news&a=edit',
+    'add_url' : '/admin.php?c=news&a=add',
+    'set_status_url' : '/admin.php?c=news&a=setStatus',
+    'listorder_url' : '/admin.php?c=news&a=listorder',
+    'push_url' : '/admin.php?c=news&a=push',
+  }
+
+  $('#button-download').click(function(){
+  var trList = $("#orderlist").children("tr");
+  var postData = [];
+    for (var i=0;i<trList.length;i++) {
+        var tdArr = trList.eq(i).find("td");
+        var name = tdArr.eq(0).html();//产品名
+        var price = tdArr.eq(2).html();//购买单价
+        var amount = tdArr.eq(3).html();//购买数量 
+        var kingaku = tdArr.eq(4).html();//金额  
+        var data = [name,price,amount,kingaku];
+        postData[i] =  data;            
+    }
+    console.log(postData);
+    $("input[name='postData']").val(postData);
+    $("form")[0].submit();
+});
+</script>
+<include file="Index/footer" />

@@ -1,0 +1,87 @@
+<include file="Index/header" />
+<style type="text/css">
+.partener{
+    margin-top: 1em;
+    margin-bottom: 1em;  
+}
+.partener .col-md-3{
+    margin-bottom: 1em;
+}
+.partener p.text-danger{
+    opacity: 0.5;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 1px solid #a4a5aa;
+}
+.text-danger {
+    color: #a94442;
+}
+.padd15{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.text-danger1 {
+    width: 50%;
+    border-bottom: 1px solid #a4a5aa;
+}
+</style>
+<div class="container partener">
+<p class="text-danger">死店盘活，活店转旺</p> 
+<p class='padd15'> N+N超值购异业联盟，资源整合。</p>
+<p class='padd15'> 你有店吗？有店就可以嫁接赚钱！我公司推广的资源整合项目，洗车行，汽车美容店，汽车维修店，干洗店，礼品店，烟酒店，超市，发廊，理疗，按摩，足疗，洗浴，瑜伽，汗蒸，健身房，服装店，药房，饭店，烧烤店，火锅店，酒吧，房屋中介机构，KTV，学前教育机构，等店，加盟合作，死店盘活，零风险，保利润，只要能够在店里腾出一个小地方与我公司合作，免费培训，免费加盟，免费传授独家公司盈利模式，在现有店面利润基础上每年增加收入20-50万</p>           
+
+<p class="text-danger">加盟支持</p> 
+    <div class="col-md-2">
+        <img class="img-responsive" src="/Public/images/sj.jpg"/>
+    </div>
+    <div class="col-md-5">
+        <p style="color:blue">■免费装修图文设计</p>
+        <p>门头、室内装修、货柜设计图；<br/>
+宣传单页、海报、易拉宝设计；<br/>
+媒体宣传内容及图文设计等····
+</p>
+    </div>
+    <div class="col-md-5"></div>
+    <div class="col-md-12" style="height:1em">
+    </div>    
+    <div class="col-md-2">
+        <img class="img-responsive" src="/Public/images/px.jpg"/>
+    </div>
+    <div class="col-md-5">
+        <p style="color:blue">■免费系统及培训</p>
+        <p>OA、ERP系统支持；<br/>
+商品培训、保险规则培训；<br/>
+管理系统培训、店面运营培训；<br/>
+收银机操作培训···
+</p>
+    </div>
+    <div class="col-md-5"></div>    
+    <div class="col-md-12" style="height:1em">
+    </div>    
+    <div class="col-md-2">
+        <img class="img-responsive" src="/Public/images/sh.jpg"/>
+    </div>
+    <div class="col-md-5">
+        <p style="color:blue">■免费售后支持及策划方案</p>
+        <p>区域货品分发、调换货、出单；<br/>
+区域跨界商盟开发共享；<br/>
+各类活动方案策划等···
+</p>
+    </div>     
+    <div class="col-md-5"></div>
+</div>
+
+<volist name="result['partenerCats']" id="vo">
+    <div class="container partener">
+        <p class="text-danger1">{$vo.name}</p>
+        <volist name="result['parteners']" id="po">
+            <eq name="vo.partener_cat_id" value="$po.catid">
+                <div class="col-md-3">
+                    <a href="/weixin.php?c=partener&a=detail&id={$po.partener_id}"><img class="img-responsive" src="{$po.thumb}"/></a>
+                    <h4><a href="/weixin.php?c=partener&a=detail&id={$po.partener_id}">{$po.partener_name}</a></h4>
+                </div>
+            </eq>
+        </volist>
+    </div>
+</volist>
+<include file="Index/footer" />
