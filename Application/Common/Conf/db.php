@@ -7,5 +7,5 @@ return array(
     'DB_PORT' => 3306,
     'DB_NAME' => 'dev_zyxy',
     'DB_CHARSET' => 'utf8',
-    'DB_PREFIX' =>'zyxy_',
+    'DB_PREFIX' =>'eeluo_',
 );

@@ -92,7 +92,7 @@ var _hmt = _hmt || [];
 <link rel="stylesheet" href="/Public/css/bootstrap-theme.min.css"/>
 <link rel="stylesheet" href="/Public/css/site.css"/>
 <div class="container">
-	<?php if(is_array($result['componyNews'])): $i = 0; $__LIST__ = $result['componyNews'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="jumbotron">
+	<?php if(is_array($result['main'])): $i = 0; $__LIST__ = $result['main'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="jumbotron">
 	        <h1><?php echo ($vo["title"]); ?></h1>
 	        <p><?php echo ($vo["description"]); ?></p>
 	        <img class="img-responsive" src="<?php echo ($vo["thumb"]); ?>" />

@@ -4,10 +4,5 @@ RewriteEngine on
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^doimg\.htm$ leader.php?c=validate&a=doimg [QSA,PT,L]
-RewriteRule ^login\.htm$ leader.php [QSA,PT,L]
-RewriteRule ^loginout\.htm$ /leader.php?c=login&a=loginout [QSA,PT,L]
-RewriteRule ^check\.htm$ /leader.php?c=login&a=check [QSA,PT,L]
-RewriteRule ^(.*)\.htm$ leader.php?c=user&a=$1 [QSA,PT,L]
 RewriteRule ^(.*)\.html$ index.php/home/$1 [QSA,PT,L]
 </IfModule>

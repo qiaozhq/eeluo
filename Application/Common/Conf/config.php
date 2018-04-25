@@ -1,8 +1,7 @@
 <?php
 return array(
 	//'配置项'=>'配置值'
-
-    //URL地址不区分大小写
+    'VERSION' =>'1.0',
     'URL_CASE_INSENSITIVE' =>true,
     'URL_MODEL'=>2,
     "URL_HTML_SUFFIX"=>'html',

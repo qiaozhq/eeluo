@@ -93,10 +93,10 @@
 
           <ol class="breadcrumb">
             <li>
-              <i class="fa fa-dashboard"></i>新闻管理
+              <i class="fa fa-dashboard"></i>数据管理
             </li>
             <li class="active">
-              <i class="fa fa-table"></i>新闻列表
+              <i class="fa fa-table"></i>数据列表
             </li>
           </ol>
         </div>
@@ -124,18 +124,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php if(is_array($news)): $i = 0; $__LIST__ = $news;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$new): $mod = ($i % 2 );++$i;?><tr>                   
-                    <td><input size=4 type='text'  name='listorder[<?php echo ($new["news_id"]); ?>]' value="<?php echo ($new["listorder"]); ?>"/></td><!--6.7-->
-                    <td><?php echo ($new["news_id"]); ?></td>
-                    <td>
-                      <?php if($new['catid'] == 1): ?>公司新闻<?php else: ?>行业动态<?php endif; ?>
-                    </td>
+                <?php if(is_array($main)): $i = 0; $__LIST__ = $main;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$new): $mod = ($i % 2 );++$i;?><tr>                   
+                    <td><input size=4 type='text'  name='listorder[<?php echo ($new["id"]); ?>]' value="<?php echo ($new["listorder"]); ?>"/></td><!--6.7-->
+                    <td><?php echo ($new["id"]); ?></td>
+                    <td><?php echo ($new["name"]); ?></td>
                     <td><?php echo ($new["title"]); ?></td>
                     <td><img width="150px" src="<?php echo ($new["thumb"]); ?>"></td>
                     <td><?php echo ($new["description"]); ?></td>
-                    <td><span  attr-status="<?php if($new['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($new["news_id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($new["status"])); ?></span></td>
-                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($new["news_id"]); ?>" ></span>
-                      <a href="javascript:void(0)" id="singcms-delete"  attr-id="<?php echo ($new["news_id"]); ?>"  attr-message="删除">
+                    <td><span  attr-status="<?php if($new['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($new["id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($new["status"])); ?></span></td>
+                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($new["id"]); ?>" ></span>
+                      <a href="javascript:void(0)" id="singcms-delete"  attr-id="<?php echo ($new["id"]); ?>"  attr-message="删除">
                         <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
                       </a>
                     </td>
@@ -166,11 +164,11 @@
 <!-- /#wrapper -->
 <script>
   var SCOPE = {
-    'edit_url' : '/admin.php?c=news&a=edit',
-    'add_url' : '/admin.php?c=news&a=add',
-    'set_status_url' : '/admin.php?c=news&a=setStatus',
-    'listorder_url' : '/admin.php?c=news&a=listorder',
-    'push_url' : '/admin.php?c=news&a=push',
+    'edit_url' : '/admin.php?c=main&a=edit',
+    'add_url' : '/admin.php?c=main&a=add',
+    'set_status_url' : '/admin.php?c=main&a=setStatus',
+    'listorder_url' : '/admin.php?c=main&a=listorder',
+    'push_url' : '/admin.php?c=main&a=push',
   }
 </script>
 <script src="/Public/js/admin/common.js"></script>

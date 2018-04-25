@@ -93,10 +93,10 @@
 
           <ol class="breadcrumb">
             <li>
-              <i class="fa fa-dashboard"></i>新闻管理
+              <i class="fa fa-dashboard"></i>用户管理
             </li>
             <li class="active">
-              <i class="fa fa-table"></i>新闻列表
+              <i class="fa fa-table"></i>用户列表
             </li>
           </ol>
         </div>
@@ -104,7 +104,7 @@
       <!-- /.row -->
       <div >
         <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加 </button>
-      </div>
+      </div>      
       <div class="row">
         <div class="col-lg-6">
           <h3></h3>
@@ -113,49 +113,45 @@
               <table class="table table-bordered table-hover singcms-table">
                 <thead>
                 <tr>
-                  <th width="14">排序</th>
                   <th>id</th>
+                  <th>用户名</th>
+                  <th>微信id</th>
                   <th>分类</th>
-                  <th>标题</th>
-                  <th>封面图</th>                              
-                  <th>简介</th>
-                  <th>状态</th>
+                  <th>注册时间</th>                                 
+                  <th>最后登陆ip</th>                 
+                  <th>最后登陆时间</th>
+                  <th>电话</th>
+                  <th>邮箱</th>              
                   <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php if(is_array($news)): $i = 0; $__LIST__ = $news;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$new): $mod = ($i % 2 );++$i;?><tr>                   
-                    <td><input size=4 type='text'  name='listorder[<?php echo ($new["news_id"]); ?>]' value="<?php echo ($new["listorder"]); ?>"/></td><!--6.7-->
-                    <td><?php echo ($new["news_id"]); ?></td>
-                    <td>
-                      <?php if($new['catid'] == 1): ?>公司新闻<?php else: ?>行业动态<?php endif; ?>
-                    </td>
-                    <td><?php echo ($new["title"]); ?></td>
-                    <td><img width="150px" src="<?php echo ($new["thumb"]); ?>"></td>
-                    <td><?php echo ($new["description"]); ?></td>
-                    <td><span  attr-status="<?php if($new['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($new["news_id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($new["status"])); ?></span></td>
-                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($new["news_id"]); ?>" ></span>
-                      <a href="javascript:void(0)" id="singcms-delete"  attr-id="<?php echo ($new["news_id"]); ?>"  attr-message="删除">
+                <?php if(is_array($users)): $i = 0; $__LIST__ = $users;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$user): $mod = ($i % 2 );++$i;?><tr>                   
+                    <td><?php echo ($user["user_id"]); ?></td>
+                    <td><?php echo ($user["username"]); ?></td>
+                    <td><?php echo ($user["openid"]); ?></td>
+                    <td><?php echo (level($user["level"])); ?></td>
+                    <td><?php echo (create_time($user["create_time"])); ?></td>                    
+                    <td><?php echo ($user["lastloginip"]); ?></td>
+                    <td><?php echo (create_time($user["lastlogintime"])); ?></td>
+                    <td><?php echo ($user["phone"]); ?></td>
+                    <td><?php echo ($user["email"]); ?></td>        
+                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($user["user_id"]); ?>" ></span>
+                      <a href="javascript:void(0)" id="singcms-delete"  attr-id="<?php echo ($user["user_id"]); ?>"  attr-message="删除">
                         <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
                       </a>
                     </td>
+
                   </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 
                 </tbody>
               </table>
-              <div>
-                <button  id="button-listorder" type="button" class="btn btn-primary dropdown-toggle" ><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>更新排序</button>
-              </div>
-            </form>
- <input type="hidden" id="select-push" value="3">    
+            </form>  
           </div>
         </div>
 
       </div>
       <!-- /.row -->
-
-
-
     </div>
     <!-- /.container-fluid -->
 
@@ -166,11 +162,11 @@
 <!-- /#wrapper -->
 <script>
   var SCOPE = {
-    'edit_url' : '/admin.php?c=news&a=edit',
-    'add_url' : '/admin.php?c=news&a=add',
-    'set_status_url' : '/admin.php?c=news&a=setStatus',
-    'listorder_url' : '/admin.php?c=news&a=listorder',
-    'push_url' : '/admin.php?c=news&a=push',
+    'edit_url' : '/admin.php?c=user&a=edit',
+    'add_url' : '/admin.php?c=user&a=add',
+    'set_status_url' : '/admin.php?c=user&a=setStatus',
+    'listorder_url' : '/admin.php?c=user&a=listorder',
+    'push_url' : '/admin.php?c=user&a=push',
   }
 </script>
 <script src="/Public/js/admin/common.js"></script>

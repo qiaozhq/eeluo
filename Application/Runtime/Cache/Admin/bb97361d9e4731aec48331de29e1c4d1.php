@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="Shortcut Icon" href="/Public/images/favicon.ico">
     <link rel="Bookmark" href="/Public/images/favicon.ico">
-    <title>众赢新业大连总店-后台管理系统</title>
+    <title>e络工作室-后台管理系统</title>
     <!-- Bootstrap Core CSS -->
     <link href="/Public/css/bootstrap.min.css" rel="stylesheet">
 
@@ -49,7 +49,7 @@
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     
-    <a class="navbar-brand" >众赢新业-后台管理系统</a>
+    <a class="navbar-brand" >e络工作室-后台管理系统</a>
   </div>
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">

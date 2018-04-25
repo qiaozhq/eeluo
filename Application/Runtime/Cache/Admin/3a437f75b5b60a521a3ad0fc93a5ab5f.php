@@ -42,7 +42,7 @@
 <body>
 <div id="wrapper">
 
-  <?php
+    <?php
  $navs = D("Menu")->getAdminMenus(); $username = getLoginUsername(); foreach($navs as $k=>$v) { if($v['c'] == 'admin' && $username != 'admin') { unset($navs[$k]); } if($v['c'] == 'menu' && $username != 'admin') { unset($navs[$k]); } if($v['c'] == 'position' && $username != 'admin') { unset($navs[$k]); } } $index = 'index'; ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -83,95 +83,82 @@
   </div>
   <!-- /.navbar-collapse -->
 </nav>
-  <div id="page-wrapper">
+<div id="page-wrapper">
 
     <div class="container-fluid" >
 
-      <!-- Page Heading -->
-      <div class="row">
-        <div class="col-lg-12">
-
+        <!-- Page Heading -->
           <ol class="breadcrumb">
             <li>
-              <i class="fa fa-dashboard"></i>新闻管理
+              <i class="fa fa-dashboard"></i>热销商品分类
             </li>
             <li class="active">
-              <i class="fa fa-table"></i>新闻列表
+              <i class="fa fa-table"></i>
             </li>
-          </ol>
-        </div>
-      </div>
-      <!-- /.row -->
-      <div >
-        <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加 </button>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <h3></h3>
-          <div class="table-responsive">
-            <form id="singcms-listorder">
-              <table class="table table-bordered table-hover singcms-table">
-                <thead>
-                <tr>
-                  <th width="14">排序</th>
-                  <th>id</th>
-                  <th>分类</th>
-                  <th>标题</th>
-                  <th>封面图</th>                              
-                  <th>简介</th>
-                  <th>状态</th>
-                  <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php if(is_array($news)): $i = 0; $__LIST__ = $news;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$new): $mod = ($i % 2 );++$i;?><tr>                   
-                    <td><input size=4 type='text'  name='listorder[<?php echo ($new["news_id"]); ?>]' value="<?php echo ($new["listorder"]); ?>"/></td><!--6.7-->
-                    <td><?php echo ($new["news_id"]); ?></td>
-                    <td>
-                      <?php if($new['catid'] == 1): ?>公司新闻<?php else: ?>行业动态<?php endif; ?>
-                    </td>
-                    <td><?php echo ($new["title"]); ?></td>
-                    <td><img width="150px" src="<?php echo ($new["thumb"]); ?>"></td>
-                    <td><?php echo ($new["description"]); ?></td>
-                    <td><span  attr-status="<?php if($new['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($new["news_id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($new["status"])); ?></span></td>
-                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($new["news_id"]); ?>" ></span>
-                      <a href="javascript:void(0)" id="singcms-delete"  attr-id="<?php echo ($new["news_id"]); ?>"  attr-message="删除">
-                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                      </a>
-                    </td>
-                  </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-
-                </tbody>
-              </table>
-              <div>
-                <button  id="button-listorder" type="button" class="btn btn-primary dropdown-toggle" ><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>更新排序</button>
-              </div>
-            </form>
- <input type="hidden" id="select-push" value="3">    
-          </div>
+          </ol>        
+        <!-- /.row -->
+        <div >
+            <button url="/admin.php?c=position&a=add" id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加 </button>
         </div>
 
-      </div>
-      <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-6">
+                <h3></h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover singcms-table">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>推荐位名称</th>
+                            <th>时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php if(is_array($positions)): $i = 0; $__LIST__ = $positions;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$position): $mod = ($i % 2 );++$i;?><tr>
+                                <td><?php echo ($position["id"]); ?></td>
+                                <td><?php echo ($position["name"]); ?></td>
+                                <td><?php echo (date("Y-m-d H:i",$position["create_time"])); ?></td>
+                                <td><span  attr-status="<?php if($position['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($position["id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($position["status"])); ?></span></td>
+                                <td>
+                                    <span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($position["id"]); ?>" ></span>
+                                    <a href="javascript:void(0)" id="singcms-delete"  attr-id="<?php echo ($position["id"]); ?>"  attr-message="删除">
+                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                    </a>
+                                    
+                                </td>
+                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
 
 
 
     </div>
     <!-- /.container-fluid -->
 
-  </div>
-  <!-- /#page-wrapper -->
+</div>
+<!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
 <script>
-  var SCOPE = {
-    'edit_url' : '/admin.php?c=news&a=edit',
-    'add_url' : '/admin.php?c=news&a=add',
-    'set_status_url' : '/admin.php?c=news&a=setStatus',
-    'listorder_url' : '/admin.php?c=news&a=listorder',
-    'push_url' : '/admin.php?c=news&a=push',
-  }
+    var SCOPE = {
+        'edit_url' : '/admin.php?c=position&a=edit',
+        'set_status_url' : '/admin.php?c=position&a=setStatus',
+        'add_url' : '/admin.php?c=position&a=add',
+    }
+    $(".singcms-table #sing-add-position-content").on('click',function(){
+        var id = $(this).attr('attr-id');
+        window.location.href='/admin.php?c=positioncontent&a=index&position_id='+id;
+    });
 </script>
 <script src="/Public/js/admin/common.js"></script>
 

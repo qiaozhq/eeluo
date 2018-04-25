@@ -1,4 +1,5 @@
-<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?>
+<!DOCTYPE html>
 <html lang="zh-cn">
 
 <head>
@@ -85,110 +86,82 @@
   <!-- /.navbar-collapse -->
 </nav>
 
-<div id="page-wrapper">
+    <div id="page-wrapper">
 
     <div class="container-fluid">
 
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
-                    您好<?php echo getLoginUsername()?>!欢迎使用众赢新业后台管理系统
-                </h1>
+
                 <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=admin">管理员用户管理</a>
+                    </li>
                     <li class="active">
-                        <i class="fa fa-dashboard"></i> 平台整理指标
+                        <i class="fa fa-table"></i>管理员列表
                     </li>
                 </ol>
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-comments fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo ($admincount); ?></div>
-                                <div>今日登录用户数</div>
-                            </div>
-                        </div>
-                    </div>            
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-tasks fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo ($productCount); ?></div>
-                                <div>商品数</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa glyphicon glyphicon-asterisk  fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo ($franchiseeCount); ?></div>
-                                <div>加盟商</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-support fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo ($partenerCount); ?></div>
-                                <div>合作商</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- /.row -->
+        
+        <div>
+          <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加 </button>
         </div>
-
-        <!-- Page Heading -->
         <div class="row">
-            <div class="col-lg-12">
-                <ol class="breadcrumb">
-                    <li class="active">
-                        <i class="fa fa-dashboard"></i> 流量统计分析
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    </li>
-                </ol>
+            <div class="col-lg-6">
+                <h3></h3>
+                <div class="table-responsive">
+                    <form id="singcms-listorder">
+                    <table class="table table-bordered table-hover singcms-table">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>用户名</th>
+                            <th>真实姓名</th>
+                            <th>最后登录时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php if(is_array($admins)): $i = 0; $__LIST__ = $admins;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if($vo["username"] != admin): ?><tr>
+                                <td><?php echo ($vo["admin_id"]); ?></td>
+                                <td><?php echo ($vo["username"]); ?></td>
+                                <td><?php echo ($vo["realname"]); ?></td>
+                                <td><?php echo (date("Y-m-d H:i",$vo["lastlogintime"])); ?></td>
+                                <td><span  attr-status="<?php if($vo['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($vo["admin_id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($vo["status"])); ?></span></td>
+                                <td>    <a href="javascript:void(0)" attr-id="<?php echo ($vo["admin_id"]); ?>" id="singcms-delete"  attr-a="admin" attr-message="删除"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></td>
+                            </tr><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+
+                        </tbody>
+                    </table>
+                    </form>
+                    
+                </div>
             </div>
+
         </div>
-
-
+        <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
 
 </div>
 <!-- /#page-wrapper -->
-<!-- Morris Charts JavaScript -->
 
 </div>
-    <!-- /#wrapper -->
+<!-- /#wrapper -->
+<!-- Morris Charts JavaScript -->
+<script>
+    var SCOPE = {
+        'add_url' : '/admin.php?c=admin&a=add',
+        'edit_url' : '/admin.php?c=admin&a=edit',
+        'set_status_url' : '/admin.php?c=admin&a=setStatus',
+        'index_url' : '/',
+
+    }
+</script>
 
 <script src="/Public/js/admin/common.js"></script>
 

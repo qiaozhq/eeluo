@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="Shortcut Icon" href="/Public/images/favicon.ico">
     <link rel="Bookmark" href="/Public/images/favicon.ico">
-    <title>e络工作室-后台管理系统</title>
+    <title>众赢新业大连总店-后台管理系统</title>
     <!-- Bootstrap Core CSS -->
     <link href="/Public/css/bootstrap.min.css" rel="stylesheet">
 
@@ -49,7 +49,7 @@
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     
-    <a class="navbar-brand" >e络工作室-后台管理系统</a>
+    <a class="navbar-brand" >众赢新业-后台管理系统</a>
   </div>
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">
@@ -93,10 +93,10 @@
 
           <ol class="breadcrumb">
             <li>
-              <i class="fa fa-dashboard"></i>新闻管理
+              <i class="fa fa-dashboard"></i>商品管理
             </li>
             <li class="active">
-              <i class="fa fa-table"></i>新闻列表
+              <i class="fa fa-table"></i>商品列表
             </li>
           </ol>
         </div>
@@ -106,6 +106,31 @@
         <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加 </button>
       </div>
       <div class="row">
+        <form action="/admin.php" method="get">
+          <div class="col-md-3">
+            <div class="input-group">
+              <span class="input-group-addon">分类</span>
+              <select class="form-control" name="catid">
+                <option value='' >全部分类</option>
+                <?php if(is_array($productCats)): foreach($productCats as $key=>$sitenav): if(($sitenav["product_cat_id"]) == $catid): ?><option value="<?php echo ($sitenav["product_cat_id"]); ?>" selected><?php echo ($sitenav["product_cat_name"]); ?></option>
+                  <?php else: ?>
+                    <option value="<?php echo ($sitenav["product_cat_id"]); ?>" ><?php echo ($sitenav["product_cat_name"]); ?></option><?php endif; endforeach; endif; ?>
+              </select>
+            </div>
+          </div>
+          <input type="hidden" name="c" value="product"/>
+          <input type="hidden" name="a" value="index"/>
+          <div class="col-md-3">
+            <div class="input-group">
+              <input class="form-control" name="title" type="text" value="<?php echo ($title); ?>" placeholder="商品名" />
+                <span class="input-group-btn">
+                  <button id="sub_data" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+                </span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row">
         <div class="col-lg-6">
           <h3></h3>
           <div class="table-responsive">
@@ -113,41 +138,52 @@
               <table class="table table-bordered table-hover singcms-table">
                 <thead>
                 <tr>
-                  <th width="14">排序</th>
+                  <th id="singcms-checkbox-all" width="10"><input type="checkbox"/></th>
+                  <th>推荐</th>
+                  <th width="14">排序</th><!--6.7-->
                   <th>id</th>
                   <th>分类</th>
-                  <th>标题</th>
-                  <th>封面图</th>                              
-                  <th>简介</th>
+                  <th>商品名</th>
+                  <th>零售价格</th>
+                  <th>大图</th>
                   <th>状态</th>
                   <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php if(is_array($news)): $i = 0; $__LIST__ = $news;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$new): $mod = ($i % 2 );++$i;?><tr>                   
-                    <td><input size=4 type='text'  name='listorder[<?php echo ($new["news_id"]); ?>]' value="<?php echo ($new["listorder"]); ?>"/></td><!--6.7-->
-                    <td><?php echo ($new["news_id"]); ?></td>
-                    <td>
-                      <?php if($new['catid'] == 1): ?>公司新闻<?php else: ?>行业动态<?php endif; ?>
+                <?php if(is_array($products)): $i = 0; $__LIST__ = $products;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$product): $mod = ($i % 2 );++$i;?><tr>
+                    <td><input type="checkbox" name="pushcheck" value="<?php echo ($product["product_id"]); ?>"></td>
+                    <td style="color:red" id="<?php echo ($product["product_id"]); ?>" data-value="<?php echo ($product["pstatus"]); ?>">
+                    <?php if($product['pstatus'] == 1): ?>推荐<?php else: endif; ?>
                     </td>
-                    <td><?php echo ($new["title"]); ?></td>
-                    <td><img width="150px" src="<?php echo ($new["thumb"]); ?>"></td>
-                    <td><?php echo ($new["description"]); ?></td>
-                    <td><span  attr-status="<?php if($new['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($new["news_id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($new["status"])); ?></span></td>
-                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($new["news_id"]); ?>" ></span>
-                      <a href="javascript:void(0)" id="singcms-delete"  attr-id="<?php echo ($new["news_id"]); ?>"  attr-message="删除">
+                    <td><input size=4 type='text'  name='listorder[<?php echo ($product["product_id"]); ?>]' value="<?php echo ($product["listorder"]); ?>"/></td><!--6.7-->
+                    <td><?php echo ($product["product_id"]); ?></td>
+                    <?php if(is_array($productCats)): foreach($productCats as $key=>$pc): if(($pc["product_cat_id"]) == $product["catid"]): ?><td><?php echo ($pc["product_cat_name"]); ?></td><?php endif; endforeach; endif; ?>
+                    <td><?php echo ($product["product_name"]); ?></td>
+                    <td><?php echo ($product["product_price"]); ?></td>
+                    <td><img width="150px" src="<?php echo ($product["thumb"]); ?>"></td>
+                    <td><span  attr-status="<?php if($product['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($product["product_id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($product["status"])); ?></span></td>
+                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($product["product_id"]); ?>" ></span>
+                      <a href="javascript:void(0)" id="singcms-delete"  attr-id="<?php echo ($product["product_id"]); ?>"  attr-message="删除">
                         <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
                       </a>
+
                     </td>
                   </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 
                 </tbody>
               </table>
+              <nav>
+                  <ul class="pagination">
+                      <?php echo ($pageRes); ?>
+                  </ul>
+              </nav>
               <div>
                 <button  id="button-listorder" type="button" class="btn btn-primary dropdown-toggle" ><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>更新排序</button>
-              </div>
+                <button id="singcms-push" type="button" class="btn btn-primary">推送至热销商品</button>              
+              </div>            
             </form>
- <input type="hidden" id="select-push" value="3">    
+ <input type="hidden" id="select-push" value="1">            
           </div>
         </div>
 
@@ -166,11 +202,12 @@
 <!-- /#wrapper -->
 <script>
   var SCOPE = {
-    'edit_url' : '/admin.php?c=news&a=edit',
-    'add_url' : '/admin.php?c=news&a=add',
-    'set_status_url' : '/admin.php?c=news&a=setStatus',
-    'listorder_url' : '/admin.php?c=news&a=listorder',
-    'push_url' : '/admin.php?c=news&a=push',
+    'edit_url' : '/admin.php?c=product&a=edit',
+    'add_url' : '/admin.php?c=product&a=add',
+    'set_status_url' : '/admin.php?c=product&a=setStatus',
+    'sing_news_view_url' : '/index.php?c=view',
+    'listorder_url' : '/admin.php?c=product&a=listorder',
+    'push_url' : '/admin.php?c=product&a=push',
   }
 </script>
 <script src="/Public/js/admin/common.js"></script>

@@ -5,9 +5,8 @@
 <link rel="stylesheet" href="/Public/css/bootstrap-theme.min.css"/>
 <link rel="stylesheet" href="/Public/css/site.css"/>
 <div class="container">
-	<volist name="result['componyNews']" id="vo">
+	<volist name="result['main']" id="vo">
 	   <div class="jumbotron">
-	   		<h1>main</h1>
 	        <h1>{$vo.title}</h1>
 	        <p>{$vo.description}</p>
 	        <img class="img-responsive" src="{$vo.thumb}" />

@@ -5,6 +5,9 @@
 
 #默认情况下，用root(空)登录mysql数据库，备份至/root/dbxxxxx.tgz
 
+静态文件版本控制
+选择菜单出现下划线
+
 DBName=
 
 DBUser=
