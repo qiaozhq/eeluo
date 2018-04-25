@@ -161,10 +161,6 @@ $('.singcms-table #singcms-on-off').on('click', function(){
  * 推送JS相关
  */
 $("#singcms-push").click(function(){
-    var id = $("#select-push").val();
-    if(id!=1 && id!=2 && id!=3) {
-        return dialog.error("请选择推荐位");
-    }
     push = {};
     postData = {};
     var err ="ok";

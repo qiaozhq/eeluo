@@ -109,28 +109,44 @@
 
           <form class="form-horizontal" id="singcms-form">
             <div class="form-group">
-              <label for="inputname" class="col-sm-2 control-label">分类:</label>
+              <label for="inputcategory" class="col-sm-2 control-label">分类:</label>
               <div class="col-sm-5">
                 <select class="form-control" name="category">
                   <option value='' >==请选择分类==</option>
-                    <option value="1">公司新闻</option>
-                    <option value="2">行业动态</option>
+                  <?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><option value="<?php echo ($menu["menu_id"]); ?>"><?php echo ($menu["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                 </select>
               </div>
             </div>            
             <div class="form-group">
-              <label for="inputname" class="col-sm-2 control-label">标题:</label>
+              <label for="inputtitle" class="col-sm-2 control-label">标题:</label>
               <div class="col-sm-5">
-                <input type="text" name="title" class="form-control" id="inputname" placeholder="请填写新闻标题">
+                <input type="text" name="title" class="form-control" id="inputtitle" placeholder="请填写标题">
               </div>
-            </div>              
+            </div>
             <div class="form-group">
-              <label for="inputname" class="col-sm-2 control-label">简介:</label>
+              <label for="inputsub_title" class="col-sm-2 control-label">副标题:</label>
               <div class="col-sm-5">
-                <input type="text" name="description" class="form-control" id="inputname" placeholder="请填写新闻简介">
+                <input type="text" name="sub_title" class="form-control" id="inputsub_title" placeholder="请填写副标题">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputkeywords" class="col-sm-2 control-label">关键词:</label>
+              <div class="col-sm-5">
+                <input type="text" name="keywords" class="form-control" id="inputkeywords" placeholder="请填写关键词">
+              </div>
+            </div>      
+            <div class="form-group">
+              <label for="inputdescription" class="col-sm-2 control-label">简介:</label>
+              <div class="col-sm-5">
+                <input type="text" name="description" class="form-control" id="inputdescription" placeholder="请填写新闻简介">
               </div>
             </div> 
-                                                    
+            <div class="form-group">
+              <label for="inputcount" class="col-sm-2 control-label">浏览次数:</label>
+              <div class="col-sm-5">
+                <input type="text" name="count" class="form-control" id="inputcount" value='0'>
+              </div>
+            </div>                                                    
             <div class="form-group">
               <label for="inputname" class="col-sm-2 control-label">缩图:</label>
               <div class="col-sm-5">
@@ -139,12 +155,6 @@
                 <input id="file_upload_image" name="thumb" type="hidden" multiple="true">
               </div>
             </div>
-<!--             <div class="form-group">
-              <label for="inputPassword3" class="col-sm-2 control-label">内容:</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" name="content" id="inputPassword3" placeholder="请填写新闻内容" >
-              </div>
-            </div> -->
             <div class="form-group">
               <label for="inputPassword3" class="col-sm-2 control-label">内容:</label>
               <div class="col-sm-5">

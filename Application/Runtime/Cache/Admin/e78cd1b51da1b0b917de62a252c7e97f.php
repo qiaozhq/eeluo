@@ -113,11 +113,9 @@
               <div class="col-sm-5">
                 <select class="form-control" name="category">
                   <option value='' >==请选择分类==</option>
-                    <option value="1" <?php if($main["category"] == 1): ?>selected<?php endif; ?>>公司新闻</option>
-                    <option value="2"  <?php if($main["category"] == 2): ?>selected<?php endif; ?>>行业动态</option>
+                  <?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><option value="<?php echo ($menu["menu_id"]); ?>" <?php if(main.category == $menu.menu_id): ?>selected<?php endif; ?>><?php echo ($menu["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                 </select>
               </div>
-
             </div>            
             <div class="form-group">
               <label for="inputname" class="col-sm-2 control-label">标题:</label>
@@ -126,11 +124,29 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="inputsub_title" class="col-sm-2 control-label">副标题:</label>
+              <div class="col-sm-5">
+                <input value="<?php echo ($main["sub_title"]); ?>" type="text" name="sub_title" class="form-control" id="inputsub_title" placeholder="请填写副标题">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputkeywords" class="col-sm-2 control-label">关键词:</label>
+              <div class="col-sm-5">
+                <input value="<?php echo ($main["keywords"]); ?>" type="text" name="keywords" class="form-control" id="inputkeywords" placeholder="请填写关键词">
+              </div>
+            </div>  
+            <div class="form-group">
               <label for="datevalue" class="col-sm-2 control-label">简介:</label>
               <div class="col-sm-5">
                 <input value="<?php echo ($main["description"]); ?>" type="text" name="description" class="form-control" id="datevalue" placeholder="请填写新闻简介">
               </div>
-            </div>                 
+            </div>
+            <div class="form-group">
+              <label for="inputcount" class="col-sm-2 control-label">浏览次数:</label>
+              <div class="col-sm-5">
+                <input value="<?php echo ($main["count"]); ?>" type="text" name="count" class="form-control" id="inputcount" value='0'>
+              </div>
+            </div>                
             <div class="form-group">
               <label for="inputname" class="col-sm-2 control-label">缩图:</label>
               <div class="col-sm-5">

@@ -33,11 +33,11 @@
               <div class="col-sm-5">
                 <select class="form-control" name="category">
                   <option value='' >==请选择分类==</option>
-                    <option value="1" <if condition="$main.category eq 1">selected</if>>公司新闻</option>
-                    <option value="2"  <if condition="$main.category eq 2">selected</if>>行业动态</option>
+                  <volist name="menus" id="menu">
+                    <option value="{$menu.menu_id}" <if condition="main.category eq $menu.menu_id">selected</if>>{$menu.name}</option>
+                  </volist>
                 </select>
               </div>
-
             </div>            
             <div class="form-group">
               <label for="inputname" class="col-sm-2 control-label">标题:</label>
@@ -46,11 +46,29 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="inputsub_title" class="col-sm-2 control-label">副标题:</label>
+              <div class="col-sm-5">
+                <input value="{$main.sub_title}" type="text" name="sub_title" class="form-control" id="inputsub_title" placeholder="请填写副标题">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputkeywords" class="col-sm-2 control-label">关键词:</label>
+              <div class="col-sm-5">
+                <input value="{$main.keywords}" type="text" name="keywords" class="form-control" id="inputkeywords" placeholder="请填写关键词">
+              </div>
+            </div>  
+            <div class="form-group">
               <label for="datevalue" class="col-sm-2 control-label">简介:</label>
               <div class="col-sm-5">
                 <input value="{$main.description}" type="text" name="description" class="form-control" id="datevalue" placeholder="请填写新闻简介">
               </div>
-            </div>                 
+            </div>
+            <div class="form-group">
+              <label for="inputcount" class="col-sm-2 control-label">浏览次数:</label>
+              <div class="col-sm-5">
+                <input value="{$main.count}" type="text" name="count" class="form-control" id="inputcount" value='0'>
+              </div>
+            </div>                
             <div class="form-group">
               <label for="inputname" class="col-sm-2 control-label">缩图:</label>
               <div class="col-sm-5">

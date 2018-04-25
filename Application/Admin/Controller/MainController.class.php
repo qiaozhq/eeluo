@@ -23,15 +23,16 @@ class MainController extends CommonController {
             if(!isset($_POST['title']) || !$_POST['title']) {
                 return show(0,'标题不能为空');
             }
-            if(!isset($_POST['description']) || !$_POST['description']) {
-                return show(0,'简介不能为空');
-            }
-            if(!isset($_POST['thumb']) || !$_POST['thumb']) {
-                return show(0,'新闻必须有缩略图');
-            }
             if(!isset($_POST['content']) || !$_POST['content']) {
                 return show(0,'内容不能为空');
-            }            
+            }
+            if(!isset($_POST['count']) || !$_POST['count']) {
+                return show(0,'浏览次数不能为空');
+            }
+            if(!eregi('^[0-9]+$',$_POST['count'])) {
+                return show(0,'浏览次数不正确');
+            }
+            $_POST['count'] = (int)$_POST['count'];
             if($_POST['id']) {
                 return $this->save($_POST);
             }
@@ -41,6 +42,8 @@ class MainController extends CommonController {
             }
             return show(0,'新增失败',$id);
         }else {
+            $menus = D("Menu")->getBarMenus();
+            $this->assign('menus',$menus);
             $this->display();
         }
     }
@@ -48,6 +51,8 @@ class MainController extends CommonController {
     //取得要修改的数据
     public function edit() {
         $id = $_GET['id'];
+        $menus = D("Menu")->getBarMenus();
+        $this->assign('menus',$menus);
         $main = D("Main")->find($id);
         $this->assign('main', $main);
         $this->display();

@@ -10,11 +10,14 @@ class AnalysisController extends CommonController {
         //今日登陆用户数
         $adminCount = D("User")->getTodayLoginUsers();
         //商品数
-        $productCount = D("Product")->getAdminProductsCount();
+        $productCount = 100;
+        // $productCount = D("Product")->getAdminProductsCount();
         //加盟商数
-        $franchiseeCount = D("Franchisee")->getFranchiseesCount();
+        $franchiseeCount = 200;
+        // $franchiseeCount = D("Franchisee")->getFranchiseesCount();
         //合作商数
-        $partenerCount = D("Partener")->getPartenersCount();
+        $partenerCount = 300;
+        // $partenerCount = D("Partener")->getPartenersCount();
         $this->assign('admincount', $adminCount);
         $this->assign('productCount', $productCount);
         $this->assign('franchiseeCount', $franchiseeCount);

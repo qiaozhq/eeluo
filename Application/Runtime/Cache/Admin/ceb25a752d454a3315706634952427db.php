@@ -83,6 +83,7 @@
   </div>
   <!-- /.navbar-collapse -->
 </nav>
+
   <div id="page-wrapper">
 
     <div class="container-fluid" >
@@ -103,7 +104,7 @@
       </div>
       <!-- /.row -->
       <div >
-        <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加 </button>
+        <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加</button>
       </div>
       <div class="row">
         <div class="col-lg-6">
@@ -117,23 +118,23 @@
                   <th>id</th>
                   <th>分类</th>
                   <th>标题</th>
-                  <th>封面图</th>                              
-                  <th>简介</th>
+                  <th>缩略图</th>
+                  <th>浏览次数</th>
                   <th>状态</th>
                   <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php if(is_array($main)): $i = 0; $__LIST__ = $main;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$new): $mod = ($i % 2 );++$i;?><tr>                   
-                    <td><input size=4 type='text'  name='listorder[<?php echo ($new["id"]); ?>]' value="<?php echo ($new["listorder"]); ?>"/></td><!--6.7-->
-                    <td><?php echo ($new["id"]); ?></td>
-                    <td><?php echo ($new["name"]); ?></td>
-                    <td><?php echo ($new["title"]); ?></td>
-                    <td><img width="150px" src="<?php echo ($new["thumb"]); ?>"></td>
-                    <td><?php echo ($new["description"]); ?></td>
-                    <td><span  attr-status="<?php if($new['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($new["id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($new["status"])); ?></span></td>
-                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($new["id"]); ?>" ></span>
-                      <a href="javascript:void(0)" id="singcms-delete"  attr-id="<?php echo ($new["id"]); ?>"  attr-message="删除">
+                <?php if(is_array($main)): $i = 0; $__LIST__ = $main;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr>                   
+                    <td><input size=4 type='text'  name='listorder[<?php echo ($data["id"]); ?>]' value="<?php echo ($data["listorder"]); ?>"/></td>
+                    <td><?php echo ($data["id"]); ?></td>
+                    <td><?php echo ($data["name"]); ?></td>
+                    <td><?php echo ($data["title"]); ?></td>
+                    <td><img width="150px" src="<?php echo ($data["thumb"]); ?>"></td>
+                    <td><?php echo ($data["count"]); ?></td>
+                    <td><span attr-status="<?php if($data['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($data["id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($data["status"])); ?></span></td>
+                    <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($data["id"]); ?>" ></span>
+                      <a href="javascript:void(0)" id="singcms-delete"  attr-id="<?php echo ($data["id"]); ?>"  attr-message="删除">
                         <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
                       </a>
                     </td>
@@ -145,14 +146,11 @@
                 <button  id="button-listorder" type="button" class="btn btn-primary dropdown-toggle" ><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>更新排序</button>
               </div>
             </form>
- <input type="hidden" id="select-push" value="3">    
           </div>
         </div>
 
       </div>
       <!-- /.row -->
-
-
 
     </div>
     <!-- /.container-fluid -->
@@ -168,7 +166,6 @@
     'add_url' : '/admin.php?c=main&a=add',
     'set_status_url' : '/admin.php?c=main&a=setStatus',
     'listorder_url' : '/admin.php?c=main&a=listorder',
-    'push_url' : '/admin.php?c=main&a=push',
   }
 </script>
 <script src="/Public/js/admin/common.js"></script>

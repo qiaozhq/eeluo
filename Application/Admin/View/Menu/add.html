@@ -50,7 +50,8 @@
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">分类类型:</label>
                         <div class="col-sm-5">
-                            <input type="radio" name="type" id="optionsRadiosInline1" value="1" checked> 后台分类
+                            <input type="radio" name="type" id="optionsRadiosInline1" value="1" <if condition="$menu.type eq 1">checked</if>> 后台分类
+                            <input type="radio" name="type" id="optionsRadiosInline2" value="0" <if condition="$menu.type eq 0">checked</if>> 前端栏目
                         </div>
 
                     </div>
