@@ -59,8 +59,8 @@ class MainModel extends  Model {
 
     //使用模块：admin
     public function getMain() {
-        // $data['status'] = array('eq','0');
-        $list = $this->_db->table(array('eeluo_main'=>'t1','eeluo_menu'=>'t2'))->field('t1.*,t2.name')->where('t1.category=t2.menu_id and t1.status != -1 and t2.status != -1')->order('t1.listorder desc,t1.id desc')->select();
+        $data['status'] = array('neq',-1);
+        $list = $this->_db->where($data)->order('listorder desc,id desc')->select();
         return $list;
     }
 

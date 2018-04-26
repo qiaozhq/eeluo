@@ -171,3 +171,20 @@ $("#singcms-push").click(function(){
     },"json");
 
 });
+
+//根据第一分类取得第二分类
+$("#category").change(function(){  
+    getData = {};
+    getData['category'] = $("#category").val();
+    var url = SCOPE.subcat_url;
+    $.get(url, getData, function(result){
+        if(result.status == 1) {
+            // TODO
+            console.log(result);
+        }
+        if(result.status == 0) {
+            // TODO
+            return dialog.error(result.message);
+        }
+    },"json");
+});

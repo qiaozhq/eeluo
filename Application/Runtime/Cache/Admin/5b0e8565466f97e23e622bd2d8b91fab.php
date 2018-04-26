@@ -111,12 +111,20 @@
             <div class="form-group">
               <label for="inputcategory" class="col-sm-2 control-label">分类:</label>
               <div class="col-sm-5">
-                <select class="form-control" name="category">
+                <select class="form-control" name="category" id="category">
                   <option value='' >==请选择分类==</option>
                   <?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><option value="<?php echo ($menu["menu_id"]); ?>"><?php echo ($menu["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                 </select>
               </div>
-            </div>            
+            </div>
+            <div class="form-group">
+              <label for="inputcategory" class="col-sm-2 control-label">二级分类:</label>
+              <div class="col-sm-5">
+                <select class="form-control" name="subcategory" >
+                  <option value='' >==请选择分类==</option>
+                </select>
+              </div>
+            </div>           
             <div class="form-group">
               <label for="inputtitle" class="col-sm-2 control-label">标题:</label>
               <div class="col-sm-5">
@@ -194,6 +202,7 @@
     'jump_url' : '/admin.php?c=main',
     'ajax_upload_image_url' : '/admin.php?c=image&a=ajaxuploadimage',
     'ajax_upload_swf' : '/Public/js/party/uploadify.swf',
+    'subcat_url' : '/admin.php?c=main&a=getsubcat',
   };
 
 </script>
@@ -214,7 +223,7 @@
     $("#upload_org_code_img").show();
   }
 </script>
-<script src="/Public/js/admin/common.js"></script>
+<script src="/Public/js/admin/common.js?version=222"></script>
 
 
 

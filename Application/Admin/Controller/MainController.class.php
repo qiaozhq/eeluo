@@ -11,7 +11,16 @@ class MainController extends CommonController {
     public function index() {
         $main = D("Main")->getMain();
         $this->assign('main',$main);
+        $allFMenus = D("Menu")->getBarMenus();
+        $this->assign('allFMenus',$allFMenus);
         $this->display();
+    }
+
+    //根据第一分类取得第二分类
+    public function getsubcat() {
+        $category = $_GET['category'];
+        $subMenus = D("Menu")->findsubcat($category);
+        return show(1,'',$subMenus);
     }
 
     //添加/修改数据

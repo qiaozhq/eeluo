@@ -117,6 +117,7 @@
                   <th width="14">排序</th>
                   <th>id</th>
                   <th>分类</th>
+                  <th>子分类</th>
                   <th>标题</th>
                   <th>缩略图</th>
                   <th>浏览次数</th>
@@ -128,7 +129,8 @@
                 <?php if(is_array($main)): $i = 0; $__LIST__ = $main;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr>                   
                     <td><input size=4 type='text'  name='listorder[<?php echo ($data["id"]); ?>]' value="<?php echo ($data["listorder"]); ?>"/></td>
                     <td><?php echo ($data["id"]); ?></td>
-                    <td><?php echo ($data["name"]); ?></td>
+                    <td><?php echo getParentMenuName($data['category'],$allFMenus);?></td>
+                    <td><?php echo getParentMenuName($data['sub_category'],$allFMenus);?></td>
                     <td><?php echo ($data["title"]); ?></td>
                     <td><img width="150px" src="<?php echo ($data["thumb"]); ?>"></td>
                     <td><?php echo ($data["count"]); ?></td>
@@ -168,7 +170,7 @@
     'listorder_url' : '/admin.php?c=main&a=listorder',
   }
 </script>
-<script src="/Public/js/admin/common.js"></script>
+<script src="/Public/js/admin/common.js?version=132"></script>
 
 
 

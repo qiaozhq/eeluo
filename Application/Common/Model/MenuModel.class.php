@@ -32,10 +32,23 @@ class MenuModel extends  Model {
 
     //使用模块：admin
     public function find($id){
+        $data['status'] = array('neq',-1);
         if(!$id || !is_numeric($id)) {
             return array();
         }
         return $this->_db->where('menu_id='.$id)->find();
+    }
+
+    //使用模块：admin
+    public function findsubcat($id){
+        $data = array(
+            'status' => array('neq',-1),
+            'parentid' => $id,
+        );
+        if(!$id || !is_numeric($id)) {
+            return array();
+        }
+        return $this->_db->where($data)->find();
     }
 
     //使用模块：admin
