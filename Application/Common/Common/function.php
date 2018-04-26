@@ -21,6 +21,15 @@ function getMd5Password($password) {
 function getMenuType($type) {
     return $type == 1 ? '后台分类' : '前端导航';
 }
+function getParentMenuName($parentid,$menus=array()) {
+    $ret = '无';
+    foreach ($menus as $value) {
+        if($value['menu_id'] == $parentid){
+            $ret = $value['name'];
+        }
+    }
+    return $ret;
+}
 function level($type) {
     return $type == "D" ? '加盟商' : '普通用户';
 }

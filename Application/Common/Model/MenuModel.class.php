@@ -83,6 +83,7 @@ class MenuModel extends  Model {
         $data = array(
             'status' => 1,
             'type' => 0,
+            'parentid' => 0,
         );
         $res = $this->_db->where($data)
             ->order('listorder desc,menu_id desc')

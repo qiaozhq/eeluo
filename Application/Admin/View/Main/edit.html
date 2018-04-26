@@ -34,7 +34,7 @@
                 <select class="form-control" name="category">
                   <option value='' >==请选择分类==</option>
                   <volist name="menus" id="menu">
-                    <option value="{$menu.menu_id}" <if condition="main.category eq $menu.menu_id">selected</if>>{$menu.name}</option>
+                    <option value="{$menu.menu_id}" <if condition="$menu[menu_id] eq $main[category]">selected</if>>{$menu.name}</option>
                   </volist>
                 </select>
               </div>
@@ -73,7 +73,7 @@
               <label for="inputname" class="col-sm-2 control-label">缩图:</label>
               <div class="col-sm-5">
                 <input id="file_upload"  type="file" multiple="true" >
-                <img id="upload_org_code_img" width="150" height="150" src="{$main.thumb}">
+                <img id="upload_org_code_img" width="150" height="150" <if condition="$main.thumb neq ''">src="{$main.thumb}"</if>>
                 <input id="file_upload_image" name="thumb" type="hidden" multiple="true" value="{$main.thumb}">
               </div>
             </div>

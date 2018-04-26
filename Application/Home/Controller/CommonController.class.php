@@ -7,7 +7,9 @@ class CommonController extends Controller {
         header("Content-type: text/html; charset=utf-8");
         parent::__construct();
         $basic = D("Basic")->select();
-        $this->assign('basic', $basic);  
+        $this->assign('basic', $basic); 
+        $menus = D("Menu")->getBarMenus();
+        $this->assign('menus',$menus);
     }
 
     public function _empty(){//方法不存在的时候

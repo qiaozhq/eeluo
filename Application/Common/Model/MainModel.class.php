@@ -9,7 +9,7 @@ class MainModel extends  Model {
 
     //使用模块：home
     public function getMainByCategory($category) {
-        $data['status'] = array('eq',0);
+        $data['status'] = array('neq',-1);
         $data['category'] = array('eq',$category);
         $list = $this->_db->where($data)->order('listorder desc,id desc')->select();
         return $list;

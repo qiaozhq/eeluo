@@ -116,7 +116,7 @@
                             <input type="text" name="name" class="form-control" id="inputname" placeholder="请填写分类名">
                         </div>
                     </div>
-                    <!--<div class="form-group">
+                    <div class="form-group">
                         <label for="inputname" class="col-sm-2 control-label">父类分类ID:</label>
                         <div class="col-sm-5">
                             <select class="form-control" name="parentid">
@@ -124,7 +124,7 @@
                                 <?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$parent): $mod = ($i % 2 );++$i;?><option value="<?php echo ($parent["menu_id"]); ?>"><?php echo ($parent["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                             </select>
                         </div>
-                    </div>-->
+                    </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">分类类型:</label>
                         <div class="col-sm-5">

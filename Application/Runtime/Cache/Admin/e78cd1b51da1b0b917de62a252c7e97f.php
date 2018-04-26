@@ -113,7 +113,7 @@
               <div class="col-sm-5">
                 <select class="form-control" name="category">
                   <option value='' >==请选择分类==</option>
-                  <?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><option value="<?php echo ($menu["menu_id"]); ?>" <?php if(main.category == $menu.menu_id): ?>selected<?php endif; ?>><?php echo ($menu["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                  <?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><option value="<?php echo ($menu["menu_id"]); ?>" <?php if($menu[menu_id] == $main[category]): ?>selected<?php endif; ?>><?php echo ($menu["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                 </select>
               </div>
             </div>            
@@ -151,7 +151,7 @@
               <label for="inputname" class="col-sm-2 control-label">缩图:</label>
               <div class="col-sm-5">
                 <input id="file_upload"  type="file" multiple="true" >
-                <img id="upload_org_code_img" width="150" height="150" src="<?php echo ($main["thumb"]); ?>">
+                <img id="upload_org_code_img" width="150" height="150" <?php if($main["thumb"] != ''): ?>src="<?php echo ($main["thumb"]); ?>"<?php endif; ?>>
                 <input id="file_upload_image" name="thumb" type="hidden" multiple="true" value="<?php echo ($main["thumb"]); ?>">
               </div>
             </div>

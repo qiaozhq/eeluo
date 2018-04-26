@@ -19,10 +19,12 @@ class MenuController extends CommonController {
         $pageSize = $_REQUEST['pageSize'] ? $_REQUEST['pageSize'] : 10;
         $menus = D("Menu")->getMenus($data,$page,$pageSize);
         $menusCount = D("Menu")->getMenusCount($data);
+        $allFMenus = D("Menu")->getBarMenus();
         $res = new \Think\Page($menusCount, $pageSize);
         $pageRes = $res->show();
         $this->assign('pageRes', $pageRes);
         $this->assign('menus',$menus);
+        $this->assign('allFMenus',$allFMenus);
         $this->display();
     }
 
@@ -32,14 +34,16 @@ class MenuController extends CommonController {
             if(!isset($_POST['name']) || !$_POST['name']) {
                 return show(0,'分类名不能为空');
             }
-            if(!isset($_POST['m']) || !$_POST['m']) {
-                return show(0,'模块名不能为空');
-            }
-            if(!isset($_POST['c']) || !$_POST['c']) {
-                return show(0,'控制器不能为空');
-            }
-            if(!isset($_POST['f']) || !$_POST['f']) {
-                return show(0,'方法名不能为空');
+            if(!isset($_POST['parentid']) || !$_POST['parentid']) {
+                if(!isset($_POST['m']) || !$_POST['m']) {
+                    return show(0,'模块名不能为空');
+                }
+                if(!isset($_POST['c']) || !$_POST['c']) {
+                    return show(0,'控制器不能为空');
+                }
+                if(!isset($_POST['f']) || !$_POST['f']) {
+                    return show(0,'方法名不能为空');
+                }
             }
             if($_POST['menu_id']) {
                 return $this->save($_POST);
@@ -50,6 +54,8 @@ class MenuController extends CommonController {
             }
             return show(0,'新增失败',$menuId);
         }else {
+            $menus = D("Menu")->getBarMenus();
+            $this->assign('menus',$menus);
             $this->display();
         }
     }
@@ -57,6 +63,8 @@ class MenuController extends CommonController {
     //修改分类数据取得
     public function edit() {
         $menuId = $_GET['id'];
+        $menus = D("Menu")->getBarMenus();
+        $this->assign('menus',$menus);
         $menu = D("Menu")->find($menuId);
         $this->assign('menu', $menu);
         $this->display();

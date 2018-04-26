@@ -31,34 +31,6 @@ var _hmt = _hmt || [];
 </script>
 </head>
 <body>
-<div class="container-fluid header-top">
-    <div class="container">
-        <img id="loginImg" style="background:#87DB47;height:21px;width:21px;overflow:hidden;display:none" class="btn img-responsive" data-toggle="modal" data-target="#myModal4" src="/Public/images/login.jpg">
-        <div id="userinImg" style="display:none" class="dropdown">
-        <img class="btn dropdown-toggle" src="/Public/images/userin.jpg" data-toggle="dropdown" style="background:#87DB47;height:21px;width:21px;overflow:hidden">
-          <ul class="dropdown-menu">
-            <li>
-              <a href="/user/index.html"><i class="fa fa-fw fa-user"></i> 个人信息</a>
-            </li>
-            <li>
-              <a href="/user/updpas.html"><i class="fa fa-fw fa-user"></i> 修改密码</a>
-            </li>            
-            <li>
-              <a href="/product/cartDetail.html"><i class="fa fa-fw fa-user"></i> 购物车</a>
-            </li>
-            <li>
-              <a href="/product/orderDetail.html"><i class="fa fa-fw fa-user"></i> 我的订单</a>
-            </li>               
-            <li class="divider"></li>
-            <li>
-              <a href="/user/loginout.html"><i class="fa fa-fw fa-power-off"></i> 退出</a>
-            </li>
-          </ul>
-        </div>       
-        <img class="btn" data-toggle="modal" data-target="#myModal2" style="background:#87DB47;height:21px;width:21px" src="/Public/images/wx.png">
-        <img class="btn" data-toggle="modal" data-target="#myModal3" style="background:#87DB47;height:21px;width:21px" src="/Public/images/wx.jpg">
-    </div>
-</div>
 <nav class="navbar navbar-default top-header" role="navigation">
     <div class="container">
     <div class="navbar-header">
@@ -74,14 +46,8 @@ var _hmt = _hmt || [];
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul class="nav navbar-nav">
         	<li class="logo"><img src="/Public/images/logo.png"></li>
-			<li><a href="/index.html">首页</a></li>
-			<li><a href="/news/index.html">e络软件</a></li>
-			<li><a href="/news/index.html">技术博客</a></li>	
-			<li><a href="/product/index.html">e络杂谈</a></li>
-			<li><a href="/franchisee/index.html">环境大全</a></li>
-			<li><a href="/partener/index.html">框架大全</a></li>
-			<li><a href="/contact/index.html">模块大全</a></li> 
-      <li><a href="/contact/index.html">e络教学</a></li> 
+          <li><a href="/index.html">首页</a></li>
+          <?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li><a href="/main/index.html?id=<?php echo ($menu["menu_id"]); ?>"><?php echo ($menu["name"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
         </ul>
     </div>
     </div>
@@ -92,11 +58,23 @@ var _hmt = _hmt || [];
 <link rel="stylesheet" href="/Public/css/bootstrap-theme.min.css"/>
 <link rel="stylesheet" href="/Public/css/site.css"/>
 <div class="container">
-	<?php if(is_array($result['main'])): $i = 0; $__LIST__ = $result['main'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="jumbotron">
-	        <h1><?php echo ($vo["title"]); ?></h1>
-	        <p><?php echo ($vo["description"]); ?></p>
-	        <img class="img-responsive" src="<?php echo ($vo["thumb"]); ?>" />
-	   </div><?php endforeach; endif; else: echo "" ;endif; ?>
+	<div class="col-xs-3 col-sm-3" >
+		<ul class="nav nav-pills nav-stacked">
+		  <li class="active"><a href="#">Home</a></li>
+		  <li><a href="#">SVN</a></li>
+		  <li><a href="#">iOS</a></li>
+		  <li><a href="#">VB.Net</a></li>
+		  <li><a href="#">Java</a></li>
+		  <li><a href="#">PHP</a></li>
+		</ul>
+	</div>
+	<div class="col-xs-9 col-sm-9" >
+		<?php if(is_array($result['main'])): $i = 0; $__LIST__ = $result['main'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="jumbotron">
+		        <h1><?php echo ($vo["title"]); ?></h1>
+		        <p><?php echo ($vo["content"]); ?></p>
+		        <img class="img-responsive" src="<?php echo ($vo["thumb"]); ?>" />
+		   </div><?php endforeach; endif; else: echo "" ;endif; ?>
+   </div>
 </div>
 <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
 <script src="/Public/js/home/news.js"></script>
@@ -207,67 +185,12 @@ var _hmt = _hmt || [];
 <div class="container-fluid contact-block">
 	<div class="contact-bottom">	
 		<ul class="list-inline text-center">
-		 <li>Copyright &copy; 2018 e络工作室 All rights reserved&nbsp;|&nbsp;辽ICP备17008595号-1</li>		 		 	 
+		 <li>Copyright &copy; 2018 e络工作室 All rights reserved&nbsp;|&nbsp;辽ICP备17002771号</li>		 		 	 
 		</ul>	
 	</div>	
 </div>
 
-<!-- 模态框（Modal） 分享到微信朋友圈-->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel2">分享到微信朋友圈</h4>
-            </div>
-            <div class="modal-body">
-				<img src="/Public/images/qrcode.png">
-				<p>打开微信，点击底部的“发现”，使用 “扫一扫” 即可将网页分享到我的朋友圈。</p>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-<!-- 模态框（Modal） 关注众赢新业公众号-->
-<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel3">关注众赢新业公众号</h4>
-            </div>
-            <div class="modal-body">
-				<img src="/Public/images/gzqrcode.jpg">
-				<p>打开微信，点击底部的“发现”，使用 “扫一扫” 即可关注。</p>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-<!-- 模态框（Modal） 用户登录-->
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel4">用户登录</h4>
-            </div>
-            <div class="modal-body">
-			    <form class="form-signin" method="post">
-			      <label class="sr-only">用户名</label>
-			      <input type="text"  class="form-control" name="username" placeholder="请填写用户名" required autofocus>
-			      <br />
-			      <label  class="sr-only">密码</label>
-			      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
-			      <br />
-		          <label class="sr-only">验证码</label>
-		          <input type="text" class="form-control validate" name="validate" placeholder="验证码"  required autofocus>
-		          <img class="validateimg" title="点击刷新" src='/validate/doimg.html'
-		          onclick="this.src='/validate/doimg/'+Math.random();"></img>
-			      <button id="loginbutton" class="btn btn-lg btn-primary btn-block" type="button" onclick="login.check()">登录</button>
-			    </form>			
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
+
 <script src="/Public/js/home/footer.js"></script>
 <script src="/Public/js/home/common.js"></script>
 <script src="/Public/js/home/login.js"></script>

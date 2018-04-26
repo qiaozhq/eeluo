@@ -26,7 +26,7 @@ class MainController extends CommonController {
             if(!isset($_POST['content']) || !$_POST['content']) {
                 return show(0,'内容不能为空');
             }
-            if(!isset($_POST['count']) || !$_POST['count']) {
+            if(!isset($_POST['count'])) {
                 return show(0,'浏览次数不能为空');
             }
             if(!eregi('^[0-9]+$',$_POST['count'])) {

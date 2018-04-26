@@ -130,7 +130,7 @@
                                 <td><input size="4" type="text" name="listorder[<?php echo ($menu["menu_id"]); ?>]" value="<?php echo ($menu["listorder"]); ?>"/></td>
                                 <td><?php echo ($menu["menu_id"]); ?></td>
                                 <td><?php echo ($menu["name"]); ?></td>
-                                <td><?php echo ($menu["parentid"]); ?></td>
+                                <td><?php echo getParentMenuName($menu['parentid'],$allFMenus);?></td>
                                 <td><?php echo (getMenuType($menu["type"])); ?></td>
                                 <td><?php echo (status($menu["status"])); ?></td>
                                 <td><span class="glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="<?php echo ($menu["menu_id"]); ?>"></span>    <a href="javascript:void(0)" attr-id="<?php echo ($menu["menu_id"]); ?>" id="singcms-delete"  attr-a="menu" attr-message="删除"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></td>
