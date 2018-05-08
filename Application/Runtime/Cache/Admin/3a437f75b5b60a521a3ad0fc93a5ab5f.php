@@ -160,7 +160,7 @@
         window.location.href='/admin.php?c=positioncontent&a=index&position_id='+id;
     });
 </script>
-<script src="/Public/js/admin/common.js"></script>
+<script src="/Public/js/admin/common.js?version=222"></script>
 
 
 

@@ -198,7 +198,7 @@
         'jump_url' : '/admin.php?c=menu',
     }
 </script>
-<script src="/Public/js/admin/common.js"></script>
+<script src="/Public/js/admin/common.js?version=222"></script>
 
 
 

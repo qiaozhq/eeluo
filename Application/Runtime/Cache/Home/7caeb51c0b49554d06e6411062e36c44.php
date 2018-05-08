@@ -60,12 +60,8 @@ var _hmt = _hmt || [];
 <div class="container">
 	<div class="col-xs-3 col-sm-3" >
 		<ul class="nav nav-pills nav-stacked">
-		  <li class="active"><a href="#">Home</a></li>
-		  <li><a href="#">SVN</a></li>
-		  <li><a href="#">iOS</a></li>
-		  <li><a href="#">VB.Net</a></li>
-		  <li><a href="#">Java</a></li>
-		  <li><a href="#">PHP</a></li>
+			<li><a href="#">全部</a></li>
+		  <?php if(is_array($result['menus'])): $i = 0; $__LIST__ = $result['menus'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li><a href="#"><?php echo ($menu["name"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
 		</ul>
 	</div>
 	<div class="col-xs-9 col-sm-9" >

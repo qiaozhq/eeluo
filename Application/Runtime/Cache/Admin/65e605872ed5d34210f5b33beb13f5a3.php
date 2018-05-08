@@ -169,7 +169,7 @@
     'push_url' : '/admin.php?c=user&a=push',
   }
 </script>
-<script src="/Public/js/admin/common.js"></script>
+<script src="/Public/js/admin/common.js?version=222"></script>
 
 
 

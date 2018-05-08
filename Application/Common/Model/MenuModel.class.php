@@ -48,7 +48,7 @@ class MenuModel extends  Model {
         if(!$id || !is_numeric($id)) {
             return array();
         }
-        return $this->_db->where($data)->find();
+        return $this->_db->where($data)->select();
     }
 
     //使用模块：admin

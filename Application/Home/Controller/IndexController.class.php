@@ -4,6 +4,12 @@ use Think\Controller;
 use Think\Exception;
 class IndexController extends CommonController {
     public function index($type=''){
+        $category = $_GET['id']; 
+        $main = D("Main")->getMainByCategory($category);   
+        $this->assign('result', array(
+            'main' => $main,
+        ));
+        // $this->display();
         /**
          * 生成页面静态化
          */

@@ -52,7 +52,32 @@ var _hmt = _hmt || [];
     </div>
     </div>
 </nav>
-
+<link rel="stylesheet" href="/Public/css/normalize.css" />
+<link rel="stylesheet" href="/Public/css/default.css">
+<link rel="stylesheet" href="/Public/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/Public/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="/Public/css/site.css"/>
+<div class="container">
+	<div class="col-xs-3 col-sm-3" >
+		<ul class="nav nav-pills nav-stacked">
+		  <li class="active"><a href="#">Home</a></li>
+		  <li><a href="#">SVN</a></li>
+		  <li><a href="#">iOS</a></li>
+		  <li><a href="#">VB.Net</a></li>
+		  <li><a href="#">Java</a></li>
+		  <li><a href="#">PHP</a></li>
+		</ul>
+	</div>
+	<div class="col-xs-9 col-sm-9" >
+		<?php if(is_array($result['main'])): $i = 0; $__LIST__ = $result['main'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="jumbotron">
+		        <h1><?php echo ($vo["title"]); ?></h1>
+		        <p><?php echo ($vo["content"]); ?></p>
+		        <img class="img-responsive" src="<?php echo ($vo["thumb"]); ?>" />
+		   </div><?php endforeach; endif; else: echo "" ;endif; ?>
+   </div>
+</div>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+<script src="/Public/js/home/news.js"></script>
 <style type="text/css">
 .contact-block {
     background-color: #e3e4e5;
