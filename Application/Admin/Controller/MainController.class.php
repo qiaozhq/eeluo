@@ -32,6 +32,8 @@ class MainController extends CommonController {
             }
             return show(0,'新增失败',$id);
         }else {
+            $menus = D("Menu")->getAdminData('menu', 'menu_id');
+            $this->assign('menus',$menus);
             $this->display();
         }
     }
@@ -57,6 +59,13 @@ class MainController extends CommonController {
         }catch(Exception $e) {
             return show(0,$e->getMessage());
         }
+    }
+
+    //根据第一分类取得第二分类
+    public function subcat() {
+        $category = $_GET['category'];
+        $subMenus = D("Menu")->findsubcat($category);
+        return show(1,'',$subMenus);
     }
 
     //启用/禁用

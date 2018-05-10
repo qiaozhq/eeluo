@@ -176,3 +176,23 @@ $("#singcms-push").click(function(){
     },"json");
 
 });
+/*
+取得子分类
+ */
+$('#category').change(function(){
+    var url = SCOPE.subcat_url;
+    getData = {"category":$('#category').val()};
+    $.get(url,getData,function(result){
+        if(result.status == 1) {
+            //成功
+            $("#subcategory").empty();
+            $("#subcategory").append("<option value='' >==请选择分类==</option>");
+            for (var i = 0; i < result.data.length; i++) {
+                $("#subcategory").append("<option value='"+result.data[i].menu_id+"'>"+result.data[i].name+"</option>");
+            }
+        }else if(result.status == 0) {
+            // 失败
+            return dialog.error(result.message);
+        }
+    },"JSON");
+});

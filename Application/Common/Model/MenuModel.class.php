@@ -24,4 +24,16 @@ class MenuModel extends CommonModel {
             ->select();
         return $res;
     }
+
+    //使用模块：admin
+    public function findsubcat($id){
+        $data = array(
+            'status' => array('neq',-1),
+            'parentid' => $id,
+        );
+        if(!$id || !is_numeric($id)) {
+            return array();
+        }
+        return $this->_db->where($data)->select();
+    }
 }
