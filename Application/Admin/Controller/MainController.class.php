@@ -57,6 +57,8 @@ class MainController extends CommonController {
         $this->assign('main', $main);
         $menus = D("Menu")->getAdminData('menu', 'menu_id');
         $this->assign('menus',$menus);
+        $subMenus = D("Menu")->findsubcat($main['category']);
+        $this->assign('subMenus', $subMenus);
         $this->display();
     }
 
