@@ -20,8 +20,20 @@ class MainController extends CommonController {
     //添加/修改数据信息
     public function add(){
         if($_POST) {
-            if(!isset($_POST['name']) || !$_POST['name']) {
-                return show(0,'分类名不能为空');
+           if(!isset($_POST['category']) || !$_POST['category']) {
+                return show(0,'必须选择分类');
+            }
+            if(!isset($_POST['title']) || !$_POST['title']) {
+                return show(0,'标题不能为空');
+            }
+            if(!isset($_POST['content']) || !$_POST['content']) {
+                return show(0,'内容不能为空');
+            }
+            if(!isset($_POST['count'])) {
+                return show(0,'浏览次数不能为空');
+            }
+            if(!eregi('^[0-9]+$',$_POST['count'])) {
+                return show(0,'浏览次数不正确');
             }
             if($_POST['main_id']) {
                 return $this->save($_POST);
@@ -43,6 +55,8 @@ class MainController extends CommonController {
         $id = $_GET['id'];
         $main = D("Main")->find('main', $id, 'main_id');
         $this->assign('main', $main);
+        $menus = D("Menu")->getAdminData('menu', 'menu_id');
+        $this->assign('menus',$menus);
         $this->display();
     }
 
