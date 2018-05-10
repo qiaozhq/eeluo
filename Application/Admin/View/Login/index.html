@@ -8,14 +8,14 @@
   <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="">
-
+  <link rel="shortcut icon" href="/Public/images/favicon.ico">
+  <link rel="Bookmark" href="/Public/images/favicon.ico">
   <title>管理员登陆</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/Public/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="signin.css" rel="stylesheet">
+  <link href="/Public/css/admin/login.css" rel="stylesheet">
 
 
 
@@ -50,6 +50,11 @@
 <script src="/Public/js/dialog/layer.js"></script>
 <script src="/Public/js/dialog.js"></script>
 <script src="/Public/js/admin/login.js"></script>
+<script>
+  var SCOPE = {
+    'chk_url' : '/login/check.htm',
+  }
+</script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
 </html>

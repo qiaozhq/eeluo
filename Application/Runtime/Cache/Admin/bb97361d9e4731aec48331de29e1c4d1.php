@@ -8,21 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="Shortcut Icon" href="/Public/images/favicon.ico">
+    <link rel="shortcut icon" href="/Public/images/favicon.ico">
     <link rel="Bookmark" href="/Public/images/favicon.ico">
-    <title>e络工作室-后台管理系统</title>
+    <title>大连久诚卓慧-后台管理系统</title>
     <!-- Bootstrap Core CSS -->
     <link href="/Public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/Public/css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="/Public/css/plugins/morris.css" rel="stylesheet">
-
+    <link href="/Public/css/admin/sb-admin.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="/Public/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/Public/css/sing/common.css" />
+    <link rel="stylesheet" href="/Public/css/admin/common.css" />
     <link rel="stylesheet" href="/Public/css/party/bootstrap-switch.css" />
     <link rel="stylesheet" type="text/css" href="/Public/css/party/uploadify.css">
 
@@ -42,14 +38,12 @@
 <body>
 <div id="wrapper">
 
-  <?php
- $navs = D("Menu")->getAdminMenus(); $username = getLoginUsername(); foreach($navs as $k=>$v) { if($v['c'] == 'admin' && $username != 'admin') { unset($navs[$k]); } if($v['c'] == 'menu' && $username != 'admin') { unset($navs[$k]); } if($v['c'] == 'position' && $username != 'admin') { unset($navs[$k]); } } $index = 'index'; ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     
-    <a class="navbar-brand" >e络工作室-后台管理系统</a>
+    <a class="navbar-brand" >大连久诚卓慧-官网后台</a>
   </div>
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">
@@ -59,42 +53,55 @@
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo getLoginUsername()?> <b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li>
-          <a href="/admin.php?c=admin&a=personal"><i class="fa fa-fw fa-user"></i> 个人中心</a>
+          <a href="/adminuser/per.htm"><i class="fa fa-fw fa-user"></i> 个人中心</a>
         </li>
-       
         <li class="divider"></li>
         <li>
-          <a href="/admin.php?c=login&a=loginout"><i class="fa fa-fw fa-power-off"></i> 退出</a>
+          <a href="/adminuser/pas.htm"><i class="fa fa-fw fa-user"></i> 修改密码</a>
+        </li>       
+        <li class="divider"></li>
+        <li>
+          <a href="/login/loginout.htm"><i class="fa fa-fw fa-power-off"></i> 退出</a>
         </li>
       </ul>
     </li>
   </ul>
   <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav side-nav nav_list">
-      <li <?php echo (getActive($index)); ?>>
-        <a href="/admin.php?c=analysis"><i class="fa fa-fw fa-dashboard"></i> 统计</a>
+     <ul class="nav navbar-nav side-nav nav_list">
+      <li <?php echo setActive('basic');?> >
+        <a href="/basic.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 基本管理</a>
       </li>
-      <?php if(is_array($navs)): $i = 0; $__LIST__ = $navs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$navo): $mod = ($i % 2 );++$i;?><li <?php echo (getActive($navo["c"])); ?>>
-        <a href="<?php echo (getAdminMenuUrl($navo)); ?>"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo ($navo["name"]); ?></a>
-      </li><?php endforeach; endif; else: echo "" ;endif; ?>
-
+      <li <?php echo setActive('user');?> >
+        <a href="/user.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 团队成员</a>
+      </li>
+      <li <?php echo setActive('product');?> >
+        <a href="/product.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 产品服务</a>
+      </li>
+      <li <?php echo setActive('job');?> >
+        <a href="/job.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 招聘信息</a>
+      </li>
     </ul>
   </div>
   <!-- /.navbar-collapse -->
 </nav>
-  <script src="/Public/js/kindeditor/kindeditor-all.js"></script>
 <div id="page-wrapper">
 
 	<div class="container-fluid">
 
 		<!-- Page Heading -->
 		<div class="row">
-	<div class="col-lg-12">
-		<a href="/admin.php?c=basic"><button type="button" class="btn <?php if($type == 1): ?>btn-primary<?php endif; ?>"> 基本配置</button></a>
-		<a href="/admin.php?c=basic&a=cache"><button type="button" class="btn <?php if($type == 2): ?>btn-primary<?php endif; ?>"> 缓存配置</button></a>
-	</div>
-</div>
+			<div class="col-lg-12">
+			  <ol class="breadcrumb">
+			    <li>
+			      <i class="fa fa-dashboard"></i>基本管理
+			    </li>
+			    <li class="active">
+			      <i class="fa fa-table"></i>配置
+			    </li>
+			  </ol>
+			</div>
+		</div>
 		<!-- /.row -->
 
 		<div class="row">
@@ -102,103 +109,86 @@
 
 				<form class="form-horizontal" id="singcms-form">
 					<div class="form-group">
-						<label for="inputname" class="col-sm-2 control-label">站点标题:</label>
+						<label for="title" class="col-sm-2 control-label">站点标题:</label>
 						<div class="col-sm-5">
-							<input type="text" name="title" value="<?php echo ($vo["title"]); ?>" class="form-control" id="inputname" placeholder="请填写站点标题">
+							<input type="text" name="title" value="<?php echo ($basic["title"]); ?>" class="form-control" id="title" placeholder="请填写站点标题">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">站点关键词:</label>
+						<label for="keywords" class="col-sm-2 control-label">站点关键词:</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" value="<?php echo ($vo["keywords"]); ?>" name="keywords" id="inputPassword3" placeholder="请填写站点关键词">
+							<input type="text" class="form-control" value="<?php echo ($basic["keywords"]); ?>" name="keywords" id="keywords" placeholder="请填写站点关键词">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">站点描述:</label>
+						<label for="description" class="col-sm-2 control-label">站点描述:</label>
 						<div class="col-sm-5">
-							<textarea class="form-control" rows="3" name="description"><?php echo ($vo["description"]); ?></textarea>
+							<textarea class="form-control" rows="3" name="description" id="description"><?php echo ($basic["description"]); ?></textarea>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword5" class="col-sm-2 control-label">首页广告1标题:</label>
+						<label for="version" class="col-sm-2 control-label">版本管理:</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" value="<?php echo ($vo["adv01title"]); ?>" name="adv01title" id="inputPassword5" placeholder="请填写首页广告1标题">
+							<input type="text" name="version" value="<?php echo ($basic["version"]); ?>" class="form-control" id="version" placeholder="请填写站点版本">
+						</div>
+					</div>
+		            <div class="form-group">
+		              <label for="inputname" class="col-sm-2 control-label">顶部图片:</label>
+		              <div class="col-sm-5">
+		                <input id="file_upload"  type="file" multiple="true" >
+		                <img id="upload_org_code_img" width="300" height="135" src="<?php echo ($basic["thumb"]); ?>">
+		                <input id="file_upload_image" name="thumb" type="hidden" multiple="true" value="<?php echo ($basic["thumb"]); ?>">
+		              </div>
+		            </div>
+					<div class="form-group">
+						<label for="computer" class="col-sm-2 control-label">公司介绍:</label>
+						<div class="col-sm-5">
+							<textarea class="form-control" rows="3" name="computer" id="computer"><?php echo ($basic["computer"]); ?></textarea>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">首页广告1描述:</label>
+						<label for="team" class="col-sm-2 control-label">团队描述:</label>
 						<div class="col-sm-5">
-							<textarea class="form-control" rows="3" name="adv01description" placeholder="请填写首页广告1描述"><?php echo ($vo["adv01description"]); ?></textarea>
-						</div>
-					</div>					
-					<div class="form-group">
-						<label for="inputPassword5" class="col-sm-2 control-label">首页广告2标题:</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" value="<?php echo ($vo["adv02title"]); ?>" name="adv02title" id="inputPassword5" placeholder="请填写首页广告2标题">
+							<textarea class="form-control" rows="3" name="team" id="team"><?php echo ($basic["team"]); ?></textarea>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">首页广告2描述:</label>
+						<label for="address" class="col-sm-2 control-label">地址:</label>
 						<div class="col-sm-5">
-							<textarea class="form-control" rows="3" name="adv02description" placeholder="请填写首页广告2描述"><?php echo ($vo["adv02description"]); ?></textarea>
-						</div>
-					</div>						
-					<div class="form-group">
-						<label for="inputPassword5" class="col-sm-2 control-label">首页广告3标题:</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" value="<?php echo ($vo["adv03title"]); ?>" name="adv03title" id="inputPassword5" placeholder="请填写首页广告3标题">
+							<input type="text" name="address" value="<?php echo ($basic["address"]); ?>" class="form-control" id="address" placeholder="请填写联系我们的地址信息">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">首页广告3描述:</label>
+						<label for="zipcode" class="col-sm-2 control-label">邮编:</label>
 						<div class="col-sm-5">
-							<textarea class="form-control" rows="3" name="adv03description" placeholder="请填写首页广告2描述"><?php echo ($vo["adv03description"]); ?></textarea>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword5" class="col-sm-2 control-label">宣传点1标题:</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" value="<?php echo ($vo["point01title"]); ?>" name="point01title" id="inputPassword5" placeholder="请填写宣传点1标题">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword5" class="col-sm-2 control-label">宣传点1描述:</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" value="<?php echo ($vo["point01description"]); ?>" name="point01description" id="inputPassword5" placeholder="请填写宣传点1描述">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword5" class="col-sm-2 control-label">宣传点2标题:</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" value="<?php echo ($vo["point02title"]); ?>" name="point02title" id="inputPassword5" placeholder="请填写宣传点2标题">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword5" class="col-sm-2 control-label">宣传点2描述:</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" value="<?php echo ($vo["point02description"]); ?>" name="point02description" id="inputPassword5" placeholder="请填写宣传点2描述">
+							<input type="text" name="zipcode" value="<?php echo ($basic["zipcode"]); ?>" class="form-control" id="zipcode" placeholder="请填写联系我们的邮编信息">
 						</div>
 					</div>	
 					<div class="form-group">
-						<label for="inputPassword5" class="col-sm-2 control-label">宣传点3标题:</label>
+						<label for="tel" class="col-sm-2 control-label">电话:</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" value="<?php echo ($vo["point03title"]); ?>" name="point03title" id="inputPassword5" placeholder="请填写宣传点3标题">
+							<input type="text" name="tel" value="<?php echo ($basic["tel"]); ?>" class="form-control" id="tel" placeholder="请填写联系我们的电话信息">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword5" class="col-sm-2 control-label">宣传点3描述:</label>
+						<label for="fax" class="col-sm-2 control-label">传真:</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" value="<?php echo ($vo["point03description"]); ?>" name="point03description" id="inputPassword5" placeholder="请填写宣传点3描述">
+							<input type="text" name="fax" value="<?php echo ($basic["fax"]); ?>" class="form-control" id="fax" placeholder="请填写联系我们的传真信息">
 						</div>
 					</div>
-
-		            <div class="form-group">
-		              <label for="inputPassword3" class="col-sm-2 control-label">公司简介:</label>
-		              <div class="col-sm-5">
-		                <textarea class="input js-editor" id="editor_singcms" name="compintro" rows="20" ><?php echo (str_replace('\"','',$vo["compintro"])); ?></textarea>
-		              </div>
-		            </div>													
+					<div class="form-group">
+						<label for="mail" class="col-sm-2 control-label">E-mail:</label>
+						<div class="col-sm-5">
+							<input type="text" name="mail" value="<?php echo ($basic["mail"]); ?>" class="form-control" id="mail" placeholder="请填写联系我们的E-mail信息">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="service" class="col-sm-2 control-label">服务:</label>
+						<div class="col-sm-5">
+							<input type="text" name="service" value="<?php echo ($basic["service"]); ?>" class="form-control" id="service" placeholder="请填写联系我们的服务关键词">
+						</div>
+					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="button" class="btn btn-default" id="singcms-button-submit">提交</button>
@@ -221,19 +211,17 @@
 </div>
 <!-- /#wrapper -->
 <script type="text/javascript" src="/Public/js/admin/form.js"></script>
+<!-- /#wrapper -->
+<script src="/Public/js/admin/image.js"></script>
 <script>
 	var SCOPE = {
-		'save_url' : '/admin.php?c=basic&a=save',
-		'jump_url' : '/admin.php?c=basic',
+		'save_url' : '/basic/save.htm',
+		'jump_url' : '/basic.htm',
+	    'ajax_upload_image_url' : '/image/ajaxuploadimage.htm',
+    	'ajax_upload_swf' : '/Public/js/party/uploadify.swf',
 	};
-  KindEditor.ready(function(K) {
-    window.editor = K.create('#editor_singcms',{
-      uploadJson : '/admin.php?c=image&a=kindupload',
-      afterBlur : function(){this.sync();}, //
-    });
-  });
 </script>
-<script src="/Public/js/admin/common.js?version=222"></script>
+<script src="/Public/js/admin/common.js"></script>
 
 
 

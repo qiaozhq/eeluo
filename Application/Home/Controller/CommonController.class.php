@@ -2,14 +2,20 @@
 namespace Home\Controller;
 use Think\Controller;
 use Think\Exception;
+
+/**
+ * 前台用共通控制器
+ * @author  Alexander
+ */
 class CommonController extends Controller {
+    
     public function __construct() {
         header("Content-type: text/html; charset=utf-8");
         parent::__construct();
         $basic = D("Basic")->select();
-        $this->assign('basic', $basic); 
-        $menus = D("Menu")->getBarMenus();
-        $this->assign('menus',$menus);
+        $service = explode('|',$basic['service']); 
+        $this->assign('basic', $basic);
+        $this->assign('service', $service); 
     }
 
     public function _empty(){//方法不存在的时候

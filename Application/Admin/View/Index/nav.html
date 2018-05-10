@@ -1,25 +1,9 @@
-<?php
-  $navs = D("Menu")->getAdminMenus();
-  $username = getLoginUsername();
-  foreach($navs as $k=>$v) {
-    if($v['c'] == 'admin' && $username != 'admin') {
-      unset($navs[$k]);
-    }
-    if($v['c'] == 'menu' && $username != 'admin') {
-      unset($navs[$k]);
-    } 
-    if($v['c'] == 'position' && $username != 'admin') {
-      unset($navs[$k]);
-    } 
-  }
-  $index = 'index';
-?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     
-    <a class="navbar-brand" >e络工作室-后台管理系统</a>
+    <a class="navbar-brand" >大连久诚卓慧-官网后台</a>
   </div>
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">
@@ -29,28 +13,34 @@
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo getLoginUsername()?> <b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li>
-          <a href="/admin.php?c=admin&a=personal"><i class="fa fa-fw fa-user"></i> 个人中心</a>
+          <a href="/adminuser/per.htm"><i class="fa fa-fw fa-user"></i> 个人中心</a>
         </li>
-       
         <li class="divider"></li>
         <li>
-          <a href="/admin.php?c=login&a=loginout"><i class="fa fa-fw fa-power-off"></i> 退出</a>
+          <a href="/adminuser/pas.htm"><i class="fa fa-fw fa-user"></i> 修改密码</a>
+        </li>       
+        <li class="divider"></li>
+        <li>
+          <a href="/login/loginout.htm"><i class="fa fa-fw fa-power-off"></i> 退出</a>
         </li>
       </ul>
     </li>
   </ul>
   <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav side-nav nav_list">
-      <li {$index|getActive}>
-        <a href="/admin.php?c=analysis"><i class="fa fa-fw fa-dashboard"></i> 统计</a>
+     <ul class="nav navbar-nav side-nav nav_list">
+      <li <?php echo setActive('basic');?> >
+        <a href="/basic.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 基本管理</a>
       </li>
-      <volist name="navs" id="navo">
-      <li {$navo.c|getActive}>
-        <a href="{$navo|getAdminMenuUrl}"><i class="fa fa-fw fa-bar-chart-o"></i> {$navo.name}</a>
+      <li <?php echo setActive('user');?> >
+        <a href="/user.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 团队成员</a>
       </li>
-      </volist>
-
+      <li <?php echo setActive('product');?> >
+        <a href="/product.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 产品服务</a>
+      </li>
+      <li <?php echo setActive('job');?> >
+        <a href="/job.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 招聘信息</a>
+      </li>
     </ul>
   </div>
   <!-- /.navbar-collapse -->

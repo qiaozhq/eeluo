@@ -2,26 +2,19 @@
 namespace Home\Controller;
 use Think\Controller;
 use Think\Exception;
-class IndexController extends CommonController {
-    public function index($type=''){
-        $category = $_GET['id']; 
-        $main = D("Main")->getMainByCategory($category);   
-        $this->assign('result', array(
-            'main' => $main,
-        ));
-        // $this->display();
-        /**
-         * 生成页面静态化
-         */
-        if($type == 'buildHtml') {
-            $this->buildHtml('index',HTML_PATH,'Index/index');
-        }else {
-            $this->display();
-        }
-    }
 
-    public function build_html() {
-        $this->index('buildHtml');
-        return show(1, '首页缓存生成成功');
+/**
+ * 首页控制器
+ * @author  Alexander
+ */
+class IndexController extends CommonController {
+    public function index(){
+    	$users = D("User")->getHomeData('user', 'user_id');
+        $this->assign('users', $users);
+		$products = D("Product")->getHomeData('product', 'product_id');
+        $this->assign('products', $products);
+		$jobs = D("Job")->getHomeData('job', 'job_id');
+        $this->assign('jobs', $jobs); 
+        $this->display();
     }
 }

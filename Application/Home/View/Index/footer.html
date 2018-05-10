@@ -1,120 +1,64 @@
-<style type="text/css">
-.contact-block {
-    background-color: #e3e4e5;
-    margin-top: 10px;
-    font-size: 0.8rem;  
-    padding-top: 10px;
-}
-.contact-block li{
-	padding: 0;
-	margin-bottom:0px;
-}
-.contact-block img{
-    width: 22px;
-    padding: 0;
-}
+<!-- 联系我们 -->
+		<div class="section" id="cooperation" style="padding:50px">
+			<div class="col-md-3"></div>
+			<div class="col-xs-12 col-md-3">
+				<h3>关于</h3>
+				<p>地址:{$basic.address}</p>
+				<p>邮编:{$basic.zipcode}</p>
+				<p>电话:{$basic.tel}</p>
+				<p>传真:{$basic.fax}</p>
+				<p>E-mail:{$basic.mail}</p>
+			</div>
+			<div class="col-xs-12 col-md-3">
+				<h3>服务</h3>
+				<volist name="service" id="s">
+					<p>{$s}</p>
+	   			</volist>
+			</div>
+			<div class="col-md-3"></div>				
+		</div>
+	</div>
+<script src="/Public/js/jquery.min.js"></script>
+<script src="/Public/js/bootstrap.min.js"></script>
+<script src="/Public/js/home/vendor.js?version={$basic.md5version}"></script>
+<script src="/Public/js/home/main.js?version={$basic.md5version}"></script>
 
-.contact-bottom a{
-	color: white;
-}
-.contact-bottom a:hover{
-	text-decoration: none;
-}
-#myModal{
-	color: black;
-}
-.modal-dialog,.modal-content,.modal-body{
-	width: 100%;
-	height: 100%;
-}
-.btn-link{
-	color: white;
-}
-.btn-link:hover{
-	text-decoration: none;
-	color: white;
-}
-#myModal2{
-	width: 400px;
-	height: 300px;
-	margin: 0 auto;
-	overflow-y: hidden;
-}
-#myModal3{
-	width: 400px;
-	height: 400px;
-	margin: 0 auto;
-	overflow-y: hidden;
-}
-@media (max-width: 400px) {
-	#myModal2,#myModal3{
-		width: 100%;
+<script type="text/javascript">
+	$('a[href=#contact]').hover(function() {
+		setTimeout(function() {
+			$('#us').animate({
+				opacity: '1'
+			})
+		}, 1200)
+	})
+	$('#contact').hover(function() {
+		$('#us').animate({
+			opacity: '1'
+		});
+	})
+	$('#launcher1').hover(function() {
+		$('#us').animate({
+			opacity: '1'
+		});
+	})
+
+	function c() {
+		var a = $('h4').length
+		var name = ''
+		name += "<ol style='list-style-type:decimal'>"
+		for(var i = 0; i < a; i++) {
+			name += "<li>"
+			name += $('h4').eq(i).html();
+			name += "</li>"
+		};
+		name += "</ol>"
+		$('#photo-wall').append(name);
+		console.log(name);
 	}
-}
-.modal-body {
-    text-align: center;
-}
-#allmap label{
-	max-width:none;
-}
-#myModal4 .modal-dialog{
-    text-align: center;
-}
-#myModal4 .modal-content{
-    display: inline-block;
-    width: auto;
-    height: auto;
-}
-#myModal4 .modal-body {
-    display: inline-block;
-}
-#myModal4 form{
-	display: inline-block;
-}
-.productinfo{
-	text-align: left;
-}
-#myModal5 .modal-dialog{
-    text-align: center;
-}
-#myModal5 .modal-dialog .modal-content{
-    display: inline-block;
-    width: auto;
-    height: auto;
-    padding-bottom: 10px;
-}
-#myModal5 .modal-header{
-	text-align: center;
-}
-#loginbutton{
-    /*background-color: #e60000;*/
-	margin-top: 10px;
-}
-.validate{
-    width: 50%;
-    float: left;
-}
-.validateimg{
-	height: 34px;
-}
-.validateimg:hover{
-	cursor: pointer;
-}
-</style>
-
-<div class="container-fluid contact-block">
-	<div class="contact-bottom">	
-		<ul class="list-inline text-center">
-		 <li>Copyright &copy; 2018 e络工作室 All rights reserved&nbsp;|&nbsp;辽ICP备17002771号</li>		 		 	 
-		</ul>	
-	</div>	
-</div>
-
-
-<script src="/Public/js/home/footer.js"></script>
-<script src="/Public/js/home/common.js"></script>
-<script src="/Public/js/home/login.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
+	$('#app-start').click(function() {
+		$('a[href=#apps]').click();
+	})
+	$('#apps h3:nth-of-type(odd)').css('text-align', 'left');
+</script>
 </body>
 </html>

@@ -13,10 +13,10 @@
 
           <ol class="breadcrumb">
             <li>
-              <i class="fa fa-dashboard"></i>用户管理
+              <i class="fa fa-dashboard"></i>团队成员
             </li>
             <li class="active">
-              <i class="fa fa-table"></i>用户列表
+              <i class="fa fa-table"></i>列表
             </li>
           </ol>
         </div>
@@ -33,30 +33,20 @@
               <table class="table table-bordered table-hover singcms-table">
                 <thead>
                 <tr>
-                  <th>id</th>
-                  <th>用户名</th>
-                  <th>微信id</th>
-                  <th>分类</th>
-                  <th>注册时间</th>                                 
-                  <th>最后登陆ip</th>                 
-                  <th>最后登陆时间</th>
-                  <th>电话</th>
-                  <th>邮箱</th>              
+                  <th width="14">排序</th>
+                  <th>成员名</th>
+                  <th>技能描述</th>
+                  <th>缩略图</th>             
                   <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <volist name="users" id="user">
                   <tr>                   
-                    <td>{$user.user_id}</td>
-                    <td>{$user.username}</td>
-                    <td>{$user.openid}</td>
-                    <td>{$user.level|level}</td>
-                    <td>{$user.create_time|create_time}</td>                    
-                    <td>{$user.lastloginip}</td>
-                    <td>{$user.lastlogintime|create_time}</td>
-                    <td>{$user.phone}</td>
-                    <td>{$user.email}</td>        
+                    <td><input size=4 type='text'  name='listorder[{$user.user_id}]' value="{$user.listorder}"/></td>
+                    <td>{$user.name}</td>
+                    <td>{$user.job}</td>
+                    <td><img width="150px" src="{$user.thumb}"></td>
                     <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="{$user.user_id}" ></span>
                       <a href="javascript:void(0)" id="singcms-delete"  attr-id="{$user.user_id}"  attr-message="删除">
                         <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
@@ -68,6 +58,9 @@
 
                 </tbody>
               </table>
+              <div>
+                <button  id="button-listorder" type="button" class="btn btn-primary dropdown-toggle" ><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>更新排序</button>
+              </div>
             </form>  
           </div>
         </div>
@@ -84,11 +77,10 @@
 <!-- /#wrapper -->
 <script>
   var SCOPE = {
-    'edit_url' : '/admin.php?c=user&a=edit',
-    'add_url' : '/admin.php?c=user&a=add',
-    'set_status_url' : '/admin.php?c=user&a=setStatus',
-    'listorder_url' : '/admin.php?c=user&a=listorder',
-    'push_url' : '/admin.php?c=user&a=push',
+    'edit_url' : '/user/edit.htm',
+    'add_url' : '/user/add.htm',
+    'set_status_url' : '/user/setStatus.htm',
+    'listorder_url' : '/user/listorder.htm',
   }
 </script>
 <include file="Index/footer" />

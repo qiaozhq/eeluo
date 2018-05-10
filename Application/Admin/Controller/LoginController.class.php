@@ -1,14 +1,16 @@
 <?php
-/**
- * 登陆管理
- */
 namespace Admin\Controller;
 use Think\Controller;
+
+/**
+ * 登陆管理控制器
+ * @author  Alexander
+ */
 class LoginController extends Controller {
     //登陆页面，如果登录直接跳转到后台首页
     public function index(){
         if(session('adminUser')) {
-           $this->redirect('/admin.php?c=analysis');
+           $this->redirect(C('LOGIN_INDEX_SUCCESS'));
         }
         $this->display();
     }
@@ -33,14 +35,14 @@ class LoginController extends Controller {
         if($ret['password'] != getMd5Password($password)) {
             return show(0,'密码错误');
         }
-        D("Admin")->updateByAdminId($ret['admin_id'],array('lastlogintime'=>time()));
+        D("Admin")->updateDataById('admin', $ret['admin_id'],array('lastlogintime'=>time()), 'admin_id');
         session('adminUser', $ret);
-        return show(1,'登录成功');
+        return show(1,'登录成功', array('jump_url' => C('LOGIN_CHECK_SUCCESS')));
     }
     
     //退出登录
     public function loginout() {
         session('adminUser', null);
-        $this->redirect('/admin.php?c=login');
+        $this->redirect(C('LOGIN_LOGINOUT_SUCCESS'));
     }
 }
