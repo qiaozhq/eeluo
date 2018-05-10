@@ -73,7 +73,7 @@
         <a href="/basic.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 基本管理</a>
       </li>
       <li <?php echo setActive('user');?> >
-        <a href="/user.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 团队成员</a>
+        <a href="/menu.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 分类管理</a>
       </li>
       <li <?php echo setActive('product');?> >
         <a href="/product.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 产品服务</a>
