@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="/Public/images/favicon.ico">
     <link rel="Bookmark" href="/Public/images/favicon.ico">
-    <title>大连久诚卓慧-后台管理系统</title>
+    <title>e络工作室-后台管理系统</title>
     <!-- Bootstrap Core CSS -->
     <link href="/Public/css/bootstrap.min.css" rel="stylesheet">
 
@@ -43,7 +43,7 @@
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     
-    <a class="navbar-brand" >大连久诚卓慧-官网后台</a>
+    <a class="navbar-brand" >e络工作室-官网后台</a>
   </div>
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">
@@ -72,14 +72,14 @@
       <li <?php echo setActive('basic');?> >
         <a href="/basic.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 基本管理</a>
       </li>
-      <li <?php echo setActive('user');?> >
+      <li <?php echo setActive('menu');?> >
         <a href="/menu.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 分类管理</a>
       </li>
-      <li <?php echo setActive('product');?> >
-        <a href="/product.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 产品服务</a>
+      <li <?php echo setActive('main');?> >
+        <a href="/main.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 数据管理</a>
       </li>
-      <li <?php echo setActive('job');?> >
-        <a href="/job.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 招聘信息</a>
+      <li <?php echo setActive('push');?> >
+        <a href="/push.htm"><i class="fa fa-fw fa-bar-chart-o"></i> 推荐管理</a>
       </li>
     </ul>
   </div>
