@@ -45,8 +45,12 @@ class MainController extends CommonController {
                 return show(0,'浏览次数不正确');
             }
             if($_POST['main_id']) {
+                //更新时间
+                $_POST['update_time']=create_time(time());
                 return $this->save($_POST);
             }
+            //做成时间
+            $_POST['create_time']=create_time(time());
             $id = D("Main")->insert('main',$_POST);
             if($id) {
                 return show(1,'新增成功',$id);
