@@ -15,185 +15,32 @@
   <link href="/Public/css/home/job.css?version=<?php echo ($basic["md5version"]); ?>" rel="stylesheet">
 </head>
 <body style="">
-<!-- 导航区域开始 -->
-<div class="navbar regular">
-	<div class="container">
-		<div class="navbar-logo-w">
-			<img src="/Public/images/home/pc_logo_s.png" class="animated fadeInDown">
-		</div>
-		<div class="navbar-logo">
-			<img src="/Public/images/home/pc_logo_b.png" class="animated fadeInDown">
-		</div>
-		<ul class="navbar-items">
-			<li class="">
-				<div class="led"></div>
-				<a href="#hero">首页</a>
-			</li>
-			<li class="">
-				<div class="led"></div>
-				<a href="#contact">公司介绍</a>
-			</li>
-			<li class="">
-				<div class="led"></div>
-				<a href="#apps">产品服务</a>
-			</li>
-			<li class="">
-				<div class="led"></div>
-				<a href="#job">招聘信息</a>
-			</li>
-			<li class="">
-				<div class="led"></div>
-				<a href="#cooperation">联系我们</a>
-			</li>
+<link rel="stylesheet" href="/Public/css/normalize.css" />
+<link rel="stylesheet" href="/Public/css/default.css">
+<link rel="stylesheet" href="/Public/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/Public/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="/Public/css/site.css"/>
+<div class="container">
+	<div class="col-xs-3 col-sm-3" >
+		<ul class="nav nav-pills nav-stacked">
+		  <li class="active"><a href="#">Home</a></li>
+		  <li><a href="#">SVN</a></li>
+		  <li><a href="#">iOS</a></li>
+		  <li><a href="#">VB.Net</a></li>
+		  <li><a href="#">Java</a></li>
+		  <li><a href="#">PHP</a></li>
 		</ul>
 	</div>
+	<div class="col-xs-9 col-sm-9" >
+		<?php if(is_array($result['main'])): $i = 0; $__LIST__ = $result['main'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="jumbotron">
+		        <h1><?php echo ($vo["title"]); ?></h1>
+		        <p><?php echo ($vo["content"]); ?></p>
+		        <img class="img-responsive" src="<?php echo ($vo["thumb"]); ?>" />
+		   </div><?php endforeach; endif; else: echo "" ;endif; ?>
+   </div>
 </div>
-<a href="#" class="collapse-button">
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-</a>
-<div class="snap-drawers">
-<!-- 模态框（Modal） -->
-<?php if(is_array($products)): $i = 0; $__LIST__ = $products;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$product): $mod = ($i % 2 );++$i;?><div class="modal fade" id="<?php echo ($product["product_id"]); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					<?php echo ($product["title"]); ?>
-				</h4>
-			</div>
-			<div class="modal-body">
-				<?php echo ($product["content"]); ?>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal -->
-</div><?php endforeach; endif; else: echo "" ;endif; ?>
-	<div class="snap-drawer snap-drawer-right">
-		<div>
-			<ul class="navbar-items">
-				<li>
-					<a href="#hero">首页</a>
-				</li>
-				<li>
-					<a href="#contact">公司介绍</a>
-				</li>
-				<li>
-					<a href="#apps">产品服务</a>
-				</li>
-				<li>
-					<a href="#job">招聘信息</a>
-				</li>
-				<li>
-					<a href="#cooperation">联系我们</a>
-				</li>
-			</ul>
-			<div style="position:absolute; bottom:0">
-				<p>久诚卓慧有限公司</p>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- 导航区域结束 -->
-<div class="snap-content">
-	<!-- 顶部区域 -->
-	<div id="hero" style="background: url(<?php echo ($basic["thumb"]); ?>) no-repeat top center;">
-		<div class="container">
-			<div class="logo">
-				<span class="animated zoomIn">大连久诚卓慧</span>
-			</div>
-			<h1 class="animated bounceInLeft delay05" style="margin-bottom:10%;">长久 诚信 卓越 智慧</h1>
-			
-			<div class="animated fadeIn delay2" style="width:100%;position:fixed;bottom:5%;text-align: center;color:#90A4AE;font-size: 1.2em;">
-			</div>
-		</div>
-	</div>
-	<!-- 公司介绍,团队介绍 -->
-	<div class="section" id="contact">
-		<div class="title">
-			<h2>公司介绍</h2>
-		</div>
-		<p id="us" style="opacity:1;transition:all 0.2s linear;"><?php echo ($basic["computer"]); ?>
-		</p>
-	</div>
-	<div class="section" id="team">
-		<div class="title">
-			<h2>我们的团队</h2>
-			<p><?php echo ($basic["team"]); ?></p>
-		</div>
-		<div id="photo-wall">
-			<ul>
-				<?php if(is_array($users)): $i = 0; $__LIST__ = $users;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$user): $mod = ($i % 2 );++$i;?><li class="team-list">
-						<img class="photos img-responsive img-circle" src="<?php echo ($user["thumb"]); ?>">
-						<h4 class="name"><?php echo ($user["name"]); ?></h4>
-						<h5 class="job"><?php echo ($user["job"]); ?></h5>
-					</li><?php endforeach; endif; else: echo "" ;endif; ?>
-			</ul>
-		</div>
-	</div>
-	<!-- 产品服务 -->
-	<div id="apps">
-		<ul>
-			<?php if(is_array($products)): $i = 0; $__LIST__ = $products;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$product): $mod = ($i % 2 );++$i;?><li class="<?php if($i%2==1): ?>text-first<?php else: ?>pic-first<?php endif; ?>">
-					<div class="container">
-						<div class="text">
-							<h3 style="text-align: left;"><?php echo ($product["title"]); ?></h3>
-							<?php echo ($product["description"]); ?>
-						</div>
-						<div class="pics animated" style="opacity: 1;">
-							<img src="<?php echo ($product["thumb"]); ?>">
-							<a class="readDetail" style="right:27%;"  data-toggle="modal" data-target="#<?php echo ($product["product_id"]); ?>">查看详情</a>
-						</div>
-					</div>
-				</li><?php endforeach; endif; else: echo "" ;endif; ?>
-		</ul>
-	</div>
-	<!-- 招聘信息 -->
-	<?php if(is_array($jobs)): $i = 0; $__LIST__ = $jobs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$jobs): $mod = ($i % 2 );++$i;?><div class="m-job" id="job">
-			<div class="basic-info">
-				<h2 class="job-title"><?php echo ($jobs["title"]); ?></h2>
-				<span class="post-date">发布时间：<?php echo ($jobs["publishtime"]); ?></span>
-				<table class="job-params">
-					<colgroup>
-					<col width="110">
-					<col>
-					<col width="110">
-					<col>
-				</colgroup>
-				<tbody><tr>
-					<th>职位类别：</th>
-					<td><?php echo ($jobs["type"]); ?></td>
-					<th>最低学历：</th>
-					<td><?php echo ($jobs["education"]); ?></td>
-				</tr>
-				<tr>
-					<th>工作地点：</th>
-					<td><?php echo ($jobs["address"]); ?></td>
-					<th>工作年限：</th>
-					<td><?php echo ($jobs["workyears"]); ?></td>
-				</tr>
-				<tr>
-					<th>招聘人数：</th>
-					<td><?php echo ($jobs["number"]); ?></td>
-					<th>工作类型：</th>
-					<td><?php echo ($jobs["worktype"]); ?></td>
-				</tr>
-			</tbody></table>
-		</div>
-		<div class="detail-info">
-			<div class="detail-section">
-				<h3 class="section-title">岗位描述</h3>
-				<div class="section-content"><?php echo (formatwork($jobs["workinfo"])); ?></div>
-			</div>
-			<div class="detail-section">
-				<h3 class="section-title">岗位要求</h3>
-				<div class="section-content"><?php echo (formatwork($jobs["workrequire"])); ?></div>
-			</div>
-		</div><?php endforeach; endif; else: echo "" ;endif; ?>
-</div>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+<script src="/Public/js/home/news.js"></script>
 <!-- 联系我们 -->
 		<div class="section" id="cooperation" style="padding:50px">
 			<div class="col-md-3"></div>

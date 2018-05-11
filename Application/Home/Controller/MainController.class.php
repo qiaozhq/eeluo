@@ -1,18 +1,14 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
-use Think\Exception;
-
-/**
- * 首页控制器
- * @author  Alexander
- */
-class IndexController extends CommonController {
+class MainController extends CommonController {
     public function index(){
         $category = $_GET['id']; 
-        $main = D("Main")->getHomeData('Main', 'main_id');
+        $main = D("Main")->getCategoryData($category);
+        $submenus = D("Menu")->findsubcat($category); 
         $this->assign('result', array(
             'main' => $main,
+            'submenus' => $submenus,
         ));
         $this->display();
     }

@@ -16,6 +16,8 @@ class CommonController extends Controller {
         $service = explode('|',$basic['service']); 
         $this->assign('basic', $basic);
         $this->assign('service', $service); 
+        $menus = D("Menu")->getBarMenus();
+        $this->assign('menus',$menus);
     }
 
     public function _empty(){//方法不存在的时候

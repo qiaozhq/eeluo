@@ -33,6 +33,20 @@ function getParentMenuName($parentid,$menus=array()) {
     }
     return $ret;
 }
+function getMonth($date) {
+    if(isset($date) && !empty($date)) {
+        return  substr($date,0,7);
+    }else{
+        return "2018-01";
+    }
+}
+function getDay($date) {
+    if(isset($date) && !empty($date)) {
+        return  substr($date,8,2);
+    }else{
+        return "01";
+    }
+}
 function status($status) {
     if($status == 0) {
         $str = '禁用';
