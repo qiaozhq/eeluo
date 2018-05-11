@@ -14,4 +14,14 @@ class MainModel extends CommonModel {
     }
     
     //共通以外操作写在下面
+    public function updatePushById($_db, $idval, $status, $idname='id') {
+        if(!is_numeric($status)) {
+            throw_exception('status不能为非数字');
+        }
+        if(!$idval || !is_numeric($idval)) {
+            throw_exception('id不合法');
+        }
+        $data['push'] = $status;
+        return M($_db)->where($idname.'='.$idval)->save($data);
+    }
 }

@@ -43,6 +43,14 @@ function status($status) {
     }
     return $str;
 }
+function push($push) {
+    if($push == 0) {
+        $str = '无';
+    }elseif($push == 1) {
+        $str = '荐';
+    }
+    return $str;
+}
 function setActive($navc){
     $c = strtolower(CONTROLLER_NAME);
     if(strtolower($navc) == $c) {

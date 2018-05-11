@@ -40,7 +40,6 @@
                   <th>标题</th>
                   <th>缩略图</th>
                   <th>浏览次数</th>
-                  <th>状态</th>
                   <th>推荐</th>
                   <th>操作</th>
                 </tr>
@@ -54,8 +53,7 @@
                     <td>{$data.title}</td>
                     <td><img width="150px" src="{$data.thumb}"></td>
                     <td>{$data.count}</td>
-                    <td><span attr-status="<if condition="$data['status'] eq 1">0<else/>1</if>"  attr-id="{$data.main_id}" class="sing_cursor singcms-on-off" id="singcms-on-off" >{$data.status|status}</span></td>
-                    <td><span attr-status="<if condition="$data['push'] eq 1">0<else/>1</if>"  attr-id="{$data.main_id}" class="sing_cursor singcms-push" id="singcms-push" >{$data.push|push}</span></td>
+                    <td><span attr-status="<if condition="$data['push'] eq 1">0<else/>1</if>"  attr-id="{$data.main_id}" class="sing_cursor singcms-on-off" id="singcms-on-off" >{$data.push|push}</span></td>
                     <td><span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="{$data.main_id}" ></span>
                       <a href="javascript:void(0)" id="singcms-delete"  attr-id="{$data.main_id}"  attr-message="删除">
                         <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
@@ -90,7 +88,6 @@
     'add_url' : '/main/add.htm',
     'set_status_url' : '/main/setStatus.htm',
     'listorder_url' : '/main/listorder.htm',
-    'set_push_url' : '/main/setPush.htm'
   }
 </script>
 <include file="Index/footer" />

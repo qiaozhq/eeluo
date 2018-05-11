@@ -123,7 +123,6 @@ $('.singcms-table #singcms-on-off').on('click', function(){
     data = {};
     data['id'] = id;
     data['status'] = status;
-    console.log(data);
     layer.open({
         type : 0,
         title : '是否提交？',
@@ -144,7 +143,33 @@ $('.singcms-table #singcms-on-off').on('click', function(){
 /**
  * 推送JS相关
  */
-$("#singcms-push").click(function(){
+$('.singcms-table #singcms-push').on('click', function(){
+
+    var id = $(this).attr('attr-id');
+    var status = $(this).attr("attr-status");
+    var url = SCOPE.set_push_url;
+
+    data = {};
+    data['id'] = id;
+    data['push'] = status;
+    console.log(data);
+    layer.open({
+        type : 0,
+        title : '是否提交？',
+        btn: ['yes', 'no'],
+        icon : 3,
+        closeBtn : 2,
+        content: "是否确定更改推荐设置",
+        scrollbar: true,
+        yes: function(){
+            // 执行相关跳转
+            todelete(url, data);
+        },
+
+    });
+
+});
+/*$("#singcms-push").click(function(){
     push = {};
     postData = {};
     var err ="ok";
@@ -175,7 +200,7 @@ $("#singcms-push").click(function(){
         }
     },"json");
 
-});
+});*/
 /*
 取得子分类
  */
