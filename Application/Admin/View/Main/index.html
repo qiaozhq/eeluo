@@ -48,7 +48,7 @@
                 <tbody>
                 <volist name="mains" id="data">
                   <tr>                   
-                    <td><input size=4 type='text'  name='listorder[{$data.id}]' value="{$data.listorder}"/></td>
+                    <td><input size=4 type='text'  name='listorder[{$data.main_id}]' value="{$data.listorder}"/></td>
                     <td>{:getParentMenuName($data['category'],$menus)}</td>
                     <td>{:getParentMenuName($data['sub_category'],$menus)}</td>
                     <td>{$data.title}</td>

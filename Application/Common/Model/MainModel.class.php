@@ -24,4 +24,23 @@ class MainModel extends CommonModel {
         $data['push'] = $status;
         return M($_db)->where($idname.'='.$idval)->save($data);
     }
+
+    public function getPushData($_db, $id='id') {
+        $data = array(
+            'status' => array('neq',-1),
+            'push' => 1,
+        );
+        $list = M($_db)->where($data)->order('pushorder desc,'.$id.' desc')->select();
+        return $list;
+    }
+
+    public function updatePushorderById($_db, $idval, $listorder, $idname='id') {
+        if(!$idval || !is_numeric($idval)) {
+            throw_exception('ID不合法');
+        }
+        $data = array(
+            'pushorder' => intval($listorder),
+        );
+        return M($_db)->where($idname.'='.$idval)->save($data);
+    }
 }
