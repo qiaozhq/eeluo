@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class MainController extends CommonController {
     public function index(){
-        $category = $_GET['id'];
+        $category = $_GET['cat'];
         $categoryname = D("Menu")->getCategoryname($category); 
         $main = D("Main")->getCategoryData($category);
         $submenus = D("Menu")->findsubcat($category); 
@@ -16,7 +16,7 @@ class MainController extends CommonController {
     }
 
     public function subCategory(){
-        $category = $_GET['id'];
+        $category = $_GET['cat'];
         $categoryname = D("Menu")->getCategoryname($category); 
         if($categoryname[0]['parentid']!='0'){
             $parentcategoryname = D("Menu")->getCategoryname($categoryname[0]['parentid']); 
@@ -30,5 +30,21 @@ class MainController extends CommonController {
             'submenus' => $submenus,
         ));
         $this->display("Main/index");
+    }
+
+    public function detail(){
+        $id = $_GET['id'];
+        $data = D("Main")->find('main', $id, 'main_id');
+        $category = $_GET['cat'];
+        $categoryname = D("Menu")->getCategoryname($category); 
+        if($categoryname[0]['parentid']!='0'){
+            $parentcategoryname = D("Menu")->getCategoryname($categoryname[0]['parentid']); 
+        }
+        $categoryname = $parentcategoryname[0]['name'].">".$categoryname[0]['name'];
+        $this->assign('data', $data);
+        $this->assign('result', array(
+            'categoryname' => $categoryname,
+        ));
+        $this->display();
     }
 }

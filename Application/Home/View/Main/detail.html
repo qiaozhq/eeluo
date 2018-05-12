@@ -11,27 +11,20 @@
          </span>
        </h1>
      </header><!-- .page-header -->
-     <volist name="result['main']" id="vo">
       <article id="post-84" class="entry post-84 post type-post status-publish format-standard has-post-thumbnail hentry category-phones tag-extreme tag-led tag-powerful tag-smart">
-       <div class="entry-media">
-        <figure>
-         <a href="/main/detail.html?cat={$vo.sub_category}&id={$vo.main_id}">
-          <img width="643" height="430" src="{$vo.thumb}" class="attachment-islemag_blog_post_no_crop size-islemag_blog_post_no_crop wp-post-image" alt=""  sizes="(max-width: 643px) 100vw, 643px"></a>
-        </figure>
-      </div><!-- End .entry-media -->
       <div class="entry-date">
-        <div>{$vo.update_time|getDay}
-          <span>{$vo.update_time|getMonth}</span>
+        <div>{$data.update_time|getDay}
+          <span>{$data.update_time|getMonth}</span>
         </div>
       </div>
       <h2 class="entry-title">
-        <a href="/main/detail.html?cat={$vo.sub_category}&id={$vo.main_id}" rel="bookmark">{$vo.title}</a>
+        {$data.title}
       </h2>
       <div class="entry-content">
-        <p>{$vo.content} […]</p>
+        <p>{$data.content}</p>
       </div><!-- .entry-content -->
     </article>
-  </volist>
+
 
   <div class="reviewzine-pagination"></div>		
 </div><!-- End .islemag-content-left -->
@@ -44,7 +37,7 @@
    <ul>
     <volist name="result['submenus']" id="vo">
       <li>
-       <a href="/main/subCategory.html?cat={$vo.menu_id}">{$vo.name}
+       <a href="/main/subCategory.html?id={$vo.menu_id}">{$vo.name}
        </a>
      </li>
    </volist>

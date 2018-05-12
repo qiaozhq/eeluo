@@ -10,11 +10,26 @@
   <link rel="Bookmark" href="/Public/images/favicon.ico">
   <title>{$basic.title}</title>
   <link href="/Public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/Public/css/home/style.css?version={$basic.md5version}" type="text/css">
-  <link rel="stylesheet" href="/Public/css/home/font-awesome.min(1).css" type="text/css">
-  <link rel="stylesheet" href="/Public/css/home/css?version={$basic.md5version}" type="text/css">
   <link rel="stylesheet" href="/Public/css/home/style(1).css?version={$basic.md5version}" type="text/css">
   <link rel="stylesheet" href="/Public/css/home/style.css?version={$basic.md5version}" type="text/css">
-  <link rel="stylesheet" href="/Public/css/home/mailin-front.css?version={$basic.md5version}" type="text/css">
 </head>
 <body class="archive category category-phones category-3 custom-background wp-custom-logo">
+<div id="wrapper">
+  <header id="header" class="site-header" role="banner">
+   <div class="container">
+     <div id="navbar" class="navbar islemag-sticky">
+      <nav id="site-navigation" class="navigation main-navigation" role="navigation">
+       <div class="menu-main-menu-container">
+         <ul id="primary-menu" class="nav-menu" aria-expanded="false">
+          <li id="menu-item-91" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-91"><a href="/index.html">首页</a>
+           </li>
+          <volist name="menus" id="menu">
+           <li id="menu-item-91" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-91"><a href="/main.html?cat={$menu.menu_id}">{$menu.name}</a>
+           </li>
+         </volist>
+       </ul>
+     </div>       
+   </nav><!-- #site-navigation -->
+ </div><!-- #navbar -->
+</div>
+</header><!-- End #header -->

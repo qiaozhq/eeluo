@@ -15,45 +15,6 @@
 	</div>
 <script src="/Public/js/jquery.min.js"></script>
 <script src="/Public/js/bootstrap.min.js"></script>
-<script src="/Public/js/home/vendor.js?version={$basic.md5version}"></script>
 <script src="/Public/js/home/main.js?version={$basic.md5version}"></script>
-
-<script type="text/javascript">
-	$('a[href=#contact]').hover(function() {
-		setTimeout(function() {
-			$('#us').animate({
-				opacity: '1'
-			})
-		}, 1200)
-	})
-	$('#contact').hover(function() {
-		$('#us').animate({
-			opacity: '1'
-		});
-	})
-	$('#launcher1').hover(function() {
-		$('#us').animate({
-			opacity: '1'
-		});
-	})
-
-	function c() {
-		var a = $('h4').length
-		var name = ''
-		name += "<ol style='list-style-type:decimal'>"
-		for(var i = 0; i < a; i++) {
-			name += "<li>"
-			name += $('h4').eq(i).html();
-			name += "</li>"
-		};
-		name += "</ol>"
-		$('#photo-wall').append(name);
-		console.log(name);
-	}
-	$('#app-start').click(function() {
-		$('a[href=#apps]').click();
-	})
-	$('#apps h3:nth-of-type(odd)').css('text-align', 'left');
-</script>
 </body>
 </html>

@@ -9,7 +9,6 @@ use Think\Exception;
  */
 class IndexController extends CommonController {
     public function index(){
-        $category = $_GET['id']; 
         $main = D("Main")->getHomeData('Main', 'main_id');
         $this->assign('result', array(
             'main' => $main,
