@@ -17,6 +17,10 @@ class CommonController extends Controller {
         $this->assign('basic', $basic);
         $this->assign('service', $service); 
         $menus = D("Menu")->getBarMenus();
+        foreach ($menus as $i=>$menu){
+            $count = D("Main")->getCountData('main', $menu['menu_id']);
+            $menus[$i]['count'] = $count;
+        }
         $this->assign('menus',$menus);
     }
 

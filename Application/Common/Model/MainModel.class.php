@@ -25,6 +25,15 @@ class MainModel extends CommonModel {
         return M($_db)->where($idname.'='.$idval)->save($data);
     }
 
+    public function getCountData($_db, $id='id') {
+        $data = array(
+            'status' => array('eq',1),
+            'category' => $id,
+        );
+        $list = M($_db)->where($data)->select();
+        return count($list);
+    }
+
     public function getPushData($_db, $id='id') {
         $data = array(
             'status' => array('neq',-1),

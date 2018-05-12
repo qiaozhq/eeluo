@@ -19,7 +19,8 @@ class MenuModel extends CommonModel {
             'status' => 1,
             'parentid' => 0,
         );
-        $res = $this->_db->where($data)
+        $res = $this->_db
+            ->where($data)
             ->order('listorder desc,menu_id desc')
             ->select();
         return $res;
