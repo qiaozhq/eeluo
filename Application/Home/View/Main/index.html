@@ -1,82 +1,94 @@
 <include file="Index/header" />
-  <div id="wrapper">
-    <header id="header" class="site-header" role="banner">
-       <div class="container">
-         <div id="navbar" class="navbar     islemag-sticky">
-          <nav id="site-navigation" class="navigation main-navigation" role="navigation">
-           <div class="menu-main-menu-container"><ul id="primary-menu" class="nav-menu" aria-expanded="false">
-            <volist name="menus" id="menu">
-             <li id="menu-item-91" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-91"><a href="/main.html?id={$menu.menu_id}">{$menu.name}</a></li>
-           </volist>
+<div id="wrapper">
+  <header id="header" class="site-header" role="banner">
+   <div class="container">
+     <div id="navbar" class="navbar islemag-sticky">
+      <nav id="site-navigation" class="navigation main-navigation" role="navigation">
+       <div class="menu-main-menu-container">
+         <ul id="primary-menu" class="nav-menu" aria-expanded="false">
+          <volist name="menus" id="menu">
+           <li id="menu-item-91" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-91"><a href="/main.html?id={$menu.menu_id}">{$menu.name}</a>
+           </li>
+         </volist>
+       </ul>
+     </div>				
+   </nav><!-- #site-navigation -->
+ </div><!-- #navbar -->
+</div>
+</header><!-- End #header -->
+<div class="site-content container">
+  <div class="container">
+   <div class="row">
+    <div class="islemag-content-left col-md-8">
+     <header class="page-header">
+       <h1>
+         <span>
+           Category
+           <span class="category-name">{$result['categoryname']}
+           </span>							
+         </span>
+       </h1>
+     </header><!-- .page-header -->
+     <volist name="result['main']" id="vo">
+      <article id="post-84" class="entry post-84 post type-post status-publish format-standard has-post-thumbnail hentry category-phones tag-extreme tag-led tag-powerful tag-smart">
+       <div class="entry-media">
+        <figure>
+         <a href="https://demo.themeisle.com/reviewzine/2016/11/16/nature-valley-warmly/">
+          <img width="643" height="430" src="{$vo.thumb}" class="attachment-islemag_blog_post_no_crop size-islemag_blog_post_no_crop wp-post-image" alt=""  sizes="(max-width: 643px) 100vw, 643px"></a>
+        </figure>
+      </div><!-- End .entry-media -->
+      <div class="entry-date">
+        <div>{$vo.update_time|getDay}
+          <span>{$vo.update_time|getMonth}</span>
+        </div>
+      </div>
+      <h2 class="entry-title">
+        <a href="https://demo.themeisle.com/reviewzine/2016/11/16/nature-valley-warmly/" rel="bookmark">{$vo.title}</a>
+      </h2>
+      <div class="entry-content">
+        <p>{$vo.content} […]</p>
+      </div><!-- .entry-content -->
+    </article>
+  </volist>
 
-         </ul></div>				</nav><!-- #site-navigation -->
-       </div><!-- #navbar -->
-     </div>
+  <div class="reviewzine-pagination"></div>		
+</div><!-- End .islemag-content-left -->
 
-
-   </header><!-- End #header -->
-   <div class="site-content container">
-    <div class="container">
-     <div class="row">
-      <div class="islemag-content-left col-md-8">
-       <header class="page-header">
-         <h1><span>
-           Category<span class="category-name">{$result['categoryname']}</span>							</span></h1>
-         </header><!-- .page-header -->
-         <volist name="result['main']" id="vo">
-
-          <article id="post-84" class="entry post-84 post type-post status-publish format-standard has-post-thumbnail hentry category-phones tag-extreme tag-led tag-powerful tag-smart">
-
-           <div class="entry-media">
-            <figure>
-             <a href="https://demo.themeisle.com/reviewzine/2016/11/16/nature-valley-warmly/">
-              <img width="643" height="430" src="{$vo.thumb}" class="attachment-islemag_blog_post_no_crop size-islemag_blog_post_no_crop wp-post-image" alt=""  sizes="(max-width: 643px) 100vw, 643px">           </a>
-            </figure>
-          </div><!-- End .entry-media -->
-          <div class="entry-date"><div>{$vo.update_time|getDay}<span>{$vo.update_time|getMonth}</span></div></div>
-          <h2 class="entry-title"><a href="https://demo.themeisle.com/reviewzine/2016/11/16/nature-valley-warmly/" rel="bookmark">{$vo.title}</a></h2>
-          <div class="entry-content">
-            <p>{$vo.content} […]</p>
-
-          </div><!-- .entry-content -->
-
-
-        </article>
-
-
-      </volist>
-
-      <div class="reviewzine-pagination"></div>		</div><!-- End .islemag-content-left -->
-
-      <aside class="sidebar islemag-content-right col-md-4" role="complementary">
-       <div id="recent-posts-3" class="widget widget_recent_entries">		<h3 class="title-border dkgreen title-bg-line"><span>小分类</span></h3>		<ul>
-        <volist name="result['submenus']" id="vo">
-          <li>
-           <a href="/main/subCategory.html?id={$vo.menu_id}">{$vo.name}</a>
-         </li>
-       </volist>
-
-     </ul>
-   </div>
-   <div id="categories-3" class="widget widget_categories"><h3 class="title-border dkgreen title-bg-line"><span>Categories</span></h3>		<ul>
-     <volist name="menus" id="menu">
-       <li class="cat-item cat-item-6"><a href="/main.html?id={$menu.menu_id}">{$menu.name}</a> {$menu.count}
-       </li>
-     </volist>
-
-   </ul>
- </div>
- <div id="tag_cloud-2" class="widget widget_tag_cloud"><h3 class="title-border dkgreen title-bg-line"><span>Tags</span></h3>
- <div class="tagcloud"><a href="https://demo.themeisle.com/reviewzine/tag/dangerous/" class="tag-cloud-link tag-link-16 tag-link-position-1" style="font-size: 8pt;" aria-label="dangerous (1 item)">dangerous</a>
+<aside class="sidebar islemag-content-right col-md-4" role="complementary">
+ <div id="recent-posts-3" class="widget widget_recent_entries">		
+   <h3 class="title-border dkgreen title-bg-line">
+     <span>小分类</span>
+   </h3>		
+   <ul>
+    <volist name="result['submenus']" id="vo">
+      <li>
+       <a href="/main/subCategory.html?id={$vo.menu_id}">{$vo.name}
+       </a>
+     </li>
+   </volist>
+ </ul>
+</div>
+<div id="categories-3" class="widget widget_categories">
+ <h3 class="title-border dkgreen title-bg-line">
+   <span>Categories</span>
+ </h3>		
+ <ul>
+   <volist name="menus" id="menu">
+     <li class="cat-item cat-item-6"><a href="/main.html?id={$menu.menu_id}">{$menu.name}</a> {$menu.count}
+     </li>
+   </volist>
+ </ul>
+</div>
+<div id="tag_cloud-2" class="widget widget_tag_cloud">
+  <h3 class="title-border dkgreen title-bg-line">
+    <span>Tags</span>
+  </h3>
+  <div class="tagcloud">
+   <a href="https://demo.themeisle.com/reviewzine/tag/dangerous/" class="tag-cloud-link tag-link-16 tag-link-position-1" style="font-size: 8pt;" aria-label="dangerous (1 item)">dangerous</a>
  </div>
 </div>
 </aside><!-- #secondary -->
-
 </div><!-- End .row -->
 </div><!-- End .container -->
-
-
-
-
 </div><!-- #content -->
 <include file="Index/footer" />
