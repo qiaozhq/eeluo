@@ -9,10 +9,8 @@ use Think\Exception;
  */
 class IndexController extends CommonController {
     public function index(){
-        $main = D("Main")->getHomeData('Main', 'main_id');
-        $this->assign('result', array(
-            'main' => $main,
-        ));
+        $push = D("Main")->getPushData('Main', 'main_id');
+        $this->assign('push',$push);
         $this->display();
     }
 }

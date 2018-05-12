@@ -32,129 +32,63 @@
 </div>
 </header><!-- End #header -->
 <div class="site-content container">
-  <div class="container">
-   <div class="row">
-    <div class="islemag-content-left col-md-8">
-     <header class="page-header">
-       <h1>
-         <span>
-           <span class="category-name"><?php echo ($result['categoryname']); ?>
-           </span>							
-         </span>
-       </h1>
-     </header><!-- .page-header -->
- <div class="islemag-section
-	2	">
-					<h2 class="title-border title-bg-line  mb30">
-				<span>Technology</span>
-			</h2>
+	<div class="container">
+		<div class="row">
+			<div class="islemag-content-left col-md-8">
+				<?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><div class="islemag-section
+				2	">
+				<h2 class="title-border title-bg-line  mb30">
+					<span><?php echo ($menu["name"]); ?></span>
+				</h2>
 				<div class="post-section islemag-template2">
-	<div class="row">
+					<div class="row">
+						<?php if(is_array($push)): $i = 0; $__LIST__ = $push;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if(($vo['category'] == $menu.menu_id)): ?><div class="col-sm-6">
+								<article class="entry entry-overlay entry-block eb-small">
+									<div class="entry-media">
+										<a href="/main/detail.html?cat=<?php echo ($vo["sub_category"]); ?>&id=<?php echo ($vo["main_id"]); ?>" class="category-block" title="Category Smart Watches"><?php echo getParentMenuName($vo['category'],$menus);?></a>
+										<figure>
+											<a href="/main/detail.html?cat=<?php echo ($vo["sub_category"]); ?>&id=<?php echo ($vo["main_id"]); ?>" title="Him why feebly expect future now">
+												<img width="110" height="110" src="<?php echo ($vo["thumb"]); ?>" class="attachment-islemag_sections_small_thumbnail_no_crop size-islemag_sections_small_thumbnail_no_crop wp-post-image" alt="">
+											</a>
+										</figure> <!-- End figure -->
+									</div> <!-- End .entry-media -->
 
-	
-	<div class="col-sm-6">
-	<article class="entry entry-overlay entry-block eb-small">
-	  <div class="entry-media">
-		<a href="https://demo.themeisle.com/reviewzine/category/smart-watches/" class="category-block" title="Category Smart Watches">Smart Watches</a>
-		  <figure>
-			  <a href="https://demo.themeisle.com/reviewzine/2016/11/16/feebly-expect-future-now/" title="Him why feebly expect future now">
-					<img width="110" height="110" src="./Frontpage - Reviewzine_files/vr_reviewzine-e1484735658183-110x110.jpg" class="attachment-islemag_sections_small_thumbnail_no_crop size-islemag_sections_small_thumbnail_no_crop wp-post-image" alt="" srcset="https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/vr_reviewzine-e1484735658183-110x110.jpg 110w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/vr_reviewzine-e1484735658183-150x150.jpg 150w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/vr_reviewzine-e1484735658183-300x300.jpg 300w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/vr_reviewzine-e1484735658183-250x250.jpg 250w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/vr_reviewzine-e1484735658183-125x125.jpg 125w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/vr_reviewzine-e1484735658183-420x420.jpg 420w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/vr_reviewzine-e1484735658183-430x430.jpg 430w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/vr_reviewzine-e1484735658183-50x50.jpg 50w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/vr_reviewzine-e1484735658183.jpg 667w" sizes="(max-width: 110px) 100vw, 110px">				  </a>
-			  </figure> <!-- End figure -->
-			</div> <!-- End .entry-media -->
+									<h3 class="entry-title"><a href="/main/detail.html?cat=<?php echo ($vo["sub_category"]); ?>&id=<?php echo ($vo["main_id"]); ?>"><?php echo ($vo["title"]); ?></a></h3>
+									<div class="entry-meta">
+										<span class="entry-overlay-date"><i class="fa fa-calendar-o"></i>16 November 2016</span>
+										<span class="entry-separator">|</span>
+										<a href="/main/detail.html?cat=<?php echo ($vo["sub_category"]); ?>&id=<?php echo ($vo["main_id"]); ?>" class="entry-comments"><i class="fa fa-comment-o"></i>3</a>
+									</div> <!-- End .entry-meta -->
+								</article> <!-- End .entry-block -->
+							</div> <!-- End .col-sm-6 -->
+						<?php else: endif; endforeach; endif; else: echo "" ;endif; ?>
 
-			<h3 class="entry-title"><a href="https://demo.themeisle.com/reviewzine/2016/11/16/feebly-expect-future-now/">Him why feebly expect future now</a></h3>
-			<div class="entry-meta">
-			  <span class="entry-overlay-date"><i class="fa fa-calendar-o"></i>16 November 2016</span>
-			  <span class="entry-separator">|</span>
-			  <a href="https://demo.themeisle.com/reviewzine/2016/11/16/feebly-expect-future-now/" class="entry-comments"><i class="fa fa-comment-o"></i>3</a>
-			</div> <!-- End .entry-meta -->
-					  </article> <!-- End .entry-block -->
-		</div> <!-- End .col-sm-6 -->
-	
-	<div class="col-sm-6">
-	<article class="entry entry-overlay entry-block eb-small">
-	  <div class="entry-media">
-		<a href="https://demo.themeisle.com/reviewzine/category/tablets/" class="category-block" title="Category Tablets">Tablets</a>
-		  <figure>
-			  <a href="https://demo.themeisle.com/reviewzine/2016/11/16/lose-eyes-get-fat-shew/" title="Lose eyes get fat shew">
-					<img width="110" height="110" src="./Frontpage - Reviewzine_files/gamepad_reviewzine-110x110.jpg" class="attachment-islemag_sections_small_thumbnail size-islemag_sections_small_thumbnail wp-post-image" alt="" srcset="https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/gamepad_reviewzine-110x110.jpg 110w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/gamepad_reviewzine-150x150.jpg 150w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/gamepad_reviewzine-250x250.jpg 250w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/gamepad_reviewzine-125x125.jpg 125w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/gamepad_reviewzine-420x420.jpg 420w" sizes="(max-width: 110px) 100vw, 110px">				  </a>
-			  </figure> <!-- End figure -->
-			</div> <!-- End .entry-media -->
+					</div> <!-- End .row -->
+				</div> <!-- End .post-section -->
+			</div><?php endforeach; endif; else: echo "" ;endif; ?>
+			<div class="reviewzine-pagination"></div>		
+		</div><!-- End .islemag-content-left -->
 
-			<h3 class="entry-title"><a href="https://demo.themeisle.com/reviewzine/2016/11/16/lose-eyes-get-fat-shew/">Lose eyes get fat shew</a></h3>
-			<div class="entry-meta">
-			  <span class="entry-overlay-date"><i class="fa fa-calendar-o"></i>16 November 2016</span>
-			  <span class="entry-separator">|</span>
-			  <a href="https://demo.themeisle.com/reviewzine/2016/11/16/lose-eyes-get-fat-shew/" class="entry-comments"><i class="fa fa-comment-o"></i>4</a>
-			</div> <!-- End .entry-meta -->
-					  </article> <!-- End .entry-block -->
-		</div> <!-- End .col-sm-6 -->
-	
-	<div class="col-sm-6">
-	<article class="entry entry-overlay entry-block eb-small">
-	  <div class="entry-media">
-		<a href="https://demo.themeisle.com/reviewzine/category/laptop/" class="category-block" title="Category Laptop">Laptop</a>
-		  <figure>
-			  <a href="https://demo.themeisle.com/reviewzine/2016/11/16/seeing-piqued-garden/" title="We seeing piqued garden he">
-					<img width="110" height="110" src="./Frontpage - Reviewzine_files/tv_reviewzine-110x110.jpg" class="attachment-islemag_sections_small_thumbnail size-islemag_sections_small_thumbnail wp-post-image" alt="" srcset="https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/tv_reviewzine-110x110.jpg 110w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/tv_reviewzine-150x150.jpg 150w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/tv_reviewzine-250x250.jpg 250w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/tv_reviewzine-125x125.jpg 125w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/tv_reviewzine-420x420.jpg 420w" sizes="(max-width: 110px) 100vw, 110px">				  </a>
-			  </figure> <!-- End figure -->
-			</div> <!-- End .entry-media -->
-
-			<h3 class="entry-title"><a href="https://demo.themeisle.com/reviewzine/2016/11/16/seeing-piqued-garden/">We seeing piqued garden he</a></h3>
-			<div class="entry-meta">
-			  <span class="entry-overlay-date"><i class="fa fa-calendar-o"></i>16 November 2016</span>
-			  <span class="entry-separator">|</span>
-			  <a href="https://demo.themeisle.com/reviewzine/2016/11/16/seeing-piqued-garden/" class="entry-comments"><i class="fa fa-comment-o"></i>2</a>
-			</div> <!-- End .entry-meta -->
-					  </article> <!-- End .entry-block -->
-		</div> <!-- End .col-sm-6 -->
-	
-	<div class="col-sm-6">
-	<article class="entry entry-overlay entry-block eb-small">
-	  <div class="entry-media">
-		<a href="https://demo.themeisle.com/reviewzine/category/technology/" class="category-block" title="Category Technology">Technology</a>
-		  <figure>
-			  <a href="https://demo.themeisle.com/reviewzine/2016/11/16/indulgence-announcing-uncommonly-met-continuing-two-unpleasing-terminated/" title="Indulgence announcing uncommonly">
-					<img width="110" height="110" src="./Frontpage - Reviewzine_files/lens-272264_960_720-110x110.jpg" class="attachment-islemag_sections_small_thumbnail size-islemag_sections_small_thumbnail wp-post-image" alt="" srcset="https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/lens-272264_960_720-110x110.jpg 110w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/lens-272264_960_720-150x150.jpg 150w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/lens-272264_960_720-250x250.jpg 250w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/lens-272264_960_720-125x125.jpg 125w, https://s20206.pcdn.co/reviewzine/wp-content/uploads/sites/93/2016/11/lens-272264_960_720-420x420.jpg 420w" sizes="(max-width: 110px) 100vw, 110px">				  </a>
-			  </figure> <!-- End figure -->
-			</div> <!-- End .entry-media -->
-
-			<h3 class="entry-title"><a href="https://demo.themeisle.com/reviewzine/2016/11/16/indulgence-announcing-uncommonly-met-continuing-two-unpleasing-terminated/">Indulgence announcing uncommonly</a></h3>
-			<div class="entry-meta">
-			  <span class="entry-overlay-date"><i class="fa fa-calendar-o"></i>16 November 2016</span>
-			  <span class="entry-separator">|</span>
-			  <a href="https://demo.themeisle.com/reviewzine/2016/11/16/indulgence-announcing-uncommonly-met-continuing-two-unpleasing-terminated/" class="entry-comments"><i class="fa fa-comment-o"></i>0</a>
-			</div> <!-- End .entry-meta -->
-					  </article> <!-- End .entry-block -->
-		</div> <!-- End .col-sm-6 -->
-	
-	</div> <!-- End .row -->
-	</div> <!-- End .post-section -->
-	</div>
-
-  <div class="reviewzine-pagination"></div>		
-</div><!-- End .islemag-content-left -->
-
-<aside class="sidebar islemag-content-right col-md-4" role="complementary">
-<div id="categories-3" class="widget widget_categories">
- <h3 class="title-border dkgreen title-bg-line">
-   <span>Categories</span>
- </h3>		
- <ul>
-   <?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li class="cat-item cat-item-6"><a href="/main.html?cat=<?php echo ($menu["menu_id"]); ?>"><?php echo ($menu["name"]); ?></a> <?php echo ($menu["count"]); ?>
-     </li><?php endforeach; endif; else: echo "" ;endif; ?>
- </ul>
-</div>
-<div id="tag_cloud-2" class="widget widget_tag_cloud">
-  <h3 class="title-border dkgreen title-bg-line">
-    <span>Tags</span>
-  </h3>
-  <div class="tagcloud">
-   <a href="https://demo.themeisle.com/reviewzine/tag/dangerous/" class="tag-cloud-link tag-link-16 tag-link-position-1" style="font-size: 8pt;" aria-label="dangerous (1 item)">dangerous</a>
- </div>
-</div>
-</aside><!-- #secondary -->
-</div><!-- End .row -->
+		<aside class="sidebar islemag-content-right col-md-4" role="complementary">
+			<div id="categories-3" class="widget widget_categories">
+				<h3 class="title-border dkgreen title-bg-line">
+					<span>Categories</span>
+				</h3>		
+				<ul>
+					<?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li class="cat-item cat-item-6"><a href="/main.html?cat=<?php echo ($menu["menu_id"]); ?>"><?php echo ($menu["name"]); ?></a> <?php echo ($menu["count"]); ?>
+						</li><?php endforeach; endif; else: echo "" ;endif; ?>
+				</ul>
+			</div>
+			<div id="tag_cloud-2" class="widget widget_tag_cloud">
+				<h3 class="title-border dkgreen title-bg-line">
+					<span>Tags</span>
+				</h3>
+				<div class="tagcloud">
+					<a href="https://demo.themeisle.com/reviewzine/tag/dangerous/" class="tag-cloud-link tag-link-16 tag-link-position-1" style="font-size: 8pt;" aria-label="dangerous (1 item)">dangerous</a>
+				</div>
+			</div>
+		</aside><!-- #secondary -->
+	</div><!-- End .row -->
 </div><!-- End .container -->
 </div><!-- #content -->
 <!-- 联系我们 -->
