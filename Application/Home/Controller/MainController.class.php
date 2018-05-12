@@ -35,12 +35,13 @@ class MainController extends CommonController {
     public function detail(){
         $id = $_GET['id'];
         $data = D("Main")->find('main', $id, 'main_id');
-        $category = $_GET['cat'];
-        $categoryname = D("Menu")->getCategoryname($category); 
-        if($categoryname[0]['parentid']!='0'){
-            $parentcategoryname = D("Menu")->getCategoryname($categoryname[0]['parentid']); 
+        $catname = D("Menu")->getCategoryname($data['category']);
+        $subcatname = D("Menu")->getCategoryname($data['sub_category']);
+        if(empty($subcatname)) {
+            $categoryname = $catname[0]['name'];
+        }else{
+            $categoryname = $catname[0]['name'].">".$subcatname[0]['name'];
         }
-        $categoryname = $parentcategoryname[0]['name'].">".$categoryname[0]['name'];
         $this->assign('data', $data);
         $this->assign('result', array(
             'categoryname' => $categoryname,

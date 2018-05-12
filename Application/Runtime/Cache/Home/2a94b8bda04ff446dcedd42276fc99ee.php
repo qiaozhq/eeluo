@@ -42,26 +42,25 @@
 				</h2>
 				<div class="post-section islemag-template2">
 					<div class="row">
-						<?php if(is_array($push)): $i = 0; $__LIST__ = $push;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if(($vo['category'] == $menu.menu_id)): ?><div class="col-sm-6">
+						<?php if(is_array($push)): $i = 0; $__LIST__ = $push;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if(($vo['category']) == $menu["menu_id"]): ?><div class="col-sm-6">
 								<article class="entry entry-overlay entry-block eb-small">
 									<div class="entry-media">
-										<a href="/main/detail.html?cat=<?php echo ($vo["sub_category"]); ?>&id=<?php echo ($vo["main_id"]); ?>" class="category-block" title="Category Smart Watches"><?php echo getParentMenuName($vo['category'],$menus);?></a>
+										<a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>" class="category-block" title="Category Smart Watches"><?php echo getParentMenuName($vo['category'],$menus);?></a>
 										<figure>
-											<a href="/main/detail.html?cat=<?php echo ($vo["sub_category"]); ?>&id=<?php echo ($vo["main_id"]); ?>" title="Him why feebly expect future now">
+											<a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>" title="Him why feebly expect future now">
 												<img width="110" height="110" src="<?php echo ($vo["thumb"]); ?>" class="attachment-islemag_sections_small_thumbnail_no_crop size-islemag_sections_small_thumbnail_no_crop wp-post-image" alt="">
 											</a>
 										</figure> <!-- End figure -->
 									</div> <!-- End .entry-media -->
 
-									<h3 class="entry-title"><a href="/main/detail.html?cat=<?php echo ($vo["sub_category"]); ?>&id=<?php echo ($vo["main_id"]); ?>"><?php echo ($vo["title"]); ?></a></h3>
+									<h3 class="entry-title"><a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>"><?php echo ($vo["title"]); ?></a></h3>
 									<div class="entry-meta">
 										<span class="entry-overlay-date"><i class="fa fa-calendar-o"></i>16 November 2016</span>
 										<span class="entry-separator">|</span>
-										<a href="/main/detail.html?cat=<?php echo ($vo["sub_category"]); ?>&id=<?php echo ($vo["main_id"]); ?>" class="entry-comments"><i class="fa fa-comment-o"></i>3</a>
+										<a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>" class="entry-comments"><i class="fa fa-comment-o"></i>3</a>
 									</div> <!-- End .entry-meta -->
 								</article> <!-- End .entry-block -->
-							</div> <!-- End .col-sm-6 -->
-						<?php else: endif; endforeach; endif; else: echo "" ;endif; ?>
+							</div> <!-- End .col-sm-6 --><?php endif; endforeach; endif; else: echo "" ;endif; ?>
 
 					</div> <!-- End .row -->
 				</div> <!-- End .post-section -->
@@ -70,40 +69,40 @@
 		</div><!-- End .islemag-content-left -->
 
 		<aside class="sidebar islemag-content-right col-md-4" role="complementary">
-			<div id="categories-3" class="widget widget_categories">
-				<h3 class="title-border dkgreen title-bg-line">
-					<span>Categories</span>
-				</h3>		
-				<ul>
-					<?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li class="cat-item cat-item-6"><a href="/main.html?cat=<?php echo ($menu["menu_id"]); ?>"><?php echo ($menu["name"]); ?></a> <?php echo ($menu["count"]); ?>
-						</li><?php endforeach; endif; else: echo "" ;endif; ?>
-				</ul>
-			</div>
-			<div id="tag_cloud-2" class="widget widget_tag_cloud">
-				<h3 class="title-border dkgreen title-bg-line">
-					<span>Tags</span>
-				</h3>
-				<div class="tagcloud">
-					<a href="https://demo.themeisle.com/reviewzine/tag/dangerous/" class="tag-cloud-link tag-link-16 tag-link-position-1" style="font-size: 8pt;" aria-label="dangerous (1 item)">dangerous</a>
-				</div>
-			</div>
-		</aside><!-- #secondary -->
-	</div><!-- End .row -->
+	<div id="categories-3" class="widget widget_categories">
+		<h3 class="title-border dkgreen title-bg-line">
+			<span>Categories</span>
+		</h3>		
+		<ul>
+			<?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li class="cat-item cat-item-6"><a href="/main.html?cat=<?php echo ($menu["menu_id"]); ?>"><?php echo ($menu["name"]); ?></a> <?php echo ($menu["count"]); ?>
+				</li><?php endforeach; endif; else: echo "" ;endif; ?>
+		</ul>
+	</div>
+	<div id="tag_cloud-2" class="widget widget_tag_cloud">
+		<h3 class="title-border dkgreen title-bg-line">
+			<span>Tags</span>
+		</h3>
+		<div class="tagcloud">
+			<a href="#" class="tag-cloud-link tag-link-16 tag-link-position-1" style="font-size: 8pt;" aria-label="dangerous (1 item)">dangerous</a>
+		</div>
+	</div>
+</aside><!-- #secondary -->
+</div><!-- End .row -->
 </div><!-- End .container -->
 </div><!-- #content -->
 <!-- 联系我们 -->
-		<div class="section" id="cooperation" style="padding:50px">
-			<div class="col-md-3"></div>
-			<div class="col-xs-12 col-md-3">
-				<h3>关于</h3>
-			</div>
-			<div class="col-xs-12 col-md-3">
-				<h3>服务</h3>
-				<?php if(is_array($service)): $i = 0; $__LIST__ = $service;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$s): $mod = ($i % 2 );++$i;?><p><?php echo ($s); ?></p><?php endforeach; endif; else: echo "" ;endif; ?>
-			</div>
-			<div class="col-md-3"></div>				
-		</div>
+<div class="section" id="cooperation" style="padding:50px">
+	<div class="col-md-3"></div>
+	<div class="col-xs-12 col-md-3">
+		<h3>关于</h3>
 	</div>
+	<div class="col-xs-12 col-md-3">
+		<h3>Tags</h3>
+		<?php if(is_array($service)): $i = 0; $__LIST__ = $service;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$s): $mod = ($i % 2 );++$i;?><p><?php echo ($s); ?></p><?php endforeach; endif; else: echo "" ;endif; ?>
+	</div>
+	<div class="col-md-3"></div>				
+</div>
+</div>
 <script src="/Public/js/jquery.min.js"></script>
 <script src="/Public/js/bootstrap.min.js"></script>
 <script src="/Public/js/home/main.js?version=<?php echo ($basic["md5version"]); ?>"></script>

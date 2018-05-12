@@ -15,7 +15,7 @@
       <article id="post-84" class="entry post-84 post type-post status-publish format-standard has-post-thumbnail hentry category-phones tag-extreme tag-led tag-powerful tag-smart">
        <div class="entry-media">
         <figure>
-         <a href="/main/detail.html?cat={$vo.sub_category}&id={$vo.main_id}">
+         <a href="/main/detail.html?id={$vo.main_id}">
           <img width="643" height="430" src="{$vo.thumb}" class="attachment-islemag_blog_post_no_crop size-islemag_blog_post_no_crop wp-post-image" alt=""  sizes="(max-width: 643px) 100vw, 643px"></a>
         </figure>
       </div><!-- End .entry-media -->
@@ -25,7 +25,7 @@
         </div>
       </div>
       <h2 class="entry-title">
-        <a href="/main/detail.html?cat={$vo.sub_category}&id={$vo.main_id}" rel="bookmark">{$vo.title}</a>
+        <a href="/main/detail.html?id={$vo.main_id}" rel="bookmark">{$vo.title}</a>
       </h2>
       <div class="entry-content">
         <p>{$vo.content} […]</p>
@@ -50,27 +50,4 @@
    </volist>
  </ul>
 </div>
-<div id="categories-3" class="widget widget_categories">
- <h3 class="title-border dkgreen title-bg-line">
-   <span>Categories</span>
- </h3>		
- <ul>
-   <volist name="menus" id="menu">
-     <li class="cat-item cat-item-6"><a href="/main.html?cat={$menu.menu_id}">{$menu.name}</a> {$menu.count}
-     </li>
-   </volist>
- </ul>
-</div>
-<div id="tag_cloud-2" class="widget widget_tag_cloud">
-  <h3 class="title-border dkgreen title-bg-line">
-    <span>Tags</span>
-  </h3>
-  <div class="tagcloud">
-   <a href="https://demo.themeisle.com/reviewzine/tag/dangerous/" class="tag-cloud-link tag-link-16 tag-link-position-1" style="font-size: 8pt;" aria-label="dangerous (1 item)">dangerous</a>
- </div>
-</div>
-</aside><!-- #secondary -->
-</div><!-- End .row -->
-</div><!-- End .container -->
-</div><!-- #content -->
 <include file="Index/footer" />

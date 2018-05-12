@@ -1,18 +1,41 @@
-<!-- 联系我们 -->
-		<div class="section" id="cooperation" style="padding:50px">
-			<div class="col-md-3"></div>
-			<div class="col-xs-12 col-md-3">
-				<h3>关于</h3>
-			</div>
-			<div class="col-xs-12 col-md-3">
-				<h3>服务</h3>
-				<volist name="service" id="s">
-					<p>{$s}</p>
-	   			</volist>
-			</div>
-			<div class="col-md-3"></div>				
+	<div id="categories-3" class="widget widget_categories">
+		<h3 class="title-border dkgreen title-bg-line">
+			<span>Categories</span>
+		</h3>		
+		<ul>
+			<volist name="menus" id="menu">
+				<li class="cat-item cat-item-6"><a href="/main.html?cat={$menu.menu_id}">{$menu.name}</a> {$menu.count}
+				</li>
+			</volist>
+		</ul>
+	</div>
+	<div id="tag_cloud-2" class="widget widget_tag_cloud">
+		<h3 class="title-border dkgreen title-bg-line">
+			<span>Tags</span>
+		</h3>
+		<div class="tagcloud">
+			<a href="#" class="tag-cloud-link tag-link-16 tag-link-position-1" style="font-size: 8pt;" aria-label="dangerous (1 item)">dangerous</a>
 		</div>
 	</div>
+</aside><!-- #secondary -->
+</div><!-- End .row -->
+</div><!-- End .container -->
+</div><!-- #content -->
+<!-- 联系我们 -->
+<div class="section" id="cooperation" style="padding:50px">
+	<div class="col-md-3"></div>
+	<div class="col-xs-12 col-md-3">
+		<h3>关于</h3>
+	</div>
+	<div class="col-xs-12 col-md-3">
+		<h3>Tags</h3>
+		<volist name="service" id="s">
+			<p>{$s}</p>
+		</volist>
+	</div>
+	<div class="col-md-3"></div>				
+</div>
+</div>
 <script src="/Public/js/jquery.min.js"></script>
 <script src="/Public/js/bootstrap.min.js"></script>
 <script src="/Public/js/home/main.js?version={$basic.md5version}"></script>
