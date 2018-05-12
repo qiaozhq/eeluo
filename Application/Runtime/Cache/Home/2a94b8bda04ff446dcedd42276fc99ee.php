@@ -21,6 +21,9 @@
       <nav id="site-navigation" class="navigation main-navigation" role="navigation">
        <div class="menu-main-menu-container">
          <ul id="primary-menu" class="nav-menu" aria-expanded="false">
+          <li id="menu-item-91" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-91">
+          <img src="/Public/images/logo.png" class="logo" alt="">
+          </li>
           <li id="menu-item-91" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-91"><a href="/index.html">首页</a>
            </li>
           <?php if(is_array($menus)): $i = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li id="menu-item-91" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-91"><a href="/main.html?cat=<?php echo ($menu["menu_id"]); ?>"><?php echo ($menu["name"]); ?></a>
@@ -30,6 +33,11 @@
    </nav><!-- #site-navigation -->
  </div><!-- #navbar -->
 </div>
+<style>
+.logo{
+  height: 55px;
+}
+</style>
 </header><!-- End #header -->
 <div class="site-content container">
 	<div class="container">
