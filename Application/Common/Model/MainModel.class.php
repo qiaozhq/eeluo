@@ -70,4 +70,14 @@ class MainModel extends CommonModel {
         );
         return M($_db)->where($idname.'='.$idval)->save($data);
     }
+
+    public function updateCountById($_db, $idval, $count, $idname='id') {
+        if(!$idval || !is_numeric($idval)) {
+            throw_exception('ID不合法');
+        }
+        $data = array(
+            'count' => intval($count)+1,
+        );
+        return M($_db)->where($idname.'='.$idval)->save($data);
+    }
 }

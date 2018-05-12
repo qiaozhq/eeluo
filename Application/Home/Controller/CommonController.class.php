@@ -16,6 +16,7 @@ class CommonController extends Controller {
         $service = explode('|',$basic['service']); 
         $this->assign('basic', $basic);
         $this->assign('service', $service); 
+        //取得分类和对应数据条数
         $menus = D("Menu")->getBarMenus();
         foreach ($menus as $i=>$menu){
             $count = D("Main")->getCountData('main', $menu['menu_id']);

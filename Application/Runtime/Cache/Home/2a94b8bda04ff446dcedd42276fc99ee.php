@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, minimum-scale=1,user-scalable=no, minimal-ui">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="<?php echo ($basic["description"]); ?>">
-  <meta name="author" content="e络">
+  <meta name="author" content="e络工作室">
   <meta name="keywords" content="<?php echo ($basic["keywords"]); ?>">
   <link rel="shortcut icon" href="/Public/images/favicon.ico">
   <link rel="Bookmark" href="/Public/images/favicon.ico">
@@ -45,19 +45,19 @@
 						<?php if(is_array($push)): $i = 0; $__LIST__ = $push;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if(($vo['category']) == $menu["menu_id"]): ?><div class="col-sm-6">
 								<article class="entry entry-overlay entry-block eb-small">
 									<div class="entry-media">
-										<a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>" class="category-block" title="Category Smart Watches"><?php echo getParentMenuName($vo['category'],$menus);?></a>
+										<a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>" class="category-block" ><?php echo getParentMenuName($vo['category'],$menus);?></a>
 										<figure>
-											<a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>" title="Him why feebly expect future now">
-												<img width="110" height="110" src="<?php echo ($vo["thumb"]); ?>" class="attachment-islemag_sections_small_thumbnail_no_crop size-islemag_sections_small_thumbnail_no_crop wp-post-image" alt="">
+											<a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>">
+												<img src="<?php echo ($vo["thumb"]); ?>" alt="">
 											</a>
 										</figure> <!-- End figure -->
 									</div> <!-- End .entry-media -->
 
 									<h3 class="entry-title"><a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>"><?php echo ($vo["title"]); ?></a></h3>
 									<div class="entry-meta">
-										<span class="entry-overlay-date"><i class="fa fa-calendar-o"></i>16 November 2016</span>
+										<span class="entry-overlay-date"><i class="fa fa-calendar-o"></i><?php echo ($vo["update_time"]); ?></span>
 										<span class="entry-separator">|</span>
-										<a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>" class="entry-comments"><i class="fa fa-comment-o"></i>3</a>
+										<a href="/main/detail.html?id=<?php echo ($vo["main_id"]); ?>" class="entry-comments"><i class="fa fa-comment-o"></i><?php echo ($vo["count"]); ?></a>
 									</div> <!-- End .entry-meta -->
 								</article> <!-- End .entry-block -->
 							</div> <!-- End .col-sm-6 --><?php endif; endforeach; endif; else: echo "" ;endif; ?>

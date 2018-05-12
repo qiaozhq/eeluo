@@ -51,6 +51,7 @@ class MainController extends CommonController {
             }
             //做成时间
             $_POST['create_time']=create_time(time());
+            $_POST['update_time']=$_POST['create_time'];
             $id = D("Main")->insert('main',$_POST);
             if($id) {
                 return show(1,'新增成功',$id);

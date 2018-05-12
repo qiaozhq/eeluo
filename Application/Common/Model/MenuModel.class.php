@@ -26,7 +26,7 @@ class MenuModel extends CommonModel {
         return $res;
     }
 
-    public function findsubcat($id){
+    public function getSubMenus($id){
         $data = array(
             'status' => array('neq',-1),
             'parentid' => $id,
@@ -37,7 +37,7 @@ class MenuModel extends CommonModel {
         return $this->_db->where($data)->select();
     }
 
-    public function getCategoryname($id){
+    public function getMenuName($id){
         $data = array(
             'status' => array('neq',-1),
             'menu_id' => $id,
