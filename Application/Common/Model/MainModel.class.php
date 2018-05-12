@@ -43,6 +43,15 @@ class MainModel extends CommonModel {
         return $list;
     }
 
+    public function getSubCategoryData($Category) {
+        $data = array(
+            'status' => array('neq',-1),
+            'sub_category' => $Category,
+        );
+        $list = $this->_db->where($data)->order('listorder desc, main_id desc')->select();
+        return $list;
+    }
+
     public function updatePushorderById($_db, $idval, $listorder, $idname='id') {
         if(!$idval || !is_numeric($idval)) {
             throw_exception('ID不合法');

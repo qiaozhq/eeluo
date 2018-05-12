@@ -279,7 +279,7 @@
           <div class="islemag-content-left col-md-8">
            <header class="page-header">
              <h1><span>
-                 Category<span class="category-name">Phones</span>							</span></h1>
+                 Category<span class="category-name">{$result['categoryname']}</span>							</span></h1>
              </header><!-- .page-header -->
              <volist name="result['main']" id="vo">
 
@@ -307,22 +307,22 @@
           <div class="reviewzine-pagination"></div>		</div><!-- End .islemag-content-left -->
 
           <aside class="sidebar islemag-content-right col-md-4" role="complementary">
-             <div id="recent-posts-3" class="widget widget_recent_entries">		<h3 class="title-border dkgreen title-bg-line"><span>Latest posts</span></h3>		<ul>
-                <volist name="result['main']" id="vo">
+             <div id="recent-posts-3" class="widget widget_recent_entries">		<h3 class="title-border dkgreen title-bg-line"><span>小分类</span></h3>		<ul>
+                <volist name="result['submenus']" id="vo">
                     <li>
-                       <a href="https://demo.themeisle.com/reviewzine/2016/11/16/nature-valley-warmly/">{$vo.title}</a>
+                       <a href="/main/subCategory.html?id={$vo.menu_id}">{$vo.name}</a>
                    </li>
                </volist>
 
            </ul>
-       </div><div id="islemag_single_ad-widget-2" class="widget islemag_single_ad"><div class="islemag-ad-banner-content"><a href="https://demo.themeisle.com/reviewzine/category/phones/#" target=""><img src="/Public/images/home/banner_sidebar_reviewzine_1.png" alt=""></a></div></div><div id="categories-3" class="widget widget_categories"><h3 class="title-border dkgreen title-bg-line"><span>Categories</span></h3>		<ul>
+       </div><div id="categories-3" class="widget widget_categories"><h3 class="title-border dkgreen title-bg-line"><span>Categories</span></h3>		<ul>
        <volist name="menus" id="menu">
-         <li class="cat-item cat-item-6"><a href="https://demo.themeisle.com/reviewzine/category/accesories/">{$menu.name}</a> (8)
+         <li class="cat-item cat-item-6"><a href="/main.html?id={$menu.menu_id}">{$menu.name}</a> (8)
          </li>
      </volist>
 
  </ul>
-</div><div id="islemag_single_ad-widget-3" class="widget islemag_single_ad"><div class="islemag-ad-banner-content"><a href="https://demo.themeisle.com/reviewzine/category/phones/#" target=""><img src="/Public/images/home/banner_sidebar_reviewzine_2.png" alt=""></a></div></div><div id="tag_cloud-2" class="widget widget_tag_cloud"><h3 class="title-border dkgreen title-bg-line"><span>Tags</span></h3><div class="tagcloud"><a href="https://demo.themeisle.com/reviewzine/tag/dangerous/" class="tag-cloud-link tag-link-16 tag-link-position-1" style="font-size: 8pt;" aria-label="dangerous (1 item)">dangerous</a>
+</div><div id="tag_cloud-2" class="widget widget_tag_cloud"><h3 class="title-border dkgreen title-bg-line"><span>Tags</span></h3><div class="tagcloud"><a href="https://demo.themeisle.com/reviewzine/tag/dangerous/" class="tag-cloud-link tag-link-16 tag-link-position-1" style="font-size: 8pt;" aria-label="dangerous (1 item)">dangerous</a>
 <a href="https://demo.themeisle.com/reviewzine/tag/edge/" class="tag-cloud-link tag-link-17 tag-link-position-2" style="font-size: 8pt;" aria-label="edge (1 item)">edge</a>
 <a href="https://demo.themeisle.com/reviewzine/tag/extreme/" class="tag-cloud-link tag-link-12 tag-link-position-3" style="font-size: 22pt;" aria-label="extreme (2 items)">extreme</a>
 <a href="https://demo.themeisle.com/reviewzine/tag/features/" class="tag-cloud-link tag-link-15 tag-link-position-4" style="font-size: 8pt;" aria-label="features (1 item)">features</a>
