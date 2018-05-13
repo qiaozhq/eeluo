@@ -12,7 +12,7 @@ class PushController extends CommonController {
     public function index() {
         $mains = D("Main")->getPushData('main', 'main_id');
         $this->assign('mains',$mains);
-        $menus = D("Menu")->getAdminData('menu', 'menu_id');
+        $menus = D("Menu")->getBarMenus();
         $this->assign('menus',$menus);
         $this->display();
     }

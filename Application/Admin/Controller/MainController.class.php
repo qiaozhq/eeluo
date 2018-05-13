@@ -12,7 +12,7 @@ class MainController extends CommonController {
     public function index() {
         $mains = D("Main")->getAdminData('main', 'main_id');
         $this->assign('mains',$mains);
-        $menus = D("Menu")->getAdminData('menu', 'menu_id');
+        $menus = D("Menu")->getBarMenus();
         $this->assign('menus',$menus);
         $this->display();
     }
@@ -21,7 +21,7 @@ class MainController extends CommonController {
     public function poidx() {
         $mains = D("Main")->getAdminData('main', 'main_id');
         $this->assign('mains',$mains);
-        $menus = D("Menu")->getAdminData('menu', 'menu_id');
+        $menus = D("Menu")->getBarMenus();
         $this->assign('menus',$menus);
         $this->display();
     }
@@ -58,7 +58,7 @@ class MainController extends CommonController {
             }
             return show(0,'新增失败',$id);
         }else {
-            $menus = D("Menu")->getAdminData('menu', 'menu_id');
+            $menus = D("Menu")->getBarMenus();
             $this->assign('menus',$menus);
             $this->display();
         }
@@ -69,9 +69,9 @@ class MainController extends CommonController {
         $id = $_GET['id'];
         $main = D("Main")->find('main', $id, 'main_id');
         $this->assign('main', $main);
-        $menus = D("Menu")->getAdminData('menu', 'menu_id');
+        $menus = D("Menu")->getBarMenus();
         $this->assign('menus',$menus);
-        $subMenus = D("Menu")->findsubcat($main['category']);
+        $subMenus = D("Menu")->getSubMenus($main['category']);
         $this->assign('subMenus', $subMenus);
         $this->display();
     }
@@ -94,7 +94,7 @@ class MainController extends CommonController {
     //根据第一分类取得第二分类
     public function subcat() {
         $category = $_GET['category'];
-        $subMenus = D("Menu")->findsubcat($category);
+        $subMenus = D("Menu")->getSubMenus($category);
         return show(1,'',$subMenus);
     }
 
