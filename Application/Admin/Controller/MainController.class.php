@@ -12,7 +12,7 @@ class MainController extends CommonController {
     public function index() {
         $mains = D("Main")->getAdminData('main', 'main_id');
         $this->assign('mains',$mains);
-        $menus = D("Menu")->getBarMenus();
+        $menus = D("Menu")->getAdminData('menu', 'menu_id');
         $this->assign('menus',$menus);
         $this->display();
     }

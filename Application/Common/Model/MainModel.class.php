@@ -36,7 +36,7 @@ class MainModel extends CommonModel {
 
     public function getPushData($_db, $id='id') {
         $data = array(
-            'status' => array('neq',-1),
+            'status' => array('eq',1),
             'push' => 1,
         );
         $list = M($_db)->where($data)->order('pushorder desc,'.$id.' desc')->select();
@@ -45,7 +45,7 @@ class MainModel extends CommonModel {
 
     public function getCategoryData($Category) {
         $data = array(
-            'status' => array('neq',-1),
+            'status' => array('eq',1),
             'category' => $Category,
         );
         $list = $this->_db->where($data)->order('listorder desc, main_id desc')->select();
@@ -54,7 +54,7 @@ class MainModel extends CommonModel {
 
     public function getSubCategoryData($Category) {
         $data = array(
-            'status' => array('neq',-1),
+            'status' => array('eq',1),
             'sub_category' => $Category,
         );
         $list = $this->_db->where($data)->order('listorder desc, main_id desc')->select();
