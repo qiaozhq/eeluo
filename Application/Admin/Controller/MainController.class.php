@@ -18,7 +18,7 @@ class MainController extends CommonController {
         // $description = trim($_GET['description']);
         // if($description) {
         //     $conds['description'] = $description;
-        // }      
+        // }  
         $page = $_REQUEST['p'] ? $_REQUEST['p'] : 1;
         $pageSize = $_REQUEST['pageSize'] ? $_REQUEST['pageSize'] : 10;
         $mains = D("Main")->getAdminData('main', 'main_id',$conds,$page,$pageSize);
