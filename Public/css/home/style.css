@@ -297,6 +297,7 @@ div#footer-inner {
 }
 .archive .entry-content {
 	margin-top: 0;
+    word-break: break-all;
 }
 .archive .entry-content p {
 	color: #5c5c5c;

@@ -91,7 +91,7 @@
             <div class="form-group">
               <label for="inputPassword3" class="col-sm-2 control-label">内容:</label>
               <div class="col-sm-5">
-                <textarea class="input js-editor" id="editor_singcms" name="content" rows="20" >{$main.content|str_replace='\\\"','',###}</textarea>
+                <textarea class="input js-editor" id="editor_singcms" name="content" rows="20" >{$main.content|htmlspecialchars}</textarea>
               </div>
             </div>                                              
             <input type="hidden" name="main_id" value="{$main.main_id}"/>            
@@ -138,7 +138,7 @@
   // 6.2
   KindEditor.ready(function(K) {
     window.editor = K.create('#editor_singcms',{
-      uploadJson : '/admin.php?c=image&a=kindupload',
+      uploadJson : '/image/kindupload.htm',
       afterBlur : function(){this.sync();}, //
     });
   });
