@@ -35,7 +35,7 @@ $(function() {
 /**
  * 图片上传功能
  */
-$(function() {
+/*$(function() {
     $('#file_upload2').uploadify({
         'swf'      : SCOPE.ajax_upload_swf,
         'uploader' : SCOPE.ajax_upload_image_url,
@@ -75,4 +75,4 @@ $(function() {
 function clearThumb(){
     $('#file_upload_image2').attr('value','');
     $("#upload_org_code_img2").empty();
-}
+}*/

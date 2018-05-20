@@ -184,7 +184,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="service" class="col-sm-2 control-label">服务:</label>
+						<label for="service" class="col-sm-2 control-label">Tags:</label>
 						<div class="col-sm-5">
 							<input type="text" name="service" value="<?php echo ($basic["service"]); ?>" class="form-control" id="service" placeholder="请填写联系我们的服务关键词">
 						</div>
