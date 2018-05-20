@@ -25,18 +25,24 @@
       <!-- /.row -->
       <div >
         <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加</button>
-        <div class="search">
-          <select class="form-control" name="category" id="category">
-            <option value='' >==请选择分类==</option>
-            <volist name="menus" id="menu">
-              <option value="{$menu.menu_id}">{$menu.name}</option>
-            </volist>
-          </select>
-        </div>
-         <div class="search">
-            <input type="text" name="description" class="form-control" id="inputdescription" placeholder="请填写搜索内容">
+        <form class="search" action="/main.html" method="get">
+          <div class="search">
+            <select class="form-control" name="category" id="category">
+              <option value='' >全部分类</option>
+              <volist name="menus" id="menu">
+                <eq name="menu.menu_id" value="$category">
+                  <option value="{$menu.menu_id}" selected>{$menu.name}</option>
+                <else/>
+                  <option value="{$menu.menu_id}">{$menu.name}</option>
+                </eq> 
+              </volist>
+            </select>
           </div>
-        <button  id="button-search" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索</button>
+          <div class="search">
+            <input type="text" name="description" class="form-control" value="{$description}" id="inputdescription" placeholder="请填写搜索内容">
+          </div>
+          <button  id="button-search" type="submit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索</button>
+        </form>
       </div>
       <div class="row">
         <div class="col-lg-6">
@@ -78,6 +84,11 @@
 
                 </tbody>
               </table>
+              <nav>
+                  <ul class="pagination">
+                      {$pageRes}
+                  </ul>
+              </nav>
               <div>
                 <button  id="button-listorder" type="button" class="btn btn-primary dropdown-toggle" ><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>更新排序</button>
               </div>

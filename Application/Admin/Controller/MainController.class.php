@@ -10,9 +10,30 @@ use Think\Exception;
 class MainController extends CommonController {
     //数据信息首页
     public function index() {
-        $mains = D("Main")->getAdminData('main', 'main_id');
+        $conds = array();
+        $category = trim($_GET['category']);
+        if($category) {
+            $conds['category'] = $category;
+        }
+        // $description = trim($_GET['description']);
+        // if($description) {
+        //     $conds['description'] = $description;
+        // }      
+        $page = $_REQUEST['p'] ? $_REQUEST['p'] : 1;
+        $pageSize = $_REQUEST['pageSize'] ? $_REQUEST['pageSize'] : 10;
+        $mains = D("Main")->getAdminData('main', 'main_id',$conds,$page,$pageSize);
         $this->assign('mains',$mains);
         $menus = D("Menu")->getAdminData('menu', 'menu_id');
+        $count = D("Main")->getAdminCount($conds);
+        $res = new \Think\Page($count, $pageSize);
+        $pageRes = $res->show();
+        if($_GET['category']){
+            $this->assign('category', $_GET['category']);
+        }
+        // if($description){
+        //     $this->assign('description', $description);
+        // }        
+        $this->assign('pageRes', $pageRes);
         $this->assign('menus',$menus);
         $this->display();
     }

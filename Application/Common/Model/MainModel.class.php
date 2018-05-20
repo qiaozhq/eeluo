@@ -80,4 +80,35 @@ class MainModel extends CommonModel {
         );
         return M($_db)->where($idname.'='.$idval)->save($data);
     }
+
+     //管理后台取得数据
+    public function getAdminData($_db, $id='id',$data=array(),$page=1,$pageSize=10) {
+         $conditions = $data;
+        // if(isset($data['product_name']) && $data['product_name']) {
+        //     $conditions['product_name'] = array('like','%'.$data['product_name'].'%');
+        // }
+        if(isset($data['category']) && $data['category'])  {
+            $conditions['category'] = intval($data['category']);
+        }
+        $conditions['status'] = array('neq',-1);
+        $offset = ($page - 1) * $pageSize;
+        $list = $this->_db->where($conditions)
+            ->order('listorder desc,'.$id.' desc')
+            ->limit($offset,$pageSize)
+            ->select();
+        return $list;
+    }
+
+    //使用模块：admin
+    public function getAdminCount($data= array()) {
+        $conditions = $data;
+        // if(isset($data['title']) && $data['title']) {
+        //     $conditions['product_name'] = array('like','%'.$data['title'].'%');
+        // }
+        if(isset($data['category']) && $data['category'])  {
+            $conditions['category'] = intval($data['category']);
+        }
+        $conditions['status'] = array('neq',-1);
+        return $this->_db->where($conditions)->count();        
+    }
 }
