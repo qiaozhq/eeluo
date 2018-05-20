@@ -25,6 +25,18 @@
       <!-- /.row -->
       <div >
         <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加</button>
+        <div class="search">
+          <select class="form-control" name="category" id="category">
+            <option value='' >==请选择分类==</option>
+            <volist name="menus" id="menu">
+              <option value="{$menu.menu_id}">{$menu.name}</option>
+            </volist>
+          </select>
+        </div>
+         <div class="search">
+            <input type="text" name="description" class="form-control" id="inputdescription" placeholder="请填写搜索内容">
+          </div>
+        <button  id="button-search" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索</button>
       </div>
       <div class="row">
         <div class="col-lg-6">

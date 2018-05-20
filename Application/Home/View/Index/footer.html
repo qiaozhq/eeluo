@@ -36,6 +36,43 @@
 	<div class="col-md-3"></div>				
 </div>
 </div>
+<div class="return-top" id="return_top">▲</div>
+<script>
+    /*
+        思路：
+            第一步：当页面加载完后，获取所要操作的 节点对象
+            第二步：为window对象添加一个滚动条滚动事件onscroll
+            第三步：
+                    在滚动条滚动的过程中，不断的获取滚动条距离顶部的距离数值
+                    当这个数值大于300的时候，显示出回到顶部图标
+                    否则，隐藏回到顶部图标
+            第四步：
+                为回到顶部图标添加一个点击事件，滚动条回到顶部。            
+    */
+    var return_top = document.getElementById("return_top");
+    var sTop;
+    window.onscroll = function(){
+        //sTop :滚动条距离顶部的距离数值
+        sTop = document.body.scrollTop||document.documentElement.scrollTop;
+        if(sTop>300){
+            return_top.className = "return-top active";
+        }else{
+            return_top.className = "return-top";
+        }
+    }
+
+    return_top.onclick = function(){
+        var termId = setInterval(function(){
+            sTop-=50;
+            if(sTop<=0){
+
+                clearInterval(termId);
+            }
+            window.scrollTo(0,sTop);
+
+        },1);       
+    }
+</script>
 <script src="/Public/js/jquery.min.js"></script>
 <script src="/Public/js/bootstrap.min.js"></script>
 <script src="/Public/js/home/main.js?version={$basic.md5version}"></script>

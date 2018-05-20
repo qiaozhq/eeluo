@@ -1124,3 +1124,19 @@ div.affiliate-button a {
 		display: none;
 	}
 }
+.return-top{
+        width:100px;
+        height:100px;
+        font:bold 50px/100px "宋体";
+        color:#fff;
+        background-color:purple;
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        text-align:center;
+        cursor:pointer;
+        display:none;
+    }
+.return-top.active{
+    display:block;
+}
